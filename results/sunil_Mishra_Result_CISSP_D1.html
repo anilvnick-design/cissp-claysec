@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Result — sunil Mishra</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, ::before, ::after { box-sizing: border-box; margin: 0px; padding: 0px; }
+:root { --ink: #0d0d0d; --paper: #f5f2eb; --cream: #ede9df; --gold: #c8973a; --gold-light: #e8c47a; --gold-dim: rgba(200,151,58,0.12); --charcoal: #1a1a1a; --steel: #4a4a4a; --mist: #888; --border: rgba(0,0,0,0.08); --correct: #1a7a4a; --correct-bg: #edfbf3; --wrong: #c0392b; --wrong-bg: #fdf0ee; --shadow: 0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04); --shadow-hover: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06); }
+html { scroll-behavior: smooth; }
+body { background-position-x: ; background-position-y: ; background-size: ; background-repeat: ; background-attachment: ; background-origin: ; background-clip: ; background-color: ; color: var(--ink); font-family: Outfit, sans-serif; font-weight: 400; min-height: 100vh; background-image: radial-gradient(at 20% 0%, rgba(200, 151, 58, 0.06) 0%, transparent 60%), radial-gradient(at 80% 100%, rgba(200, 151, 58, 0.04) 0%, transparent 60%); }
+.header { position: sticky; top: 0px; z-index: 200; padding: 0px; background: linear-gradient(rgb(232, 228, 220) 0%, rgb(224, 220, 210) 50%, rgb(216, 212, 202) 100%); box-shadow: rgba(255, 255, 255, 0.85) 0px 2px 4px inset, rgba(255, 255, 255, 0.6) 1px 0px 2px inset, rgba(255, 255, 255, 0.6) -1px 0px 2px inset, rgba(160, 150, 135, 0.25) 0px -3px 8px inset, rgb(184, 180, 170) 0px 1px 0px, rgb(174, 170, 160) 0px 2px 0px, rgb(164, 160, 150) 0px 3px 0px, rgb(154, 150, 140) 0px 4px 0px, rgb(144, 140, 130) 0px 5px 0px, rgba(140, 130, 115, 0.35) 0px 8px 20px, rgba(100, 90, 75, 0.15) 0px 16px 40px; border-top: 1px solid rgba(255, 255, 255, 0.95); border-left: 1px solid rgba(255, 255, 255, 0.8); border-right: 1px solid rgba(255, 255, 255, 0.8); border-bottom: none; }
+.header::before { content: ""; position: absolute; inset: 0px; background: radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.5) 0%, transparent 55%), radial-gradient(at 100% 100%, rgba(160, 150, 130, 0.12) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+.header::after { content: ""; position: absolute; bottom: 0px; left: 0px; right: 0px; height: 3px; background: linear-gradient(rgba(150, 143, 130, 0.6) 0%, rgba(180, 173, 160, 0.3) 100%); box-shadow: rgba(255, 255, 255, 0.7) 0px 1px 0px, rgba(100, 90, 75, 0.3) 0px 1px 2px inset; z-index: 3; }
+.header-inner { max-width: 900px; margin: 0px auto; display: flex; align-items: center; justify-content: space-between; padding: 0px 32px; height: 76px; position: relative; z-index: 2; }
+.header-brand { display: flex; flex-direction: column; gap: 1px; }
+.header-brand .eyebrow { font-family: "DM Mono", monospace; font-size: 0.6rem; letter-spacing: 3.5px; text-transform: uppercase; color: rgb(106, 98, 88); text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px, rgba(100, 90, 75, 0.2) 0px -1px 0px; }
+.header-brand .title { font-family: "DM Serif Display", serif; font-size: 1.3rem; line-height: 1.15; color: rgb(58, 53, 48); text-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px, rgba(80, 70, 55, 0.15) 0px -1px 0px, rgba(150, 140, 125, 0.2) 1px 1px 2px; }
+.header-stats { display: flex; gap: 10px; align-items: center; position: relative; z-index: 2; }
+.hstat { text-align: center; padding: 9px 18px 10px; border-radius: 12px; min-width: 68px; position: relative; background: linear-gradient(145deg, rgb(234, 230, 222) 0%, rgb(222, 218, 210) 50%, rgb(210, 206, 198) 100%); box-shadow: rgba(255, 255, 255, 0.85) 2px 2px 5px inset, rgba(150, 140, 125, 0.3) -2px -2px 5px inset, rgb(176, 172, 162) 0px 1px 0px, rgb(168, 164, 154) 0px 2px 0px, rgb(160, 156, 146) 0px 3px 0px, rgba(130, 120, 105, 0.3) 0px 4px 8px, rgba(100, 90, 75, 0.1) 0px 8px 20px; border: 1px solid rgba(255, 255, 255, 0.7); transition: transform 0.2s; }
+.hstat:nth-child(1) { box-shadow: rgba(255, 255, 255, 0.85) 2px 2px 5px inset, rgba(150, 140, 125, 0.25) -2px -2px 5px inset, rgb(90, 154, 114) 0px 1px 0px, rgb(78, 142, 102) 0px 2px 0px, rgb(66, 130, 90) 0px 3px 0px, rgba(22, 120, 60, 0.2) 0px 4px 8px, rgba(100, 90, 75, 0.08) 0px 8px 20px; border-bottom: 2px solid rgba(22, 120, 60, 0.35); }
+.hstat:nth-child(2) { box-shadow: rgba(255, 255, 255, 0.85) 2px 2px 5px inset, rgba(150, 140, 125, 0.25) -2px -2px 5px inset, rgb(176, 88, 88) 0px 1px 0px, rgb(160, 72, 72) 0px 2px 0px, rgb(144, 56, 56) 0px 3px 0px, rgba(180, 50, 50, 0.2) 0px 4px 8px, rgba(100, 90, 75, 0.08) 0px 8px 20px; border-bottom: 2px solid rgba(192, 57, 43, 0.35); }
+.hstat:nth-child(3) { box-shadow: rgba(255, 255, 255, 0.85) 2px 2px 5px inset, rgba(150, 140, 125, 0.25) -2px -2px 5px inset, rgb(160, 120, 48) 0px 1px 0px, rgb(144, 104, 32) 0px 2px 0px, rgb(128, 88, 16) 0px 3px 0px, rgba(160, 120, 30, 0.2) 0px 4px 8px, rgba(100, 90, 75, 0.08) 0px 8px 20px; border-bottom: 2px solid rgba(160, 110, 20, 0.4); }
+.hstat-val { font-family: "DM Mono", monospace; font-size: 1.3rem; font-weight: 700; line-height: 1; letter-spacing: -0.5px; text-shadow: rgba(255, 255, 255, 0.7) 0px 1px 0px, rgba(0, 0, 0, 0.1) 0px -1px 0px; }
+.hstat-val.c { color: rgb(26, 102, 56); }
+.hstat-val.w { color: rgb(160, 32, 32); }
+.hstat-val.p { color: rgb(122, 80, 16); }
+.hstat-lbl { font-family: "DM Mono", monospace; font-size: 0.5rem; color: rgb(138, 130, 120); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; text-shadow: rgba(255, 255, 255, 0.6) 0px 1px 0px; }
+.progress-track { height: 5px; position: relative; background: linear-gradient(rgb(184, 180, 170) 0%, rgb(204, 200, 190) 100%); box-shadow: rgba(100, 90, 75, 0.4) 0px 2px 4px inset, rgba(100, 90, 75, 0.25) 0px 1px 2px inset, rgba(255, 255, 255, 0.8) 0px 1px 0px; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, rgb(138, 104, 32) 0%, rgb(184, 144, 42) 30%, rgb(212, 168, 48) 60%, rgb(192, 144, 32) 100%); transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); width: 0%; border-radius: 0px 3px 3px 0px; box-shadow: rgba(180, 140, 40, 0.4) 0px 0px 6px, rgba(255, 240, 180, 0.5) 0px 1px 0px inset, rgba(100, 70, 10, 0.3) 0px -1px 0px inset; }
+.hero-domain { font-family: "DM Mono", monospace; font-size: 0.65rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+.hero-h1 { font-family: "DM Serif Display", serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; color: var(--ink); max-width: 480px; }
+.hero-h1 em { color: var(--gold); font-style: italic; }
+.hero-desc { margin-top: 14px; color: var(--steel); font-size: 0.9rem; line-height: 1.7; max-width: 420px; }
+.hero-meta { margin-top: 24px; display: flex; gap: 16px; flex-wrap: wrap; }
+.meta-chip { font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 1px; padding: 5px 12px; border: 1px solid var(--border); border-radius: 2px; color: var(--mist); background: var(--cream); text-transform: uppercase; }
+.hero-deco { flex-shrink: 0; width: 160px; height: 160px; position: relative; display: none; }
+@media (min-width: 640px) {
+  .hero-deco { display: block; }
+}
+.deco-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(200, 151, 58, 0.2); }
+.deco-ring:nth-child(1) { width: 160px; height: 160px; top: 0px; left: 0px; animation: 30s linear 0s infinite normal none running spin; }
+.deco-ring:nth-child(2) { width: 120px; height: 120px; top: 20px; left: 20px; animation: 20s linear 0s infinite reverse none running spin; border-style: dashed; }
+.deco-ring:nth-child(3) { width: 80px; height: 80px; top: 40px; left: 40px; background: var(--gold-dim); }
+.deco-inner { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: "DM Serif Display", serif; font-size: 2rem; color: var(--gold); }
+@keyframes spin { 
+  100% { transform: rotate(360deg); }
+}
+.section-divider { max-width: 900px; margin: 40px auto 0px; padding: 0px 32px; display: flex; align-items: center; gap: 16px; }
+.divider-line { flex: 1 1 0%; height: 1px; background: var(--border); }
+.divider-label { font-family: "DM Mono", monospace; font-size: 0.62rem; color: var(--mist); letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; }
+.questions-wrap { max-width: 900px; margin: 24px auto 0px; padding: 0px 32px 80px; display: flex; flex-direction: column; gap: 28px; }
+.qcard { position: relative; border-radius: 20px; overflow: visible; transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s; background: linear-gradient(160deg, rgb(255, 255, 255) 0%, rgb(247, 244, 238) 100%); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: rgb(212, 207, 196) 0px 1px 0px, rgb(202, 196, 184) 0px 2px 0px, rgb(191, 185, 172) 0px 3px 0px, rgb(181, 174, 159) 0px 4px 0px, rgb(170, 163, 147) 0px 5px 0px, rgba(0, 0, 0, 0.15) 0px 8px 20px, rgba(0, 0, 0, 0.08) 0px 16px 40px; }
+.qcard:hover { transform: translateY(-4px); box-shadow: rgb(212, 207, 196) 0px 1px 0px, rgb(202, 196, 184) 0px 2px 0px, rgb(191, 185, 172) 0px 3px 0px, rgb(181, 174, 159) 0px 4px 0px, rgb(170, 163, 147) 0px 5px 0px, rgb(158, 151, 137) 0px 6px 0px, rgb(148, 143, 126) 0px 7px 0px, rgba(0, 0, 0, 0.18) 0px 12px 30px, rgba(0, 0, 0, 0.1) 0px 24px 50px; }
+.qcard.state-correct { background: linear-gradient(160deg, rgb(240, 253, 246) 0%, rgb(220, 250, 236) 100%); border-color: rgba(26, 122, 74, 0.25); box-shadow: rgb(168, 217, 188) 0px 1px 0px, rgb(150, 206, 172) 0px 2px 0px, rgb(132, 196, 155) 0px 3px 0px, rgb(114, 185, 138) 0px 4px 0px, rgb(96, 174, 122) 0px 5px 0px, rgba(26, 122, 74, 0.2) 0px 8px 24px, rgba(26, 122, 74, 0.1) 0px 16px 40px; }
+.qcard.state-wrong { background: linear-gradient(160deg, rgb(255, 245, 245) 0%, rgb(253, 232, 230) 100%); border-color: rgba(192, 57, 43, 0.2); box-shadow: rgb(232, 180, 174) 0px 1px 0px, rgb(223, 164, 157) 0px 2px 0px, rgb(214, 147, 139) 0px 3px 0px, rgb(205, 130, 121) 0px 4px 0px, rgb(196, 113, 103) 0px 5px 0px, rgba(192, 57, 43, 0.18) 0px 8px 24px, rgba(192, 57, 43, 0.08) 0px 16px 40px; }
+.qcard::before { content: ""; position: absolute; top: 0px; left: 0px; right: 0px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent); border-radius: 20px 20px 0px 0px; opacity: 0.6; }
+.qcard.state-correct::before { background: linear-gradient(90deg, rgb(26, 122, 74), rgb(74, 222, 128), transparent); opacity: 0.8; }
+.qcard.state-wrong::before { background: linear-gradient(90deg, rgb(192, 57, 43), rgb(248, 113, 113), transparent); opacity: 0.8; }
+.qcard-header { padding: 24px 28px 0px; display: flex; align-items: flex-start; gap: 18px; }
+.qnum { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: "DM Mono", monospace; font-size: 0.78rem; font-weight: 700; color: rgb(90, 78, 56); margin-top: 2px; position: relative; background: linear-gradient(145deg, rgb(240, 235, 224) 0%, rgb(226, 220, 207) 40%, rgb(212, 205, 191) 100%); border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: rgba(255, 255, 255, 0.85) 2px 2px 4px inset, rgba(0, 0, 0, 0.12) -2px -2px 4px inset, rgb(184, 178, 166) 0px 1px 0px, rgb(173, 167, 154) 0px 2px 0px, rgb(162, 155, 142) 0px 3px 0px, rgb(151, 143, 130) 0px 4px 0px, rgba(0, 0, 0, 0.2) 0px 6px 12px, rgba(0, 0, 0, 0.1) 0px 10px 24px; transform: translateY(-2px); transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
+.qcard.state-correct .qnum { background: linear-gradient(145deg, rgb(212, 244, 228) 0%, rgb(184, 236, 211) 40%, rgb(156, 224, 192) 100%); color: rgb(15, 90, 54); box-shadow: rgba(255, 255, 255, 0.8) 2px 2px 4px inset, rgba(0, 0, 0, 0.08) -2px -2px 4px inset, rgb(107, 191, 152) 0px 1px 0px, rgb(94, 180, 140) 0px 2px 0px, rgb(81, 169, 128) 0px 3px 0px, rgb(68, 158, 116) 0px 4px 0px, rgba(26, 122, 74, 0.3) 0px 6px 12px, rgba(26, 122, 74, 0.12) 0px 10px 24px; }
+.qcard.state-wrong .qnum { background: linear-gradient(145deg, rgb(255, 216, 212) 0%, rgb(255, 189, 184) 40%, rgb(255, 162, 155) 100%); color: rgb(139, 26, 20); box-shadow: rgba(255, 255, 255, 0.8) 2px 2px 4px inset, rgba(0, 0, 0, 0.08) -2px -2px 4px inset, rgb(212, 133, 125) 0px 1px 0px, rgb(201, 122, 114) 0px 2px 0px, rgb(190, 111, 103) 0px 3px 0px, rgb(179, 100, 92) 0px 4px 0px, rgba(192, 57, 43, 0.3) 0px 6px 12px, rgba(192, 57, 43, 0.12) 0px 10px 24px; }
+.qtext { font-size: 1rem; font-weight: 700; line-height: 1.65; color: var(--ink); padding-top: 6px; letter-spacing: -0.01em; }
+.qcard-body { padding: 18px 28px 24px; }
+.options { display: flex; flex-direction: column; gap: 10px; }
+.opt-btn { width: 100%; border-image: initial; border-radius: 12px; z-index: 10; padding: 14px 18px; cursor: pointer; text-align: left; display: flex; align-items: flex-start; gap: 14px; font-family: Outfit, sans-serif; position: relative; transition: 0.2s cubic-bezier(0.23, 1, 0.32, 1); background: linear-gradient(160deg, rgb(240, 236, 227) 0%, rgb(232, 227, 216) 100%); border-width: 1px; border-style: solid; border-color: rgba(255, 255, 255, 0.9) rgba(0, 0, 0, 0.04) rgba(0, 0, 0, 0.06) rgba(255, 255, 255, 0.7); box-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px inset, rgb(204, 199, 186) 0px 1px 0px, rgb(193, 187, 174) 0px 2px 0px, rgb(182, 176, 162) 0px 3px 0px, rgba(0, 0, 0, 0.1) 0px 4px 8px, rgba(0, 0, 0, 0.06) 0px 8px 20px; }
+.opt-btn:hover:not(:disabled) { background: linear-gradient(160deg, rgb(255, 248, 236) 0%, rgb(253, 240, 213) 100%); border-top-color: rgba(200, 151, 58, 0.3); border-left-color: rgba(200, 151, 58, 0.2); transform: translateY(-2px); box-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px inset, rgb(212, 184, 122) 0px 1px 0px, rgb(201, 173, 111) 0px 2px 0px, rgb(190, 162, 100) 0px 3px 0px, rgb(179, 151, 89) 0px 4px 0px, rgba(200, 151, 58, 0.2) 0px 6px 14px, rgba(200, 151, 58, 0.1) 0px 12px 28px; }
+.opt-btn:active:not(:disabled) { transform: translateY(2px); box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px inset, rgb(204, 199, 186) 0px 1px 0px, rgba(0, 0, 0, 0.08) 0px 2px 4px; }
+.opt-btn:disabled { cursor: default; transform: none !important; }
+.opt-key { flex-shrink: 0; width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: "DM Mono", monospace; font-size: 0.72rem; font-weight: 700; color: rgb(122, 112, 101); margin-top: 1px; transition: 0.2s; background: linear-gradient(145deg, rgb(255, 255, 255) 0%, rgb(232, 227, 216) 100%); box-shadow: rgba(255, 255, 255, 0.9) 1px 1px 2px inset, rgba(0, 0, 0, 0.08) -1px -1px 2px inset, rgb(187, 181, 168) 0px 1px 0px, rgb(176, 170, 156) 0px 2px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px; }
+.opt-text { font-size: 0.9rem; line-height: 1.55; color: var(--steel); padding-top: 5px; font-weight: 500; }
+.opt-btn.opt-correct { background: linear-gradient(160deg, rgb(232, 250, 241) 0%, rgb(200, 242, 220) 100%); border-top-color: rgba(26, 122, 74, 0.3); border-left-color: rgba(26, 122, 74, 0.2); box-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px inset, rgb(124, 196, 160) 0px 1px 0px, rgb(110, 185, 147) 0px 2px 0px, rgb(96, 174, 134) 0px 3px 0px, rgb(82, 163, 121) 0px 4px 0px, rgba(26, 122, 74, 0.25) 0px 6px 16px, rgba(26, 122, 74, 0.1) 0px 12px 30px; transform: translateY(0px) !important; }
+.opt-btn.opt-correct .opt-key { background: linear-gradient(145deg, rgb(46, 204, 113), rgb(26, 122, 74)); color: rgb(255, 255, 255); box-shadow: rgba(255, 255, 255, 0.3) 1px 1px 2px inset, rgba(0, 0, 0, 0.2) -1px -1px 2px inset, rgb(15, 90, 54) 0px 1px 0px, rgb(10, 66, 40) 0px 2px 0px, rgba(26, 122, 74, 0.4) 0px 3px 8px; }
+.opt-btn.opt-correct .opt-text { color: rgb(15, 90, 54); font-weight: 600; }
+.opt-btn.opt-wrong { background: linear-gradient(160deg, rgb(255, 240, 238) 0%, rgb(253, 216, 212) 100%); border-top-color: rgba(192, 57, 43, 0.3); border-left-color: rgba(192, 57, 43, 0.2); box-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px inset, rgb(212, 148, 142) 0px 1px 0px, rgb(201, 136, 130) 0px 2px 0px, rgb(190, 124, 118) 0px 3px 0px, rgb(179, 112, 106) 0px 4px 0px, rgba(192, 57, 43, 0.22) 0px 6px 16px, rgba(192, 57, 43, 0.08) 0px 12px 30px; transform: translateY(0px) !important; }
+.opt-btn.opt-wrong .opt-key { background: linear-gradient(145deg, rgb(231, 76, 60), rgb(146, 43, 33)); color: rgb(255, 255, 255); box-shadow: rgba(255, 255, 255, 0.3) 1px 1px 2px inset, rgba(0, 0, 0, 0.2) -1px -1px 2px inset, rgb(123, 36, 28) 0px 1px 0px, rgb(108, 30, 23) 0px 2px 0px, rgba(192, 57, 43, 0.4) 0px 3px 8px; }
+.opt-btn.opt-wrong .opt-text { color: rgb(139, 26, 20); font-weight: 600; }
+.opt-btn.opt-dim { opacity: 0.3; filter: grayscale(0.3); }
+.explanation { margin: 0px 28px 24px; padding: 18px 20px; border-radius: 12px; display: none; position: relative; background: linear-gradient(135deg, rgb(255, 252, 240) 0%, rgb(255, 248, 224) 100%); border-width: 1px; border-style: solid; border-color: rgba(255, 255, 255, 0.9) rgba(200, 151, 58, 0.25) rgba(200, 151, 58, 0.25); border-image: initial; box-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px inset, rgb(212, 192, 138) 0px 1px 0px, rgb(201, 180, 127) 0px 2px 0px, rgb(190, 168, 116) 0px 3px 0px, rgba(200, 151, 58, 0.15) 0px 4px 8px, rgba(200, 151, 58, 0.08) 0px 8px 20px; }
+.explanation::before { content: ""; position: absolute; left: 0px; top: 12px; bottom: 12px; width: 4px; background: linear-gradient(to bottom, var(--gold), var(--gold-light)); border-radius: 0px 4px 4px 0px; pointer-events: none; }
+.explanation.show { display: flex; gap: 14px; align-items: flex-start; animation: 0.35s cubic-bezier(0.23, 1, 0.32, 1) 0s 1 normal none running slideDown; }
+@keyframes slideDown { 
+  0% { opacity: 0; transform: translateY(-12px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0px) scale(1); }
+}
+.exp-icon { flex-shrink: 0; font-size: 1.1rem; margin-top: 1px; filter: drop-shadow(rgba(200, 151, 58, 0.3) 0px 2px 4px); }
+.exp-text { font-size: 0.85rem; line-height: 1.7; color: rgb(74, 60, 30); }
+.exp-text strong { color: rgb(154, 111, 32); font-weight: 700; }
+.result-tag { display: inline-flex; align-items: center; gap: 8px; font-family: "DM Mono", monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; padding: 7px 16px; border-radius: 30px; margin: 0px 28px 20px; animation: 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s 1 normal none running popIn; }
+@keyframes popIn { 
+  0% { opacity: 0; transform: scale(0.7) translateY(6px); }
+  100% { opacity: 1; transform: scale(1) translateY(0px); }
+}
+.rt-correct { background: linear-gradient(135deg, rgb(232, 250, 241), rgb(200, 242, 220)); color: rgb(15, 90, 54); border: 1px solid rgba(26, 122, 74, 0.3); box-shadow: rgb(124, 196, 160) 0px 1px 0px, rgb(110, 185, 147) 0px 2px 0px, rgba(26, 122, 74, 0.2) 0px 3px 8px; }
+.rt-wrong { background: linear-gradient(135deg, rgb(255, 240, 238), rgb(253, 216, 212)); color: rgb(139, 26, 20); border: 1px solid rgba(192, 57, 43, 0.3); box-shadow: rgb(212, 148, 142) 0px 1px 0px, rgb(201, 136, 130) 0px 2px 0px, rgba(192, 57, 43, 0.18) 0px 3px 8px; }
+.final-screen { display: none; max-width: 900px; margin: 0px auto 80px; padding: 0px 32px; }
+.final-card { background: var(--charcoal); border-radius: 16px; padding: 56px 48px; text-align: center; position: relative; overflow: hidden; }
+.final-card::before { content: ""; position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(200, 151, 58, 0.15) 0%, transparent 70%); top: -80px; right: -80px; pointer-events: none; }
+.final-card::after { content: ""; position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(200, 151, 58, 0.1) 0%, transparent 70%); bottom: -60px; left: -60px; pointer-events: none; }
+.final-eyebrow { font-family: "DM Mono", monospace; font-size: 0.62rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; }
+.final-score-display { font-family: "DM Serif Display", serif; font-size: clamp(4rem, 10vw, 7rem); color: rgb(255, 255, 255); line-height: 1; }
+.final-score-display span { color: var(--gold); }
+.final-pct { font-family: "DM Mono", monospace; font-size: 1.2rem; color: var(--gold-light); margin-top: 8px; }
+.final-msg { margin-top: 20px; color: rgb(170, 170, 170); font-size: 0.95rem; line-height: 1.6; max-width: 380px; margin-left: auto; margin-right: auto; }
+.final-breakdown { display: flex; justify-content: center; gap: 32px; margin: 32px 0px; padding: 24px 0px; border-top: 1px solid rgb(42, 42, 42); border-bottom: 1px solid rgb(42, 42, 42); }
+.fb-item { }
+.fb-val { font-family: "DM Mono", monospace; font-size: 1.6rem; font-weight: 500; }
+.fb-val.c { color: rgb(74, 222, 128); }
+.fb-val.w { color: rgb(248, 113, 113); }
+.fb-lbl { font-size: 0.7rem; color: rgb(85, 85, 85); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+.restart-btn { margin-top: 8px; padding: 14px 40px; background: var(--gold); border: none; border-radius: 8px; color: var(--charcoal); font-family: Outfit, sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; transition: 0.2s; }
+.restart-btn:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: rgba(200, 151, 58, 0.3) 0px 8px 24px; }
+@media (max-width: 600px) {
+  .header-inner { padding: 0px 16px; }
+  .hero { padding: 0px 16px; margin-top: 32px; }
+  .section-divider { padding: 0px 16px; }
+  .questions-wrap { padding: 0px 16px 60px; gap: 20px; }
+  .final-screen { padding: 0px 16px; }
+  .final-card { padding: 36px 24px; }
+  .final-breakdown { gap: 20px; }
+  .qcard-header { padding: 18px 18px 0px; }
+  .qcard-body { padding: 14px 18px 18px; }
+  .explanation { margin: 0px 18px 18px; }
+  .result-tag { margin: 0px 18px 16px; }
+  .header-stats { gap: 16px; }
+}
+.naam-timer-row { margin-top: 28px; display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.naam-wrap { display: flex; flex-direction: column; gap: 5px; }
+.naam-label { font-family: "DM Mono", monospace; font-size: 0.58rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+.naam-input { padding: 11px 18px; border-radius: 12px; border: 1.5px solid rgba(200, 151, 58, 0.25); background: linear-gradient(145deg, rgb(240, 235, 224), rgb(232, 227, 216)); font-family: Outfit, sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--ink); outline: none; width: 230px; box-shadow: rgba(0, 0, 0, 0.07) 2px 2px 5px inset, rgba(255, 255, 255, 0.7) -1px -1px 3px inset; transition: border-color 0.2s; }
+.naam-input:focus { border-color: var(--gold); }
+.naam-input::placeholder { color: rgb(187, 187, 187); font-weight: 400; }
+.naam-input:disabled { opacity: 0.6; cursor: not-allowed; }
+.start-pill { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 12px; cursor: pointer; user-select: none; border: 1px solid rgba(255, 255, 255, 0.85); background: linear-gradient(145deg, rgb(240, 235, 224) 0%, rgb(226, 220, 207) 50%, rgb(212, 205, 191) 100%); box-shadow: rgba(255, 255, 255, 0.9) 2px 2px 5px inset, rgba(150, 140, 120, 0.15) -2px -2px 5px inset, rgb(184, 178, 162) 0px 1px 0px, rgb(173, 167, 154) 0px 2px 0px, rgb(162, 156, 142) 0px 3px 0px, rgb(151, 144, 128) 0px 4px 0px, rgb(140, 132, 114) 0px 5px 0px, rgba(0, 0, 0, 0.16) 0px 7px 16px; transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.15s; white-space: nowrap; }
+.start-pill:hover { transform: translateY(-2px); }
+.start-pill:active { transform: translateY(3px); }
+.start-pill-icon { font-size: 1.1rem; line-height: 1; }
+.start-pill-text { font-family: "DM Mono", monospace; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: rgb(90, 78, 56); font-weight: 600; }
+.start-pill.timer-on { cursor: default; background: linear-gradient(rgb(232, 228, 220) 0%, rgb(224, 220, 210) 50%, rgb(216, 212, 202) 100%); border-top: 1px solid rgba(255, 255, 255, 0.95); border-left: 1px solid rgba(255, 255, 255, 0.8); border-right: 1px solid rgba(255, 255, 255, 0.8); border-bottom: none; box-shadow: rgba(255, 255, 255, 0.85) 0px 2px 4px inset, rgba(255, 255, 255, 0.6) 1px 0px 2px inset, rgba(255, 255, 255, 0.6) -1px 0px 2px inset, rgba(160, 150, 135, 0.25) 0px -3px 8px inset, rgb(184, 180, 170) 0px 1px 0px, rgb(174, 170, 160) 0px 2px 0px, rgb(164, 160, 150) 0px 3px 0px, rgb(154, 150, 140) 0px 4px 0px, rgb(144, 140, 130) 0px 5px 0px, rgba(140, 130, 115, 0.35) 0px 8px 20px, rgba(100, 90, 75, 0.15) 0px 16px 40px; }
+.start-pill.timer-on::before { content: ""; position: absolute; inset: 0px; background: radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.5) 0%, transparent 55%), radial-gradient(at 100% 100%, rgba(160, 150, 130, 0.12) 0%, transparent 50%); pointer-events: none; border-radius: inherit; z-index: 0; }
+.start-pill.timer-on > * { position: relative; z-index: 1; }
+.start-pill.timer-on:hover { transform: none; }
+.timer-digits { font-family: "DM Mono", monospace; font-size: 1rem; font-weight: 700; letter-spacing: 2px; color: rgb(58, 53, 48); text-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px, rgba(80, 70, 55, 0.15) 0px -1px 0px; }
+.upload-toast { position: fixed; bottom: 28px; right: 28px; z-index: 9999; padding: 14px 20px; border-radius: 14px; font-family: "DM Mono", monospace; font-size: 0.72rem; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 30px; animation: 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s 1 normal none running toastIn; max-width: 320px; }
+@keyframes toastIn { 
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0px); }
+}
+.toast-uploading { background: linear-gradient(135deg, rgb(102, 126, 234), rgb(118, 75, 162)); color: rgb(255, 255, 255); }
+.toast-success { background: linear-gradient(135deg, rgb(26, 122, 74), rgb(46, 204, 113)); color: rgb(255, 255, 255); }
+.toast-error { background: linear-gradient(135deg, rgb(192, 57, 43), rgb(231, 76, 60)); color: rgb(255, 255, 255); }
+.rh{max-width:900px;margin:40px auto 0;padding:0 32px}
+.rt{background:linear-gradient(160deg,#fff,#f7f4ee);border-radius:20px;padding:36px 40px;margin-bottom:8px;box-shadow:0 1px 0 #d4cfc4,0 2px 0 #cac4b8,0 3px 0 #bfb9ac,0 8px 20px rgba(0,0,0,.12);text-align:center}
+.rey{font-family:'DM Mono',monospace;font-size:.6rem;color:#c8973a;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.rnm{font-family:'DM Serif Display',serif;font-size:2rem;color:#0d0d0d;margin-bottom:4px}
+.rmt{font-family:'DM Mono',monospace;font-size:.68rem;color:#888;margin-bottom:24px}
+.rps{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.rp{padding:12px 24px;border-radius:14px;font-family:'DM Mono',monospace;font-weight:700;font-size:1.1rem;border:1px solid rgba(255,255,255,.7);text-align:center}
+.rpc{background:linear-gradient(145deg,#e8faf1,#c8f2dc);color:#0f5a36;box-shadow:0 2px 0 #60ae86,0 4px 10px rgba(26,122,74,.2)}
+.rpw{background:linear-gradient(145deg,#fff0ee,#fdd8d4);color:#8b1a14;box-shadow:0 2px 0 #c47167,0 4px 10px rgba(192,57,43,.2)}
+.rpp{background:linear-gradient(145deg,#fffcf0,#fff3d0);color:#7a5010;box-shadow:0 2px 0 #c0a830,0 4px 10px rgba(200,151,58,.2)}
+.rpt{background:linear-gradient(145deg,#f0f4ff,#dce6ff);color:#1a3a8a;box-shadow:0 2px 0 #6080c8,0 4px 10px rgba(30,60,180,.15)}
+.rpx{font-size:.5rem;letter-spacing:1.5px;opacity:.7;display:block;margin-top:3px;font-weight:400}
+.wst{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#0d0d0d;margin:32px 0 0;display:flex;align-items:center;gap:12px}
+.wst::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.08)}
+</style></head><body>
+<div class="rh">
+  <div class="rt">
+    <div class="rey">CISSP Exam Prep · Domain 1 · Result</div>
+    <div class="rnm">sunil Mishra</div>
+    <div class="rmt">📅 28/2/2026, 3:40:19 pm &nbsp;·&nbsp; ⏱ 30:50</div>
+    <div class="rps">
+      <div class="rp rpc">12<span class="rpx">Correct</span></div>
+      <div class="rp rpw">8<span class="rpx">Wrong</span></div>
+      <div class="rp rpp">60%<span class="rpx">Score</span></div>
+      <div class="rp rpt">30:50<span class="rpx">Time</span></div>
+    </div>
+  </div>
+  <div class="wst">Galat Jawab — Revision Karein</div>
+</div>
+<div class="questions-wrap"><div class="qcard state-wrong">
+        <div class="qcard-header"><div class="qnum">02</div><div class="qtext">Which of the following BEST describes the concept of 'privacy by design' as it relates to information security?</div></div>
+        <div class="qcard-body"><div class="options"><div class="opt-btn opt-wrong"><div class="opt-key">A</div><div class="opt-text">Encrypting all personal data at rest and in transit after collection</div></div><div class="opt-btn opt-correct"><div class="opt-key">B</div><div class="opt-text">Building privacy protections into systems and processes from the beginning, not as an afterthought</div></div><div class="opt-btn opt-dim"><div class="opt-key">C</div><div class="opt-text">Implementing a privacy policy and publishing it on the organization website</div></div><div class="opt-btn opt-dim"><div class="opt-key">D</div><div class="opt-text">Hiring a Data Protection Officer to oversee all data handling activities</div></div></div></div>
+        <div class="explanation show"><span class="exp-icon">💡</span><span class="exp-text"><strong>Privacy by Design (PbD)</strong> — developed by Ann Cavoukian — requires that privacy be embedded into the design of systems, not bolted on afterward. It has 7 foundational principles including: proactive not reactive, privacy as the default, full functionality, end-to-end security, and respect for user privacy. GDPR Article 25 mandates Data Protection by Design and by Default. This is the opposite of adding privacy controls after a product is built.</span></div>
+        <div class="result-tag rt-wrong">😢 &nbsp;Incorrect — Correct: B</div>
+      </div><div class="qcard state-wrong">
+        <div class="qcard-header"><div class="qnum">03</div><div class="qtext">A company operates in multiple countries and must comply with various data protection laws. Which of the following represents the PRIMARY challenge of operating across jurisdictions?</div></div>
+        <div class="qcard-body"><div class="options"><div class="opt-btn opt-dim"><div class="opt-key">A</div><div class="opt-text">Different countries use incompatible encryption standards</div></div><div class="opt-btn opt-correct"><div class="opt-key">B</div><div class="opt-text">Conflicting legal requirements may make simultaneous compliance difficult or impossible</div></div><div class="opt-btn opt-wrong"><div class="opt-key">C</div><div class="opt-text">International data transfer always requires government approval</div></div><div class="opt-btn opt-dim"><div class="opt-key">D</div><div class="opt-text">Security certifications obtained in one country are never recognized in others</div></div></div></div>
+        <div class="explanation show"><span class="exp-icon">💡</span><span class="exp-text"><strong>Jurisdictional conflicts</strong> occur when laws of different countries impose incompatible obligations. Example: GDPR restricts data transfers outside the EU, but US law (CLOUD Act) may compel US companies to provide data stored anywhere. Organizations must perform legal analysis, use mechanisms like <strong>Standard Contractual Clauses (SCCs)</strong> or <strong>Binding Corporate Rules (BCRs)</strong>, and sometimes make difficult legal tradeoffs when laws directly conflict.</span></div>
+        <div class="result-tag rt-wrong">😢 &nbsp;Incorrect — Correct: B</div>
+      </div><div class="qcard state-wrong">
+        <div class="qcard-header"><div class="qnum">05</div><div class="qtext">An organization wants to implement a formal process to identify, evaluate, and prioritize risks. Which document from NIST provides the BEST guidance for this?</div></div>
+        <div class="qcard-body"><div class="options"><div class="opt-btn opt-dim"><div class="opt-key">A</div><div class="opt-text">NIST SP 800-61 — Computer Security Incident Handling Guide</div></div><div class="opt-btn opt-wrong"><div class="opt-key">B</div><div class="opt-text">NIST SP 800-37 — Risk Management Framework</div></div><div class="opt-btn opt-correct"><div class="opt-key">C</div><div class="opt-text">NIST SP 800-30 — Guide for Conducting Risk Assessments</div></div><div class="opt-btn opt-dim"><div class="opt-key">D</div><div class="opt-text">NIST SP 800-53 — Security and Privacy Controls</div></div></div></div>
+        <div class="explanation show"><span class="exp-icon">💡</span><span class="exp-text"><strong>NIST SP 800-30</strong> is specifically dedicated to conducting risk assessments — identifying threats, vulnerabilities, likelihood, and impact. Key NIST document mapping: <strong>800-30</strong> = risk assessments. <strong>800-37</strong> = Risk Management Framework (RMF) — overall lifecycle. <strong>800-53</strong> = security controls catalog. <strong>800-61</strong> = incident response. The CISSP exam frequently tests knowledge of which NIST document applies to which activity.</span></div>
+        <div class="result-tag rt-wrong">😢 &nbsp;Incorrect — Correct: C</div>
+      </div><div class="qcard state-wrong">
+        <div class="qcard-header"><div class="qnum">06</div><div class="qtext">Senior management has signed off on the organization security policy. Which principle of security governance does this action PRIMARILY demonstrate?</div></div>
+        <div class="qcard-body"><div class="options"><div class="opt-btn opt-dim"><div class="opt-key">A</div><div class="opt-text">Defense in depth — layering security controls</div></div><div class="opt-btn opt-wrong"><div class="opt-key">B</div><div class="opt-text">Separation of duties — dividing responsibilities</div></div><div class="opt-btn opt-correct"><div class="opt-key">C</div><div class="opt-text">Management support and organizational commitment to security</div></div><div class="opt-btn opt-dim"><div class="opt-key">D</div><div class="opt-text">Due diligence — researching best security practices</div></div></div></div>
+        <div class="explanation show"><span class="exp-icon">💡</span><span class="exp-text">Executive sign-off on a security policy demonstrates <strong>management commitment and organizational support</strong> — one of the most critical success factors in any security program. Without visible management support, security policies lack authority and enforcement power. This is also related to <strong>governance</strong> — the system by which an organization directs and controls its security activities. Management support provides budget, authority, and cultural legitimacy to the security program.</span></div>
+        <div class="result-tag rt-wrong">😢 &nbsp;Incorrect — Correct: C</div>
+      </div><div class="qcard state-wrong">
+        <div class="qcard-header"><div class="qnum">09</div><div class="qtext">An organization outsources its payroll processing to a third-party vendor. From a risk management perspective, what is the organization PRIMARY responsibility?</div></div>
+        <div class="qcard-body"><div class="options"><div class="opt-btn opt-wrong"><div class="opt-key">A</div><div class="opt-text">Risk is fully transferred to the vendor once the contract is signed</div></div><div class="opt-btn opt-correct"><div class="opt-key">B</div><div class="opt-text">The organization retains accountability and must ensure the vendor meets security requirements</div></div><div class="opt-btn opt-dim"><div class="opt-key">C</div><div class="opt-text">The vendor assumes all legal liability for any data breaches</div></div><div class="opt-btn opt-dim"><div class="opt-key">D</div><div class="opt-text">The organization has no security obligations once outsourcing is complete</div></div></div></div>
+        <div class="explanation show"><span class="exp-icon">💡</span><span class="exp-text"><strong>Outsourcing does NOT transfer accountability.</strong> The organization remains ultimately accountable to its customers, regulators, and stakeholders for protecting data — even when processed by a third party. Requirements: conduct vendor due diligence, include security requirements in contracts, perform regular audits/assessments, require evidence of compliance (SOC 2, ISO 27001). Under GDPR, the data controller (organization) remains liable even when a data processor (vendor) causes a breach.</span></div>
+        <div class="result-tag rt-wrong">😢 &nbsp;Incorrect — Correct: B</div>
+      </div><div class="qcard state-wrong">
+        <div class="qcard-header"><div class="qnum">10</div><div class="qtext">Which of the following activities is MOST associated with the 'preparation' phase of an incident response plan?</div></div>
+        <div class="qcard-body"><div class="options"><div class="opt-btn opt-dim"><div class="opt-key">A</div><div class="opt-text">Identifying the root cause of a security breach</div></div><div class="opt-btn opt-dim"><div class="opt-key">B</div><div class="opt-text">Restoring affected systems from clean backups</div></div><div class="opt-btn opt-correct"><div class="opt-key">C</div><div class="opt-text">Establishing an incident response team and developing response procedures before incidents occur</div></div><div class="opt-btn opt-wrong"><div class="opt-key">D</div><div class="opt-text">Notifying affected customers about a data breach</div></div></div></div>
+        <div class="explanation show"><span class="exp-icon">💡</span><span class="exp-text">The <strong>Preparation phase</strong> (NIST IR Step 1) happens BEFORE any incident. It includes: establishing and training the Computer Security Incident Response Team (CSIRT), developing IR procedures and playbooks, setting up communication channels, acquiring tools, and defining escalation paths. All other options describe activities in later phases: root cause = Eradication; restoring = Recovery; customer notification = Post-Incident/Lessons Learned.</span></div>
+        <div class="result-tag rt-wrong">😢 &nbsp;Incorrect — Correct: C</div>
+      </div><div class="qcard state-wrong">
+        <div class="qcard-header"><div class="qnum">12</div><div class="qtext">A risk assessment determines that the cost to implement a control exceeds the value of the asset being protected. What is the MOST appropriate risk response?</div></div>
+        <div class="qcard-body"><div class="options"><div class="opt-btn opt-dim"><div class="opt-key">A</div><div class="opt-text">Implement the control anyway to demonstrate due care</div></div><div class="opt-btn opt-wrong"><div class="opt-key">B</div><div class="opt-text">Transfer the risk by purchasing insurance equal to the asset value</div></div><div class="opt-btn opt-correct"><div class="opt-key">C</div><div class="opt-text">Accept the risk and document the decision with management approval</div></div><div class="opt-btn opt-dim"><div class="opt-key">D</div><div class="opt-text">Avoid the risk by immediately decommissioning the asset</div></div></div></div>
+        <div class="explanation show"><span class="exp-icon">💡</span><span class="exp-text"><strong>Risk acceptance</strong> is appropriate when the cost of mitigation exceeds the potential loss. This is a <em>rational economic decision</em> — not negligence — provided it is: formally documented, reviewed and approved by management, and periodically re-evaluated. Simply ignoring a risk without documentation is NOT acceptable. Avoidance (decommissioning) is excessive if the asset still provides business value. Insurance may not cover the full cost. The key: <strong>documented, management-approved acceptance.</strong></span></div>
+        <div class="result-tag rt-wrong">😢 &nbsp;Incorrect — Correct: C</div>
+      </div><div class="qcard state-wrong">
+        <div class="qcard-header"><div class="qnum">14</div><div class="qtext">An organization wants to ensure that a critical employee absence does not disrupt business operations. Which control BEST addresses this concern?</div></div>
+        <div class="qcard-body"><div class="options"><div class="opt-btn opt-dim"><div class="opt-key">A</div><div class="opt-text">Separation of duties — dividing tasks among multiple employees</div></div><div class="opt-btn opt-wrong"><div class="opt-key">B</div><div class="opt-text">Job rotation — periodically moving employees between roles</div></div><div class="opt-btn opt-correct"><div class="opt-key">C</div><div class="opt-text">Cross-training and knowledge documentation to eliminate single points of failure</div></div><div class="opt-btn opt-dim"><div class="opt-key">D</div><div class="opt-text">Mandatory vacation — requiring employees to take time off</div></div></div></div>
+        <div class="explanation show"><span class="exp-icon">💡</span><span class="exp-text"><strong>Cross-training</strong> (also called succession planning or knowledge transfer) ensures multiple people can perform critical functions. Combined with <strong>knowledge documentation</strong> (runbooks, SOPs), it eliminates <em>key person dependency</em> — the risk that operations stop when one person is unavailable. <strong>Mandatory vacation</strong> detects fraud. <strong>Job rotation</strong> also helps but primarily detects fraud and broadens skills. <strong>Separation of duties</strong> prevents fraud but doesn't address absence risk.</span></div>
+        <div class="result-tag rt-wrong">😢 &nbsp;Incorrect — Correct: C</div>
+      </div></div>
+</body></html>
