@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP — Domain 1</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0d0d0d;
+  --paper: #f5f2eb;
+  --cream: #ede9df;
+  --gold: #c8973a;
+  --gold-light: #e8c47a;
+  --gold-dim: rgba(200,151,58,0.12);
+  --charcoal: #1a1a1a;
+  --steel: #4a4a4a;
+  --mist: #888;
+  --border: rgba(0,0,0,0.08);
+  --correct: #1a7a4a;
+  --correct-bg: #edfbf3;
+  --wrong: #c0392b;
+  --wrong-bg: #fdf0ee;
+  --shadow: 0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(ellipse at 20% 0%, rgba(200,151,58,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(200,151,58,0.04) 0%, transparent 60%);
+}
+
+/* ── HEADER ── */
+/* ══════════════════════════════════════
+   HEADER — Warm Greige Neomorphic 3D
+   ══════════════════════════════════════ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  padding: 0;
+
+  /* Exact warm greige from screenshot */
+  background: linear-gradient(180deg,
+    #e8e4dc 0%,
+    #e0dcd2 50%,
+    #d8d4ca 100%
+  );
+
+  /* 3D slab — raised from page */
+  box-shadow:
+    /* top inner highlight — light hits top rim */
+    inset 0 2px 4px rgba(255,255,255,0.85),
+    inset 1px 0 2px rgba(255,255,255,0.6),
+    inset -1px 0 2px rgba(255,255,255,0.6),
+    /* bottom inner shadow — depth into slab */
+    inset 0 -3px 8px rgba(160,150,135,0.25),
+    /* outer extruded layers below */
+    0 1px 0 #b8b4aa,
+    0 2px 0 #aeaaa0,
+    0 3px 0 #a4a096,
+    0 4px 0 #9a968c,
+    0 5px 0 #908c82,
+    0 8px 20px rgba(140,130,115,0.35),
+    0 16px 40px rgba(100,90,75,0.15);
+
+  border-top: 1px solid rgba(255,255,255,0.95);
+  border-left: 1px solid rgba(255,255,255,0.8);
+  border-right: 1px solid rgba(255,255,255,0.8);
+  border-bottom: none;
+}
+
+/* Soft ambient light — top left glow */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(255,255,255,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(160,150,130,0.12) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Bottom divider — pressed groove line */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(180deg,
+    rgba(150,143,130,0.6) 0%,
+    rgba(180,173,160,0.3) 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7),
+    inset 0 1px 2px rgba(100,90,75,0.3);
+  z-index: 3;
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 76px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Brand — stacked layout matching screenshot style */
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.header-brand .eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  /* Dark pressed text — engraved into clay */
+  color: #6a6258;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.8),
+    0 -1px 0 rgba(100,90,75,0.2);
+}
+.header-brand .title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  line-height: 1.15;
+  /* Deep embossed dark text — same as screenshot D letter */
+  color: #3a3530;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.9),
+    0 -1px 0 rgba(80,70,55,0.15),
+    1px 1px 2px rgba(150,140,125,0.2);
+}
+
+/* ── SCORE STAT CARDS — Neomorphic Pressed Panels ── */
+.header-stats {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hstat {
+  text-align: center;
+  padding: 9px 18px 10px;
+  border-radius: 12px;
+  min-width: 68px;
+  position: relative;
+
+  /* Same greige but slightly recessed — matches option button in screenshot */
+  background: linear-gradient(145deg,
+    #eae6de 0%,
+    #dedad2 50%,
+    #d2cec6 100%
+  );
+
+  /* Neomorphic raised — exact same as D box in screenshot */
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.3),
+    0 1px 0 #b0aca2,
+    0 2px 0 #a8a49a,
+    0 3px 0 #a09c92,
+    0 4px 8px rgba(130,120,105,0.3),
+    0 8px 20px rgba(100,90,75,0.1);
+
+  border: 1px solid rgba(255,255,255,0.7);
+  transition: transform 0.2s ease;
+}
+
+.hstat:nth-child(1) {
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.25),
+    0 1px 0 #5a9a72,
+    0 2px 0 #4e8e66,
+    0 3px 0 #42825a,
+    0 4px 8px rgba(22,120,60,0.2),
+    0 8px 20px rgba(100,90,75,0.08);
+  border-bottom: 2px solid rgba(22,120,60,0.35);
+}
+.hstat:nth-child(2) {
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.25),
+    0 1px 0 #b05858,
+    0 2px 0 #a04848,
+    0 3px 0 #903838,
+    0 4px 8px rgba(180,50,50,0.2),
+    0 8px 20px rgba(100,90,75,0.08);
+  border-bottom: 2px solid rgba(192,57,43,0.35);
+}
+.hstat:nth-child(3) {
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.25),
+    0 1px 0 #a07830,
+    0 2px 0 #906820,
+    0 3px 0 #805810,
+    0 4px 8px rgba(160,120,30,0.2),
+    0 8px 20px rgba(100,90,75,0.08);
+  border-bottom: 2px solid rgba(160,110,20,0.4);
+}
+
+.hstat-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  /* Engraved pressed text effect */
+  text-shadow: 0 1px 0 rgba(255,255,255,0.7), 0 -1px 0 rgba(0,0,0,0.1);
+}
+.hstat-val.c { color: #1a6638; }
+.hstat-val.w { color: #a02020; }
+.hstat-val.p { color: #7a5010; }
+
+.hstat-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  color: #8a8278;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* ── PROGRESS BAR — Inset Carved Groove ── */
+.progress-track {
+  height: 5px;
+  position: relative;
+  /* Sunken groove — carved into header surface */
+  background: linear-gradient(180deg, #b8b4aa 0%, #ccc8be 100%);
+  box-shadow:
+    inset 0 2px 4px rgba(100,90,75,0.4),
+    inset 0 1px 2px rgba(100,90,75,0.25),
+    0 1px 0 rgba(255,255,255,0.8);
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg,
+    #8a6820 0%,
+    #b8902a 30%,
+    #d4a830 60%,
+    #c09020 100%
+  );
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  width: 0%;
+  border-radius: 0 3px 3px 0;
+  box-shadow:
+    0 0 6px rgba(180,140,40,0.4),
+    inset 0 1px 0 rgba(255,240,180,0.5),
+    inset 0 -1px 0 rgba(100,70,10,0.3);
+}
+  gap: 48px;
+  align-items: flex-end;
+}
+.hero-text {}
+.hero-domain {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.hero-h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  color: var(--ink);
+  max-width: 480px;
+}
+.hero-h1 em { color: var(--gold); font-style: italic; }
+.hero-desc {
+  margin-top: 14px;
+  color: var(--steel);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 420px;
+}
+.hero-meta {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.meta-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--mist);
+  background: var(--cream);
+  text-transform: uppercase;
+}
+
+.hero-deco {
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  position: relative;
+  display: none;
+}
+@media(min-width: 640px) { .hero-deco { display: block; } }
+
+.deco-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(200,151,58,0.2);
+}
+.deco-ring:nth-child(1) { width: 160px; height: 160px; top: 0; left: 0; animation: spin 30s linear infinite; }
+.deco-ring:nth-child(2) { width: 120px; height: 120px; top: 20px; left: 20px; animation: spin 20s linear infinite reverse; border-style: dashed; }
+.deco-ring:nth-child(3) { width: 80px; height: 80px; top: 40px; left: 40px; background: var(--gold-dim); }
+.deco-inner {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--gold);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── DIVIDER ── */
+
+.section-divider {
+  max-width: 900px;
+  margin: 40px auto 0;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.divider-line { flex: 1; height: 1px; background: var(--border); }
+.divider-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--mist);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── QUESTION CARDS ── */
+.questions-wrap {
+  max-width: 900px;
+  margin: 24px auto 0;
+  padding: 0 32px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* 3D Card */
+.qcard {
+  position: relative;
+  border-radius: 20px;
+  overflow: visible;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s;
+
+  /* Card face */
+  background: linear-gradient(160deg, #ffffff 0%, #f7f4ee 100%);
+  border: 1px solid rgba(255,255,255,0.9);
+
+  /* 3D layered shadow = depth illusion */
+  box-shadow:
+    0 1px 0 #d4cfc4,
+    0 2px 0 #cac4b8,
+    0 3px 0 #bfb9ac,
+    0 4px 0 #b5ae9f,
+    0 5px 0 #aaa393,
+    0 8px 20px rgba(0,0,0,0.15),
+    0 16px 40px rgba(0,0,0,0.08);
+}
+.qcard:hover {
+  transform: translateY(-4px) rotateX(1deg);
+  box-shadow:
+    0 1px 0 #d4cfc4,
+    0 2px 0 #cac4b8,
+    0 3px 0 #bfb9ac,
+    0 4px 0 #b5ae9f,
+    0 5px 0 #aaa393,
+    0 6px 0 #9e9789,
+    0 7px 0 #948f7e,
+    0 12px 30px rgba(0,0,0,0.18),
+    0 24px 50px rgba(0,0,0,0.1);
+}
+
+/* Correct state — green 3D */
+.qcard.state-correct {
+  background: linear-gradient(160deg, #f0fdf6 0%, #dcfaec 100%);
+  border-color: rgba(26,122,74,0.25);
+  box-shadow:
+    0 1px 0 #a8d9bc,
+    0 2px 0 #96ceac,
+    0 3px 0 #84c49b,
+    0 4px 0 #72b98a,
+    0 5px 0 #60ae7a,
+    0 8px 24px rgba(26,122,74,0.2),
+    0 16px 40px rgba(26,122,74,0.1);
+}
+
+/* Wrong state — red 3D */
+.qcard.state-wrong {
+  background: linear-gradient(160deg, #fff5f5 0%, #fde8e6 100%);
+  border-color: rgba(192,57,43,0.2);
+  box-shadow:
+    0 1px 0 #e8b4ae,
+    0 2px 0 #dfa49d,
+    0 3px 0 #d6938b,
+    0 4px 0 #cd8279,
+    0 5px 0 #c47167,
+    0 8px 24px rgba(192,57,43,0.18),
+    0 16px 40px rgba(192,57,43,0.08);
+}
+
+/* Card top accent stripe */
+.qcard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+  border-radius: 20px 20px 0 0;
+  opacity: 0.6;
+}
+.qcard.state-correct::before { background: linear-gradient(90deg, #1a7a4a, #4ade80, transparent); opacity: 0.8; }
+.qcard.state-wrong::before { background: linear-gradient(90deg, #c0392b, #f87171, transparent); opacity: 0.8; }
+
+.qcard-header {
+  padding: 24px 28px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+/* 3D Question Number Box */
+.qnum {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #5a4e38;
+  margin-top: 2px;
+  position: relative;
+
+  /* 3D raised button look */
+  background: linear-gradient(145deg, #f0ebe0 0%, #e2dccf 40%, #d4cdbf 100%);
+  border: 1px solid rgba(255,255,255,0.8);
+
+  box-shadow:
+    /* top-left highlight */
+    inset 2px 2px 4px rgba(255,255,255,0.85),
+    /* bottom-right shadow */
+    inset -2px -2px 4px rgba(0,0,0,0.12),
+    /* outer depth layers */
+    0 1px 0 #b8b2a6,
+    0 2px 0 #ada79a,
+    0 3px 0 #a29b8e,
+    0 4px 0 #978f82,
+    0 6px 12px rgba(0,0,0,0.2),
+    0 10px 24px rgba(0,0,0,0.1);
+
+  transform: perspective(200px) rotateX(10deg) rotateY(-6deg) translateZ(4px);
+  transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+}
+
+.qcard.state-correct .qnum {
+  background: linear-gradient(145deg, #d4f4e4 0%, #b8ecd3 40%, #9ce0c0 100%);
+  color: #0f5a36;
+  box-shadow:
+    inset 2px 2px 4px rgba(255,255,255,0.8),
+    inset -2px -2px 4px rgba(0,0,0,0.08),
+    0 1px 0 #6bbf98,
+    0 2px 0 #5eb48c,
+    0 3px 0 #51a980,
+    0 4px 0 #449e74,
+    0 6px 12px rgba(26,122,74,0.3),
+    0 10px 24px rgba(26,122,74,0.12);
+}
+
+.qcard.state-wrong .qnum {
+  background: linear-gradient(145deg, #ffd8d4 0%, #ffbdb8 40%, #ffa29b 100%);
+  color: #8b1a14;
+  box-shadow:
+    inset 2px 2px 4px rgba(255,255,255,0.8),
+    inset -2px -2px 4px rgba(0,0,0,0.08),
+    0 1px 0 #d4857d,
+    0 2px 0 #c97a72,
+    0 3px 0 #be6f67,
+    0 4px 0 #b3645c,
+    0 6px 12px rgba(192,57,43,0.3),
+    0 10px 24px rgba(192,57,43,0.12);
+}
+
+.qtext {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.65;
+  color: var(--ink);
+  padding-top: 6px;
+  letter-spacing: -0.01em;
+}
+
+.qcard-body { padding: 18px 28px 24px; }
+
+.options { display: flex; flex-direction: column; gap: 10px; }
+
+/* 3D Option Buttons */
+.opt-btn {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.23,1,0.32,1);
+
+  /* 3D raised default state */
+  background: linear-gradient(160deg, #f0ece3 0%, #e8e3d8 100%);
+  border-top: 1px solid rgba(255,255,255,0.9);
+  border-left: 1px solid rgba(255,255,255,0.7);
+  border-right: 1px solid rgba(0,0,0,0.04);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 1px 0 #ccc7ba,
+    0 2px 0 #c1bbae,
+    0 3px 0 #b6b0a2,
+    0 4px 8px rgba(0,0,0,0.1),
+    0 8px 20px rgba(0,0,0,0.06);
+}
+
+.opt-btn:hover:not(:disabled) {
+  background: linear-gradient(160deg, #fff8ec 0%, #fdf0d5 100%);
+  border-top-color: rgba(200,151,58,0.3);
+  border-left-color: rgba(200,151,58,0.2);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 1px 0 #d4b87a,
+    0 2px 0 #c9ad6f,
+    0 3px 0 #bea264,
+    0 4px 0 #b39759,
+    0 6px 14px rgba(200,151,58,0.2),
+    0 12px 28px rgba(200,151,58,0.1);
+}
+
+.opt-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.1),
+    0 1px 0 #ccc7ba,
+    0 2px 4px rgba(0,0,0,0.08);
+}
+
+.opt-btn:disabled { cursor: default; transform: none !important; }
+
+/* Option letter badge — 3D pill */
+.opt-key {
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #7a7065;
+  margin-top: 1px;
+  transition: all 0.2s;
+
+  background: linear-gradient(145deg, #ffffff 0%, #e8e3d8 100%);
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.9),
+    inset -1px -1px 2px rgba(0,0,0,0.08),
+    0 1px 0 #bbb5a8,
+    0 2px 0 #b0aa9c,
+    0 3px 6px rgba(0,0,0,0.12);
+}
+
+.opt-text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--steel);
+  padding-top: 5px;
+  font-weight: 500;
+}
+
+/* ── CORRECT OPTION — 3D Green ── */
+.opt-btn.opt-correct {
+  background: linear-gradient(160deg, #e8faf1 0%, #c8f2dc 100%);
+  border-top-color: rgba(26,122,74,0.3);
+  border-left-color: rgba(26,122,74,0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 1px 0 #7cc4a0,
+    0 2px 0 #6eb993,
+    0 3px 0 #60ae86,
+    0 4px 0 #52a379,
+    0 6px 16px rgba(26,122,74,0.25),
+    0 12px 30px rgba(26,122,74,0.1);
+  transform: translateY(0) !important;
+}
+.opt-btn.opt-correct .opt-key {
+  background: linear-gradient(145deg, #2ecc71, #1a7a4a);
+  color: #fff;
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.3),
+    inset -1px -1px 2px rgba(0,0,0,0.2),
+    0 1px 0 #0f5a36,
+    0 2px 0 #0a4228,
+    0 3px 8px rgba(26,122,74,0.4);
+}
+.opt-btn.opt-correct .opt-text { color: #0f5a36; font-weight: 600; }
+
+/* ── WRONG OPTION — 3D Red ── */
+.opt-btn.opt-wrong {
+  background: linear-gradient(160deg, #fff0ee 0%, #fdd8d4 100%);
+  border-top-color: rgba(192,57,43,0.3);
+  border-left-color: rgba(192,57,43,0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 1px 0 #d4948e,
+    0 2px 0 #c98882,
+    0 3px 0 #be7c76,
+    0 4px 0 #b3706a,
+    0 6px 16px rgba(192,57,43,0.22),
+    0 12px 30px rgba(192,57,43,0.08);
+  transform: translateY(0) !important;
+}
+.opt-btn.opt-wrong .opt-key {
+  background: linear-gradient(145deg, #e74c3c, #922b21);
+  color: #fff;
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.3),
+    inset -1px -1px 2px rgba(0,0,0,0.2),
+    0 1px 0 #7b241c,
+    0 2px 0 #6c1e17,
+    0 3px 8px rgba(192,57,43,0.4);
+}
+.opt-btn.opt-wrong .opt-text { color: #8b1a14; font-weight: 600; }
+
+.opt-btn.opt-dim {
+  opacity: 0.3;
+  filter: grayscale(0.3);
+}
+
+/* ── EXPLANATION ── */
+.explanation {
+  margin: 0 28px 24px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  display: none;
+  position: relative;
+
+  background: linear-gradient(135deg, #fffcf0 0%, #fff8e0 100%);
+  border: 1px solid rgba(200,151,58,0.25);
+  border-top: 1px solid rgba(255,255,255,0.9);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 1px 0 #d4c08a,
+    0 2px 0 #c9b47f,
+    0 3px 0 #bea874,
+    0 4px 8px rgba(200,151,58,0.15),
+    0 8px 20px rgba(200,151,58,0.08);
+}
+.explanation::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--gold), var(--gold-light));
+  border-radius: 0 4px 4px 0;
+}
+.explanation.show {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  animation: slideDown 0.35s cubic-bezier(0.23,1,0.32,1);
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.exp-icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  margin-top: 1px;
+  filter: drop-shadow(0 2px 4px rgba(200,151,58,0.3));
+}
+.exp-text {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #4a3c1e;
+}
+.exp-text strong { color: #9a6f20; font-weight: 700; }
+
+/* ── RESULT TAG ── */
+.result-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 7px 16px;
+  border-radius: 30px;
+  margin: 0 28px 20px;
+  animation: popIn 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.7) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.rt-correct {
+  background: linear-gradient(135deg, #e8faf1, #c8f2dc);
+  color: #0f5a36;
+  border: 1px solid rgba(26,122,74,0.3);
+  box-shadow:
+    0 1px 0 #7cc4a0,
+    0 2px 0 #6eb993,
+    0 3px 8px rgba(26,122,74,0.2);
+}
+.rt-wrong {
+  background: linear-gradient(135deg, #fff0ee, #fdd8d4);
+  color: #8b1a14;
+  border: 1px solid rgba(192,57,43,0.3);
+  box-shadow:
+    0 1px 0 #d4948e,
+    0 2px 0 #c98882,
+    0 3px 8px rgba(192,57,43,0.18);
+}
+
+/* ── FINAL SCREEN ── */
+.final-screen {
+  display: none;
+  max-width: 900px;
+  margin: 0 auto 80px;
+  padding: 0 32px;
+}
+
+.final-card {
+  background: var(--charcoal);
+  border-radius: 16px;
+  padding: 56px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-card::before {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(200,151,58,0.15) 0%, transparent 70%);
+  top: -80px; right: -80px;
+  pointer-events: none;
+}
+.final-card::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(200,151,58,0.1) 0%, transparent 70%);
+  bottom: -60px; left: -60px;
+  pointer-events: none;
+}
+
+.final-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.final-score-display {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(4rem, 10vw, 7rem);
+  color: #fff;
+  line-height: 1;
+}
+.final-score-display span { color: var(--gold); }
+.final-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  margin-top: 8px;
+}
+.final-msg {
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-breakdown {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 32px 0;
+  padding: 24px 0;
+  border-top: 1px solid #2a2a2a;
+  border-bottom: 1px solid #2a2a2a;
+}
+.fb-item {}
+.fb-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.fb-val.c { color: #4ade80; }
+.fb-val.w { color: #f87171; }
+.fb-lbl {
+  font-size: 0.7rem;
+  color: #555;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.restart-btn {
+  margin-top: 8px;
+  padding: 14px 40px;
+  background: var(--gold);
+  border: none;
+  border-radius: 8px;
+  color: var(--charcoal);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.restart-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(200,151,58,0.3);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width: 600px) {
+  .header-inner { padding: 0 16px; }
+  .hero { padding: 0 16px; margin-top: 32px; }
+  .section-divider { padding: 0 16px; }
+  .questions-wrap { padding: 0 16px 60px; gap: 20px; }
+  .final-screen { padding: 0 16px; }
+  .final-card { padding: 36px 24px; }
+  .final-breakdown { gap: 20px; }
+  .qcard-header { padding: 18px 18px 0; }
+  .qcard-body { padding: 14px 18px 18px; }
+  .explanation { margin: 0 18px 18px; }
+  .result-tag { margin: 0 18px 16px; }
+  .header-stats { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <span class="title">Domain 1</span>
+      <span class="eyebrow">CISSP Exam Prep</span>
+    </div>
+    <div class="header-stats">
+      <div class="hstat"><div class="hstat-val c" id="sc">0</div><div class="hstat-lbl">Correct</div></div>
+      <div class="hstat"><div class="hstat-val w" id="sw">0</div><div class="hstat-lbl">Wrong</div></div>
+      <div class="hstat"><div class="hstat-val p" id="sp">—</div><div class="hstat-lbl">Score</div></div>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="pf"></div></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-domain">Domain 1 of 8</div>
+    <h1 class="hero-h1">Security &amp; <em>Risk</em> Management</h1>
+    <p class="hero-desc">Real exam-style questions covering governance, risk frameworks, legal compliance, ethics, and security fundamentals. Click an option to reveal the answer.</p>
+    <div class="hero-meta">
+      <span class="meta-chip">20 Questions</span>
+      <span class="meta-chip">CISSP CBK 2024</span>
+      <span class="meta-chip">Passing: 70%+</span>
+    </div>
+  </div>
+  <div class="hero-deco">
+    <div class="deco-ring"></div>
+    <div class="deco-ring"></div>
+    <div class="deco-ring"></div>
+    <div class="deco-inner">D1</div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-label">Begin Assessment</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="questions-wrap" id="qwrap"></div>
+
+<!-- FINAL -->
+<div class="final-screen" id="final">
+  <div class="final-card">
+    <div class="final-eyebrow">Assessment Complete — Domain 1</div>
+    <div class="final-score-display" id="fscore"></div>
+    <div class="final-pct" id="fpct"></div>
+    <p class="final-msg" id="fmsg"></p>
+    <div class="final-breakdown">
+      <div class="fb-item"><div class="fb-val c" id="fc">0</div><div class="fb-lbl">Correct</div></div>
+      <div class="fb-item"><div class="fb-val w" id="fw">0</div><div class="fb-lbl">Wrong</div></div>
+      <div class="fb-item"><div class="fb-val" style="color:#aaa" id="ft">20</div><div class="fb-lbl">Total</div></div>
+    </div>
+    <button class="restart-btn" onclick="restart()">Restart Assessment</button>
+  </div>
+</div>
+
+<script>
+const Q = [
+  {
+    q: "Which of the following BEST describes the relationship between information security and business objectives according to CISSP governance principles?",
+    opts: [
+      "Security should be implemented independently to avoid business influence on risk decisions",
+      "Information security must be aligned with and support overall business objectives and mission",
+      "Business objectives should be adjusted to meet security requirements",
+      "Security governance is solely the responsibility of the IT department"
+    ],
+    ans: 1,
+    exp: "<strong>Security Governance</strong> — the first topic in Domain 1 — requires that information security be <em>aligned with business strategy</em>. Security exists to enable business, not obstruct it. The CISO must understand business objectives and ensure security supports them. Misalignment leads to controls that are either too loose (risk) or too restrictive (business impediment)."
+  },
+  {
+    q: "Which of the following BEST exemplifies the concept of 'tone at the top' in information security governance?",
+    opts: [
+      "The security team distributes annual phishing simulation emails",
+      "Senior executives visibly champion and comply with security policies",
+      "The IT department enforces technical access controls on all systems",
+      "The legal team ensures all contracts include data protection clauses"
+    ],
+    ans: 1,
+    exp: "<strong>Tone at the top</strong> refers to executive leadership actively demonstrating commitment to security — not just mandating it for others. When the CEO, Board, and C-suite visibly follow and support security policies, it creates an organizational culture where security is taken seriously. Without this, even the best policies fail due to lack of enforcement and culture."
+  },
+  {
+    q: "An organization is implementing a security governance framework. Which document provides the HIGHEST-level direction for the overall security program?",
+    opts: [
+      "Security standard",
+      "Security procedure",
+      "Security policy",
+      "Security guideline"
+    ],
+    ans: 2,
+    exp: "The hierarchy: <strong>Policy</strong> (mandatory, high-level intent) → Standard (mandatory, specific requirements) → Guideline (recommended, optional) → Procedure (mandatory, step-by-step). A <strong>security policy</strong> is the highest-level document — signed by senior management — that states the organization's intent and commitment to security. Everything else flows from it."
+  },
+  {
+    q: "According to the (ISC)² Code of Ethics, which canon takes HIGHEST priority when all four canons conflict?",
+    opts: [
+      "Advance and protect the profession",
+      "Provide diligent and competent service to principals",
+      "Act honorably, honestly, justly, responsibly, and legally",
+      "Protect society, the common good, necessary public trust and confidence"
+    ],
+    ans: 3,
+    exp: "The (ISC)² Code of Ethics lists its four canons in <strong>strict priority order</strong>: (1) Protect society, (2) Act honorably, (3) Provide diligent service, (4) Advance the profession. Canon 1 — Protect Society — <em>always</em> wins in any conflict. If an employer asks you to do something that harms the public, your ethical obligation is to society first, even at personal or professional cost."
+  },
+  {
+    q: "What is the PRIMARY purpose of a Business Impact Analysis (BIA)?",
+    opts: [
+      "To identify all existing security threats to the organization",
+      "To identify critical business functions and quantify the impact of their disruption",
+      "To document all IT assets and their replacement costs",
+      "To establish recovery time objectives for all IT systems"
+    ],
+    ans: 1,
+    exp: "A <strong>BIA (Business Impact Analysis)</strong> identifies which business functions are most critical and what the operational, financial, and reputational impact would be if they were disrupted. It produces key metrics: <strong>MTD</strong> (Maximum Tolerable Downtime), <strong>RTO</strong> (Recovery Time Objective), and <strong>RPO</strong> (Recovery Point Objective). BIA is the foundation of Business Continuity Planning — you can't plan recovery without knowing what's critical."
+  },
+  {
+    q: "Which of the following describes the difference between a Disaster Recovery Plan (DRP) and a Business Continuity Plan (BCP)?",
+    opts: [
+      "DRP and BCP are identical documents used in different departments",
+      "BCP focuses on restoring IT systems; DRP focuses on keeping the business operational",
+      "DRP focuses on restoring IT and technical operations; BCP focuses on keeping critical business functions running during and after a disruption",
+      "DRP is for natural disasters only; BCP covers all types of incidents"
+    ],
+    ans: 2,
+    exp: "<strong>DRP (Disaster Recovery Plan)</strong> is IT-focused — restoring systems, data, and infrastructure after a disaster. <strong>BCP (Business Continuity Plan)</strong> is business-focused — ensuring critical business functions continue during a disruption, even if IT isn't fully restored. DRP is a <em>subset</em> of BCP. Think: BCP keeps the business running; DRP gets the technology back."
+  },
+  {
+    q: "An asset is valued at $800,000. A fire has an Exposure Factor (EF) of 60% and occurs on average once every 4 years. What is the Annualized Loss Expectancy (ALE)?",
+    opts: [
+      "$480,000",
+      "$192,000",
+      "$120,000",
+      "$320,000"
+    ],
+    ans: 2,
+    exp: "<strong>Step-by-step:</strong> SLE = AV × EF = $800,000 × 0.60 = $480,000. ARO = 1/4 = 0.25 (once every 4 years). ALE = SLE × ARO = $480,000 × 0.25 = <strong>$120,000</strong>. This is the most tested CISSP calculation. Memorize the chain: AV × EF = SLE → SLE × ARO = ALE. ALE is used to justify security spending — if a control costs less than the ALE it prevents, it's worth implementing."
+  },
+  {
+    q: "Which type of risk analysis assigns numeric monetary values to assets, threats, and impacts?",
+    opts: [
+      "Qualitative risk analysis",
+      "Quantitative risk analysis",
+      "Delphi risk analysis",
+      "Hybrid risk analysis"
+    ],
+    ans: 1,
+    exp: "<strong>Quantitative risk analysis</strong> uses numeric values (dollars, percentages, frequencies) to calculate risk — producing ALE, SLE, ARO. It is objective and allows cost-benefit analysis but requires reliable data. <strong>Qualitative</strong> uses descriptive scales (High/Medium/Low) — faster, simpler, but subjective. The CISSP exam expects you to know both: quantitative = numbers; qualitative = opinions/ratings."
+  },
+  {
+    q: "An organization identifies a risk and decides to implement additional firewall rules to reduce the likelihood of exploitation. This is an example of:",
+    opts: [
+      "Risk acceptance",
+      "Risk avoidance",
+      "Risk transference",
+      "Risk mitigation"
+    ],
+    ans: 3,
+    exp: "<strong>Risk mitigation</strong> (also called risk reduction) involves implementing controls to reduce the <em>likelihood</em> or <em>impact</em> of a risk. Adding firewall rules reduces the likelihood of a threat exploiting a vulnerability. The four risk responses: <strong>Avoid</strong> (stop the risky activity), <strong>Transfer</strong> (insurance/outsource), <strong>Mitigate</strong> (implement controls), <strong>Accept</strong> (do nothing, document decision). CISSP always asks you to identify which strategy is being used."
+  },
+  {
+    q: "Which US federal law requires publicly traded companies to maintain accurate financial records and establishes personal criminal liability for executives who certify fraudulent reports?",
+    opts: [
+      "GLBA (Gramm-Leach-Bliley Act)",
+      "HIPAA (Health Insurance Portability and Accountability Act)",
+      "SOX (Sarbanes-Oxley Act)",
+      "FERPA (Family Educational Rights and Privacy Act)"
+    ],
+    ans: 2,
+    exp: "<strong>SOX (Sarbanes-Oxley Act, 2002)</strong> was enacted after Enron and WorldCom scandals. It requires accurate financial reporting, mandates internal controls, and holds CEOs/CFOs <em>personally criminally liable</em> for certifying fraudulent financial statements. Key CISSP law mapping: <strong>SOX</strong> = financial reporting integrity. <strong>HIPAA</strong> = health data. <strong>GLBA</strong> = financial institution customer data. <strong>FERPA</strong> = student educational records."
+  },
+  {
+    q: "The GDPR requires that personal data of EU citizens must be processed lawfully, fairly, and transparently. Under GDPR, which role determines the purpose and means of processing personal data?",
+    opts: [
+      "Data Processor",
+      "Data Subject",
+      "Data Controller",
+      "Data Protection Officer (DPO)"
+    ],
+    ans: 2,
+    exp: "Under <strong>GDPR</strong>: The <strong>Data Controller</strong> determines <em>why</em> (purpose) and <em>how</em> (means) data is processed — they bear primary legal responsibility. The <strong>Data Processor</strong> processes data on behalf of the controller (e.g., a cloud vendor). The <strong>Data Subject</strong> is the individual whose data is processed. The <strong>DPO</strong> advises on compliance. Controllers cannot fully transfer their accountability to processors, even with a Data Processing Agreement."
+  },
+  {
+    q: "Which of the following access control concepts ensures that a user cannot perform all steps of a sensitive transaction alone, thereby reducing fraud risk?",
+    opts: [
+      "Least privilege",
+      "Need-to-know",
+      "Separation of duties",
+      "Job rotation"
+    ],
+    ans: 2,
+    exp: "<strong>Separation of duties (SoD)</strong> divides a sensitive transaction across multiple people so no single person can commit fraud undetected. Classic example: the person who initiates a payment cannot also approve it. <strong>Least privilege</strong> limits access to only what's needed. <strong>Need-to-know</strong> restricts information access. <strong>Job rotation</strong> detects fraud by having different people review each other's work over time. CISSP often tests you on distinguishing these."
+  },
+  {
+    q: "Which of the following security control types is PRIMARILY designed to deter potential attackers before an incident occurs?",
+    opts: [
+      "Detective control",
+      "Corrective control",
+      "Deterrent control",
+      "Compensating control"
+    ],
+    ans: 2,
+    exp: "Controls by <strong>function</strong>: <strong>Preventive</strong> = stops attacks (firewall). <strong>Detective</strong> = identifies attacks after they happen (IDS, audit logs). <strong>Corrective</strong> = fixes damage after an incident (patching, restore from backup). <strong>Deterrent</strong> = discourages attackers psychologically (warning banners, visible cameras). <strong>Compensating</strong> = alternative when primary control can't be implemented. Controls also have <em>types</em>: Administrative, Technical, Physical."
+  },
+  {
+    q: "According to the ISC² CBK, which of the following is the CORRECT sequence of the incident response process?",
+    opts: [
+      "Detection → Containment → Eradication → Recovery → Lessons Learned",
+      "Preparation → Detection → Containment → Eradication → Recovery → Lessons Learned",
+      "Identification → Containment → Recovery → Eradication → Lessons Learned",
+      "Preparation → Containment → Detection → Recovery → Eradication"
+    ],
+    ans: 1,
+    exp: "The <strong>NIST SP 800-61</strong> Incident Response Lifecycle (heavily tested on CISSP): <strong>(1) Preparation</strong> → <strong>(2) Detection & Analysis</strong> → <strong>(3) Containment</strong> → <strong>(4) Eradication</strong> → <strong>(5) Recovery</strong> → <strong>(6) Post-Incident Activity (Lessons Learned)</strong>. Key point: Preparation comes <em>before</em> an incident. You cannot skip to containment without detection. Eradication (remove root cause) always precedes Recovery (restore systems)."
+  },
+  {
+    q: "Which security principle ensures that a security mechanism cannot be bypassed by a subject, even when that subject has high-level privileges?",
+    opts: [
+      "Least privilege",
+      "Complete mediation",
+      "Separation of duties",
+      "Defense in depth"
+    ],
+    ans: 1,
+    exp: "<strong>Complete mediation</strong> (one of the classic security design principles by Saltzer & Schroeder) requires that <em>every access to every object must be checked</em> against the access control policy — with no exceptions, no caching, no bypasses — regardless of the requester's privilege level. This prevents privilege escalation and back-door access. Other Saltzer & Schroeder principles include: Economy of mechanism, Fail-safe defaults, Open design, Least privilege, Psychological acceptability."
+  },
+  {
+    q: "During a risk assessment, a threat source, threat event, and vulnerability have been identified. What must also be considered to determine risk?",
+    opts: [
+      "The cost of the countermeasure",
+      "The likelihood of occurrence and the potential impact",
+      "The identity of the attacker",
+      "The number of users affected by the vulnerability"
+    ],
+    ans: 1,
+    exp: "According to <strong>NIST SP 800-30</strong>, <strong>Risk = Likelihood × Impact</strong>. A threat exploiting a vulnerability only becomes a risk when you assess both: <strong>Likelihood</strong> (how probable is it that this threat will exploit this vulnerability?) and <strong>Impact</strong> (how severe would the consequences be?). Without both factors, you cannot prioritize risks or make cost-effective control decisions. This formula is foundational to all risk analysis frameworks."
+  },
+  {
+    q: "An employee with authorized access to financial systems copies sensitive data to a personal USB drive and sells it to a competitor. Which category of threat does this BEST represent?",
+    opts: [
+      "External threat — targeted attack",
+      "Insider threat — malicious",
+      "Insider threat — unintentional",
+      "Advanced Persistent Threat (APT)"
+    ],
+    ans: 1,
+    exp: "<strong>Malicious insider threats</strong> involve individuals with authorized access who intentionally abuse their privileges for personal gain, espionage, or sabotage. They are among the most dangerous threats because: they already have legitimate access (bypassing perimeter controls), they know the organization's systems and weaknesses, and their actions are harder to detect. Controls: User Behavior Analytics (UEBA), DLP, privileged access management, and mandatory vacation. <strong>Unintentional insider threats</strong> involve accidental data exposure without malicious intent."
+  },
+  {
+    q: "Which concept refers to the obligation of an individual or organization to answer for their actions and accept consequences?",
+    opts: [
+      "Responsibility",
+      "Authorization",
+      "Accountability",
+      "Non-repudiation"
+    ],
+    ans: 2,
+    exp: "<strong>Accountability</strong> means being answerable and accepting consequences for actions. In security, accountability is enforced through: <strong>Identification</strong> (who are you?), <strong>Authentication</strong> (prove it), <strong>Authorization</strong> (what can you do?), and <strong>Audit/Logging</strong> (what did you do?). Without audit logs, accountability fails — you can't hold someone responsible for actions you can't prove they performed. <strong>Non-repudiation</strong> prevents someone from denying they performed an action (e.g., digital signatures)."
+  },
+  {
+    q: "A security manager implements a control that monitors and records all actions performed by privileged system administrators. This PRIMARILY supports which security objective?",
+    opts: [
+      "Confidentiality — preventing unauthorized disclosure",
+      "Integrity — ensuring data is not altered",
+      "Accountability — ensuring actions can be traced to individuals",
+      "Availability — ensuring systems are accessible"
+    ],
+    ans: 2,
+    exp: "<strong>Privileged user monitoring and audit logging</strong> directly supports <strong>accountability</strong> — creating a record that ties specific actions to specific identities. This is critical for privileged accounts (admins, DBAs, root users) because they have the greatest potential for abuse. Tools include: Privileged Access Management (PAM) with session recording, SIEM correlation, and separation of duties. If something goes wrong, audit logs answer: who did what, when, from where, and to what system."
+  },
+  {
+    q: "Which of the following BEST describes the concept of 'defense in depth' as applied to an organization's security architecture?",
+    opts: [
+      "Deploying the most advanced single security control available",
+      "Implementing multiple independent layers of security controls so that if one fails, others remain",
+      "Focusing all security resources on protecting the network perimeter",
+      "Using redundant firewalls in a high-availability configuration"
+    ],
+    ans: 1,
+    exp: "<strong>Defense in depth</strong> (also called layered security) applies the military concept of multiple defensive lines to information security. No single control is perfect — firewalls can be bypassed, passwords can be stolen, patches can have flaws. By layering controls (perimeter firewall → network IDS → host firewall → endpoint AV → data encryption → user awareness training), an attacker must defeat <em>all</em> layers to succeed. Redundant firewalls is just redundancy at one layer — not defense in depth."
+  }
+];
+
+let correct = 0, wrong = 0, answered = 0;
+const total = Q.length;
+
+function build() {
+  const wrap = document.getElementById('qwrap');
+  wrap.innerHTML = '';
+  Q.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'qcard';
+    card.id = `c${i}`;
+    card.innerHTML = `
+      <div class="qcard-header">
+        <div class="qnum">${String(i+1).padStart(2,'0')}</div>
+        <div class="qtext">${q.q}</div>
+      </div>
+      <div class="qcard-body">
+        <div class="options" id="o${i}">
+          ${q.opts.map((o,j) => `
+            <button class="opt-btn" id="b${i}_${j}" onclick="pick(${i},${j})">
+              <div class="opt-key">${['A','B','C','D'][j]}</div>
+              <div class="opt-text">${o}</div>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+      <div class="explanation" id="e${i}"><span class="exp-icon">💡</span><span class="exp-text">${q.exp}</span></div>
+    `;
+    wrap.appendChild(card);
+  });
+}
+
+function pick(qi, sel) {
+  const q = Q[qi];
+  const card = document.getElementById(`c${qi}`);
+  const btns = document.querySelectorAll(`#o${qi} .opt-btn`);
+  const exp = document.getElementById(`e${qi}`);
+
+  btns.forEach((b, j) => {
+    b.disabled = true;
+    if (j === q.ans) b.classList.add('opt-correct');
+    else if (j === sel) b.classList.add('opt-wrong');
+    else b.classList.add('opt-dim');
+  });
+
+  exp.classList.add('show');
+
+  const tag = document.createElement('div');
+  if (sel === q.ans) {
+    correct++;
+    card.classList.add('state-correct');
+    tag.className = 'result-tag rt-correct';
+    tag.innerHTML = '🔥 &nbsp;Correct!';
+  } else {
+    wrong++;
+    card.classList.add('state-wrong');
+    tag.className = 'result-tag rt-wrong';
+    tag.innerHTML = `😢 &nbsp;Incorrect — Correct: ${['A','B','C','D'][q.ans]}`;
+  }
+  exp.after(tag);
+
+  answered++;
+  updateUI();
+  if (answered === total) setTimeout(showFinal, 700);
+}
+
+function updateUI() {
+  document.getElementById('sc').textContent = correct;
+  document.getElementById('sw').textContent = wrong;
+  const pct = Math.round((correct / answered) * 100);
+  document.getElementById('sp').textContent = pct + '%';
+  document.getElementById('pf').style.width = ((answered / total) * 100) + '%';
+}
+
+function showFinal() {
+  const pct = Math.round((correct / total) * 100);
+  document.getElementById('fscore').innerHTML = `${correct}<span>/${total}</span>`;
+  document.getElementById('fpct').textContent = pct + '% Score';
+  document.getElementById('fc').textContent = correct;
+  document.getElementById('fw').textContent = wrong;
+  document.getElementById('ft').textContent = total;
+  let msg = '';
+  if (pct >= 85) msg = 'Outstanding! Domain 1 pe command mazboot hai. CISSP exam ke liye taiyaar ho.';
+  else if (pct >= 70) msg = 'Passing score hai. Kuch concepts review karo — especially risk calculations aur legal frameworks.';
+  else if (pct >= 50) msg = 'Improvement ki zarurat hai. Risk formulas (ALE/SLE/ARO), access control models, aur laws dobara padhna.';
+  else msg = 'Domain 1 ke core concepts ko deeply padhna zaroori hai — especially governance, risk treatment, aur compliance frameworks.';
+  document.getElementById('fmsg').textContent = msg;
+  const f = document.getElementById('final');
+  f.style.display = 'block';
+  f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function restart() {
+  correct = 0; wrong = 0; answered = 0;
+  ['sc','sw'].forEach(id => document.getElementById(id).textContent = 0);
+  document.getElementById('sp').textContent = '—';
+  document.getElementById('pf').style.width = '0%';
+  document.getElementById('final').style.display = 'none';
+  build();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+build();
+</script>
+</body>
+</html>
