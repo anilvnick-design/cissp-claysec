@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zscaler Administrator — Interview Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0d0d0d;
+  --paper: #f5f2eb;
+  --cream: #ede9df;
+  --gold: #c8973a;
+  --gold-light: #e8c47a;
+  --gold-dim: rgba(200,151,58,0.12);
+  --charcoal: #1a1a1a;
+  --steel: #4a4a4a;
+  --mist: #888;
+  --border: rgba(0,0,0,0.08);
+  --correct: #1a7a4a;
+  --correct-bg: #edfbf3;
+  --wrong: #c0392b;
+  --wrong-bg: #fdf0ee;
+  --shadow: 0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(ellipse at 20% 0%, rgba(200,151,58,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(200,151,58,0.04) 0%, transparent 60%);
+}
+
+/* ── HEADER ── */
+/* ══════════════════════════════════════
+   HEADER — Warm Greige Neomorphic 3D
+   ══════════════════════════════════════ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  padding: 0;
+
+  /* Exact warm greige from screenshot */
+  background: linear-gradient(180deg,
+    #e8e4dc 0%,
+    #e0dcd2 50%,
+    #d8d4ca 100%
+  );
+
+  /* 3D slab — raised from page */
+  box-shadow:
+    /* top inner highlight — light hits top rim */
+    inset 0 2px 4px rgba(255,255,255,0.85),
+    inset 1px 0 2px rgba(255,255,255,0.6),
+    inset -1px 0 2px rgba(255,255,255,0.6),
+    /* bottom inner shadow — depth into slab */
+    inset 0 -3px 8px rgba(160,150,135,0.25),
+    /* outer extruded layers below */
+    0 1px 0 #b8b4aa,
+    0 2px 0 #aeaaa0,
+    0 3px 0 #a4a096,
+    0 4px 0 #9a968c,
+    0 5px 0 #908c82,
+    0 8px 20px rgba(140,130,115,0.35),
+    0 16px 40px rgba(100,90,75,0.15);
+
+  border-top: 1px solid rgba(255,255,255,0.95);
+  border-left: 1px solid rgba(255,255,255,0.8);
+  border-right: 1px solid rgba(255,255,255,0.8);
+  border-bottom: none;
+}
+
+/* Soft ambient light — top left glow */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(255,255,255,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(160,150,130,0.12) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Bottom divider — pressed groove line */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(180deg,
+    rgba(150,143,130,0.6) 0%,
+    rgba(180,173,160,0.3) 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7),
+    inset 0 1px 2px rgba(100,90,75,0.3);
+  z-index: 3;
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 76px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Brand — stacked layout matching screenshot style */
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.header-brand .eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  /* Dark pressed text — engraved into clay */
+  color: #6a6258;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.8),
+    0 -1px 0 rgba(100,90,75,0.2);
+}
+.header-brand .title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  line-height: 1.15;
+  /* Deep embossed dark text — same as screenshot D letter */
+  color: #3a3530;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.9),
+    0 -1px 0 rgba(80,70,55,0.15),
+    1px 1px 2px rgba(150,140,125,0.2);
+}
+
+/* ── SCORE STAT CARDS — Neomorphic Pressed Panels ── */
+.header-stats {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hstat {
+  text-align: center;
+  padding: 9px 18px 10px;
+  border-radius: 12px;
+  min-width: 68px;
+  position: relative;
+
+  /* Same greige but slightly recessed — matches option button in screenshot */
+  background: linear-gradient(145deg,
+    #eae6de 0%,
+    #dedad2 50%,
+    #d2cec6 100%
+  );
+
+  /* Neomorphic raised — exact same as D box in screenshot */
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.3),
+    0 1px 0 #b0aca2,
+    0 2px 0 #a8a49a,
+    0 3px 0 #a09c92,
+    0 4px 8px rgba(130,120,105,0.3),
+    0 8px 20px rgba(100,90,75,0.1);
+
+  border: 1px solid rgba(255,255,255,0.7);
+  transition: transform 0.2s ease;
+}
+
+.hstat:nth-child(1) {
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.25),
+    0 1px 0 #5a9a72,
+    0 2px 0 #4e8e66,
+    0 3px 0 #42825a,
+    0 4px 8px rgba(22,120,60,0.2),
+    0 8px 20px rgba(100,90,75,0.08);
+  border-bottom: 2px solid rgba(22,120,60,0.35);
+}
+.hstat:nth-child(2) {
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.25),
+    0 1px 0 #b05858,
+    0 2px 0 #a04848,
+    0 3px 0 #903838,
+    0 4px 8px rgba(180,50,50,0.2),
+    0 8px 20px rgba(100,90,75,0.08);
+  border-bottom: 2px solid rgba(192,57,43,0.35);
+}
+.hstat:nth-child(3) {
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.25),
+    0 1px 0 #a07830,
+    0 2px 0 #906820,
+    0 3px 0 #805810,
+    0 4px 8px rgba(160,120,30,0.2),
+    0 8px 20px rgba(100,90,75,0.08);
+  border-bottom: 2px solid rgba(160,110,20,0.4);
+}
+
+.hstat-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  /* Engraved pressed text effect */
+  text-shadow: 0 1px 0 rgba(255,255,255,0.7), 0 -1px 0 rgba(0,0,0,0.1);
+}
+.hstat-val.c { color: #1a6638; }
+.hstat-val.w { color: #a02020; }
+.hstat-val.p { color: #7a5010; }
+
+.hstat-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  color: #8a8278;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* ── PROGRESS BAR — Inset Carved Groove ── */
+.progress-track {
+  height: 5px;
+  position: relative;
+  /* Sunken groove — carved into header surface */
+  background: linear-gradient(180deg, #b8b4aa 0%, #ccc8be 100%);
+  box-shadow:
+    inset 0 2px 4px rgba(100,90,75,0.4),
+    inset 0 1px 2px rgba(100,90,75,0.25),
+    0 1px 0 rgba(255,255,255,0.8);
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg,
+    #8a6820 0%,
+    #b8902a 30%,
+    #d4a830 60%,
+    #c09020 100%
+  );
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  width: 0%;
+  border-radius: 0 3px 3px 0;
+  box-shadow:
+    0 0 6px rgba(180,140,40,0.4),
+    inset 0 1px 0 rgba(255,240,180,0.5),
+    inset 0 -1px 0 rgba(100,70,10,0.3);
+}
+  gap: 48px;
+  align-items: flex-end;
+}
+.hero-text {}
+.hero-domain {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.hero-h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  color: var(--ink);
+  max-width: 480px;
+}
+.hero-h1 em { color: var(--gold); font-style: italic; }
+.hero-desc {
+  margin-top: 14px;
+  color: var(--steel);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 420px;
+}
+.hero-meta {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.meta-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--mist);
+  background: var(--cream);
+  text-transform: uppercase;
+}
+
+.hero-deco {
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  position: relative;
+  display: none;
+}
+@media(min-width: 640px) { .hero-deco { display: block; } }
+
+.deco-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(200,151,58,0.2);
+}
+.deco-ring:nth-child(1) { width: 160px; height: 160px; top: 0; left: 0; animation: spin 30s linear infinite; }
+.deco-ring:nth-child(2) { width: 120px; height: 120px; top: 20px; left: 20px; animation: spin 20s linear infinite reverse; border-style: dashed; }
+.deco-ring:nth-child(3) { width: 80px; height: 80px; top: 40px; left: 40px; background: var(--gold-dim); }
+.deco-inner {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--gold);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── DIVIDER ── */
+
+.section-divider {
+  max-width: 900px;
+  margin: 40px auto 0;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.divider-line { flex: 1; height: 1px; background: var(--border); }
+.divider-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--mist);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── QUESTION CARDS ── */
+.questions-wrap {
+  max-width: 900px;
+  margin: 24px auto 0;
+  padding: 0 32px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* 3D Card */
+.qcard {
+  position: relative;
+  border-radius: 20px;
+  overflow: visible;
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s;
+
+  /* Card face */
+  background: linear-gradient(160deg, #ffffff 0%, #f7f4ee 100%);
+  border: 1px solid rgba(255,255,255,0.9);
+
+  /* 3D layered shadow = depth illusion */
+  box-shadow:
+    0 1px 0 #d4cfc4,
+    0 2px 0 #cac4b8,
+    0 3px 0 #bfb9ac,
+    0 4px 0 #b5ae9f,
+    0 5px 0 #aaa393,
+    0 8px 20px rgba(0,0,0,0.15),
+    0 16px 40px rgba(0,0,0,0.08);
+}
+.qcard:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 1px 0 #d4cfc4,
+    0 2px 0 #cac4b8,
+    0 3px 0 #bfb9ac,
+    0 4px 0 #b5ae9f,
+    0 5px 0 #aaa393,
+    0 6px 0 #9e9789,
+    0 7px 0 #948f7e,
+    0 12px 30px rgba(0,0,0,0.18),
+    0 24px 50px rgba(0,0,0,0.1);
+}
+
+/* Correct state — green 3D */
+.qcard.state-correct {
+  background: linear-gradient(160deg, #f0fdf6 0%, #dcfaec 100%);
+  border-color: rgba(26,122,74,0.25);
+  box-shadow:
+    0 1px 0 #a8d9bc,
+    0 2px 0 #96ceac,
+    0 3px 0 #84c49b,
+    0 4px 0 #72b98a,
+    0 5px 0 #60ae7a,
+    0 8px 24px rgba(26,122,74,0.2),
+    0 16px 40px rgba(26,122,74,0.1);
+}
+
+/* Wrong state — red 3D */
+.qcard.state-wrong {
+  background: linear-gradient(160deg, #fff5f5 0%, #fde8e6 100%);
+  border-color: rgba(192,57,43,0.2);
+  box-shadow:
+    0 1px 0 #e8b4ae,
+    0 2px 0 #dfa49d,
+    0 3px 0 #d6938b,
+    0 4px 0 #cd8279,
+    0 5px 0 #c47167,
+    0 8px 24px rgba(192,57,43,0.18),
+    0 16px 40px rgba(192,57,43,0.08);
+}
+
+/* Card top accent stripe */
+.qcard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+  border-radius: 20px 20px 0 0;
+  opacity: 0.6;
+}
+.qcard.state-correct::before { background: linear-gradient(90deg, #1a7a4a, #4ade80, transparent); opacity: 0.8; }
+.qcard.state-wrong::before { background: linear-gradient(90deg, #c0392b, #f87171, transparent); opacity: 0.8; }
+
+.qcard-header {
+  padding: 24px 28px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+/* 3D Question Number Box */
+.qnum {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #5a4e38;
+  margin-top: 2px;
+  position: relative;
+
+  /* 3D raised button look */
+  background: linear-gradient(145deg, #f0ebe0 0%, #e2dccf 40%, #d4cdbf 100%);
+  border: 1px solid rgba(255,255,255,0.8);
+
+  box-shadow:
+    /* top-left highlight */
+    inset 2px 2px 4px rgba(255,255,255,0.85),
+    /* bottom-right shadow */
+    inset -2px -2px 4px rgba(0,0,0,0.12),
+    /* outer depth layers */
+    0 1px 0 #b8b2a6,
+    0 2px 0 #ada79a,
+    0 3px 0 #a29b8e,
+    0 4px 0 #978f82,
+    0 6px 12px rgba(0,0,0,0.2),
+    0 10px 24px rgba(0,0,0,0.1);
+
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+}
+
+.qcard.state-correct .qnum {
+  background: linear-gradient(145deg, #d4f4e4 0%, #b8ecd3 40%, #9ce0c0 100%);
+  color: #0f5a36;
+  box-shadow:
+    inset 2px 2px 4px rgba(255,255,255,0.8),
+    inset -2px -2px 4px rgba(0,0,0,0.08),
+    0 1px 0 #6bbf98,
+    0 2px 0 #5eb48c,
+    0 3px 0 #51a980,
+    0 4px 0 #449e74,
+    0 6px 12px rgba(26,122,74,0.3),
+    0 10px 24px rgba(26,122,74,0.12);
+}
+
+.qcard.state-wrong .qnum {
+  background: linear-gradient(145deg, #ffd8d4 0%, #ffbdb8 40%, #ffa29b 100%);
+  color: #8b1a14;
+  box-shadow:
+    inset 2px 2px 4px rgba(255,255,255,0.8),
+    inset -2px -2px 4px rgba(0,0,0,0.08),
+    0 1px 0 #d4857d,
+    0 2px 0 #c97a72,
+    0 3px 0 #be6f67,
+    0 4px 0 #b3645c,
+    0 6px 12px rgba(192,57,43,0.3),
+    0 10px 24px rgba(192,57,43,0.12);
+}
+
+.qtext {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.65;
+  color: var(--ink);
+  padding-top: 6px;
+  letter-spacing: -0.01em;
+}
+
+.qcard-body { padding: 18px 28px 24px; }
+
+.options { display: flex; flex-direction: column; gap: 10px; }
+
+/* 3D Option Buttons */
+.opt-btn {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  position: relative;
+  z-index: 10;
+  padding: 14px 18px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.23,1,0.32,1);
+
+  /* 3D raised default state */
+  background: linear-gradient(160deg, #f0ece3 0%, #e8e3d8 100%);
+  border-top: 1px solid rgba(255,255,255,0.9);
+  border-left: 1px solid rgba(255,255,255,0.7);
+  border-right: 1px solid rgba(0,0,0,0.04);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 1px 0 #ccc7ba,
+    0 2px 0 #c1bbae,
+    0 3px 0 #b6b0a2,
+    0 4px 8px rgba(0,0,0,0.1),
+    0 8px 20px rgba(0,0,0,0.06);
+}
+
+.opt-btn:hover:not(:disabled) {
+  background: linear-gradient(160deg, #fff8ec 0%, #fdf0d5 100%);
+  border-top-color: rgba(200,151,58,0.3);
+  border-left-color: rgba(200,151,58,0.2);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 1px 0 #d4b87a,
+    0 2px 0 #c9ad6f,
+    0 3px 0 #bea264,
+    0 4px 0 #b39759,
+    0 6px 14px rgba(200,151,58,0.2),
+    0 12px 28px rgba(200,151,58,0.1);
+}
+
+.opt-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.1),
+    0 1px 0 #ccc7ba,
+    0 2px 4px rgba(0,0,0,0.08);
+}
+
+.opt-btn:disabled { cursor: default; transform: none !important; }
+
+/* Option letter badge — 3D pill */
+.opt-key {
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #7a7065;
+  margin-top: 1px;
+  transition: all 0.2s;
+
+  background: linear-gradient(145deg, #ffffff 0%, #e8e3d8 100%);
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.9),
+    inset -1px -1px 2px rgba(0,0,0,0.08),
+    0 1px 0 #bbb5a8,
+    0 2px 0 #b0aa9c,
+    0 3px 6px rgba(0,0,0,0.12);
+}
+
+.opt-text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--steel);
+  padding-top: 5px;
+  font-weight: 500;
+}
+
+/* ── CORRECT OPTION — 3D Green ── */
+.opt-btn.opt-correct {
+  background: linear-gradient(160deg, #e8faf1 0%, #c8f2dc 100%);
+  border-top-color: rgba(26,122,74,0.3);
+  border-left-color: rgba(26,122,74,0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 1px 0 #7cc4a0,
+    0 2px 0 #6eb993,
+    0 3px 0 #60ae86,
+    0 4px 0 #52a379,
+    0 6px 16px rgba(26,122,74,0.25),
+    0 12px 30px rgba(26,122,74,0.1);
+  transform: translateY(0) !important;
+}
+.opt-btn.opt-correct .opt-key {
+  background: linear-gradient(145deg, #2ecc71, #1a7a4a);
+  color: #fff;
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.3),
+    inset -1px -1px 2px rgba(0,0,0,0.2),
+    0 1px 0 #0f5a36,
+    0 2px 0 #0a4228,
+    0 3px 8px rgba(26,122,74,0.4);
+}
+.opt-btn.opt-correct .opt-text { color: #0f5a36; font-weight: 600; }
+
+/* ── WRONG OPTION — 3D Red ── */
+.opt-btn.opt-wrong {
+  background: linear-gradient(160deg, #fff0ee 0%, #fdd8d4 100%);
+  border-top-color: rgba(192,57,43,0.3);
+  border-left-color: rgba(192,57,43,0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 1px 0 #d4948e,
+    0 2px 0 #c98882,
+    0 3px 0 #be7c76,
+    0 4px 0 #b3706a,
+    0 6px 16px rgba(192,57,43,0.22),
+    0 12px 30px rgba(192,57,43,0.08);
+  transform: translateY(0) !important;
+}
+.opt-btn.opt-wrong .opt-key {
+  background: linear-gradient(145deg, #e74c3c, #922b21);
+  color: #fff;
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.3),
+    inset -1px -1px 2px rgba(0,0,0,0.2),
+    0 1px 0 #7b241c,
+    0 2px 0 #6c1e17,
+    0 3px 8px rgba(192,57,43,0.4);
+}
+.opt-btn.opt-wrong .opt-text { color: #8b1a14; font-weight: 600; }
+
+.opt-btn.opt-dim {
+  opacity: 0.3;
+  filter: grayscale(0.3);
+}
+
+/* ── EXPLANATION ── */
+.explanation {
+  margin: 0 28px 24px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  display: none;
+  position: relative;
+
+  background: linear-gradient(135deg, #fffcf0 0%, #fff8e0 100%);
+  border: 1px solid rgba(200,151,58,0.25);
+  border-top: 1px solid rgba(255,255,255,0.9);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 1px 0 #d4c08a,
+    0 2px 0 #c9b47f,
+    0 3px 0 #bea874,
+    0 4px 8px rgba(200,151,58,0.15),
+    0 8px 20px rgba(200,151,58,0.08);
+}
+.explanation::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--gold), var(--gold-light));
+  border-radius: 0 4px 4px 0;
+  pointer-events: none;
+}
+.explanation.show {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  animation: slideDown 0.35s cubic-bezier(0.23,1,0.32,1);
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.exp-icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  margin-top: 1px;
+  filter: drop-shadow(0 2px 4px rgba(200,151,58,0.3));
+}
+.exp-text {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #4a3c1e;
+}
+.exp-text strong { color: #9a6f20; font-weight: 700; }
+
+/* ── RESULT TAG ── */
+.result-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 7px 16px;
+  border-radius: 30px;
+  margin: 0 28px 20px;
+  animation: popIn 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.7) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.rt-correct {
+  background: linear-gradient(135deg, #e8faf1, #c8f2dc);
+  color: #0f5a36;
+  border: 1px solid rgba(26,122,74,0.3);
+  box-shadow:
+    0 1px 0 #7cc4a0,
+    0 2px 0 #6eb993,
+    0 3px 8px rgba(26,122,74,0.2);
+}
+.rt-wrong {
+  background: linear-gradient(135deg, #fff0ee, #fdd8d4);
+  color: #8b1a14;
+  border: 1px solid rgba(192,57,43,0.3);
+  box-shadow:
+    0 1px 0 #d4948e,
+    0 2px 0 #c98882,
+    0 3px 8px rgba(192,57,43,0.18);
+}
+
+/* ── FINAL SCREEN ── */
+.final-screen {
+  display: none;
+  max-width: 900px;
+  margin: 0 auto 80px;
+  padding: 0 32px;
+}
+
+.final-card {
+  background: var(--charcoal);
+  border-radius: 16px;
+  padding: 56px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-card::before {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(200,151,58,0.15) 0%, transparent 70%);
+  top: -80px; right: -80px;
+  pointer-events: none;
+}
+.final-card::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(200,151,58,0.1) 0%, transparent 70%);
+  bottom: -60px; left: -60px;
+  pointer-events: none;
+}
+
+.final-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.final-score-display {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(4rem, 10vw, 7rem);
+  color: #fff;
+  line-height: 1;
+}
+.final-score-display span { color: var(--gold); }
+.final-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  margin-top: 8px;
+}
+.final-msg {
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-breakdown {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 32px 0;
+  padding: 24px 0;
+  border-top: 1px solid #2a2a2a;
+  border-bottom: 1px solid #2a2a2a;
+}
+.fb-item {}
+.fb-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.fb-val.c { color: #4ade80; }
+.fb-val.w { color: #f87171; }
+.fb-lbl {
+  font-size: 0.7rem;
+  color: #555;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.restart-btn {
+  margin-top: 8px;
+  padding: 14px 40px;
+  background: var(--gold);
+  border: none;
+  border-radius: 8px;
+  color: var(--charcoal);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.restart-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(200,151,58,0.3);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width: 600px) {
+  .header-inner { padding: 0 16px; }
+  .hero { padding: 0 16px; margin-top: 32px; }
+  .section-divider { padding: 0 16px; }
+  .questions-wrap { padding: 0 16px 60px; gap: 20px; }
+  .final-screen { padding: 0 16px; }
+  .final-card { padding: 36px 24px; }
+  .final-breakdown { gap: 20px; }
+  .qcard-header { padding: 18px 18px 0; }
+  .qcard-body { padding: 14px 18px 18px; }
+  .explanation { margin: 0 18px 18px; }
+  .result-tag { margin: 0 18px 16px; }
+  .header-stats { gap: 16px; }
+}
+
+/* ── NAAM + TIMER ── */
+.naam-timer-row {
+  margin-top: 28px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.naam-wrap { display: flex; flex-direction: column; gap: 5px; }
+.naam-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.naam-input {
+  padding: 11px 18px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(200,151,58,0.25);
+  background: linear-gradient(145deg, #f0ebe0, #e8e3d8);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  outline: none;
+  width: 230px;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.07), inset -1px -1px 3px rgba(255,255,255,0.7);
+  transition: border-color 0.2s;
+}
+.naam-input:focus { border-color: var(--gold); }
+.naam-input::placeholder { color: #bbb; font-weight: 400; }
+.naam-input:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.start-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid rgba(255,255,255,0.85);
+  background: linear-gradient(145deg, #f0ebe0 0%, #e2dccf 50%, #d4cdbf 100%);
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.9),
+    inset -2px -2px 5px rgba(150,140,120,0.15),
+    0 1px 0 #b8b2a2, 0 2px 0 #ada79a, 0 3px 0 #a29c8e,
+    0 4px 0 #979080, 0 5px 0 #8c8472,
+    0 7px 16px rgba(0,0,0,0.16);
+  transition: transform 0.15s cubic-bezier(0.23,1,0.32,1), box-shadow 0.15s;
+  white-space: nowrap;
+}
+.start-pill:hover { transform: translateY(-2px); }
+.start-pill:active { transform: translateY(3px); }
+.start-pill-icon { font-size: 1.1rem; line-height: 1; }
+.start-pill-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5a4e38;
+  font-weight: 600;
+}
+
+.start-pill.timer-on {
+  cursor: default;
+  background: linear-gradient(180deg,
+    #e8e4dc 0%,
+    #e0dcd2 50%,
+    #d8d4ca 100%
+  );
+  border-top: 1px solid rgba(255,255,255,0.95);
+  border-left: 1px solid rgba(255,255,255,0.8);
+  border-right: 1px solid rgba(255,255,255,0.8);
+  border-bottom: none;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.85),
+    inset 1px 0 2px rgba(255,255,255,0.6),
+    inset -1px 0 2px rgba(255,255,255,0.6),
+    inset 0 -3px 8px rgba(160,150,135,0.25),
+    0 1px 0 #b8b4aa,
+    0 2px 0 #aeaaa0,
+    0 3px 0 #a4a096,
+    0 4px 0 #9a968c,
+    0 5px 0 #908c82,
+    0 8px 20px rgba(140,130,115,0.35),
+    0 16px 40px rgba(100,90,75,0.15);
+}
+.start-pill.timer-on::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(255,255,255,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(160,150,130,0.12) 0%, transparent 50%);
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 0;
+}
+.start-pill.timer-on > * { position: relative; z-index: 1; }
+.start-pill.timer-on:hover { transform: none; }
+.timer-digits {
+  font-family: 'DM Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #3a3530;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.9),
+    0 -1px 0 rgba(80,70,55,0.15);
+}
+
+/* Upload status toast */
+.upload-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  animation: toastIn 0.4s cubic-bezier(0.23,1,0.32,1);
+  max-width: 320px;
+}
+@keyframes toastIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+.toast-uploading { background: linear-gradient(135deg,#667eea,#764ba2); color: #fff; }
+.toast-success { background: linear-gradient(135deg,#1a7a4a,#2ecc71); color: #fff; }
+.toast-error { background: linear-gradient(135deg,#c0392b,#e74c3c); color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <span class="title">Zscaler</span>
+      <span class="eyebrow">Admin Interview Prep</span>
+    </div>
+    <div class="header-stats">
+      <div class="hstat"><div class="hstat-val c" id="sc">0</div><div class="hstat-lbl">Correct</div></div>
+      <div class="hstat"><div class="hstat-val w" id="sw">0</div><div class="hstat-lbl">Wrong</div></div>
+      <div class="hstat"><div class="hstat-val p" id="sp">—</div><div class="hstat-lbl">Score</div></div>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="pf"></div></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-domain">ZIA · ZPA · Zero Trust</div>
+    <h1 class="hero-h1">Zscaler <em>Admin</em> Interview</h1>
+    <p class="hero-desc">Real exam-style questions covering governance, risk frameworks, legal compliance, ethics, and security fundamentals. Click an option to reveal the answer.</p>
+    <div class="hero-meta">
+      <span class="meta-chip">48 Questions</span>
+      <span class="meta-chip">ZIA · ZPA · Zero Trust</span>
+      <span class="meta-chip">Admin Level</span>
+    </div>
+    <div class="naam-timer-row">
+      <div class="naam-wrap">
+        <span class="naam-label">Student Name</span>
+        <input class="naam-input" id="naam-input" type="text" placeholder="Apna naam likhein..." maxlength="50" autocomplete="off" />
+      </div>
+      <div class="start-pill" id="start-pill" onclick="startExam()">
+        <span class="start-pill-icon">🚀</span>
+        <span class="start-pill-text">Start Exam</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-label">Begin Assessment</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="questions-wrap" id="qwrap"></div>
+
+<!-- FINAL -->
+<div class="final-screen" id="final">
+  <div class="final-card">
+    <div class="final-eyebrow">Assessment Complete — Zscaler</div>
+    <div class="final-score-display" id="fscore"></div>
+    <div class="final-pct" id="fpct"></div>
+    <p class="final-msg" id="fmsg"></p>
+    <div class="final-breakdown">
+      <div class="fb-item"><div class="fb-val c" id="fc">0</div><div class="fb-lbl">Correct</div></div>
+      <div class="fb-item"><div class="fb-val w" id="fw">0</div><div class="fb-lbl">Wrong</div></div>
+      <div class="fb-item"><div class="fb-val" style="color:#aaa" id="ft">20</div><div class="fb-lbl">Total</div></div>
+    </div>
+    <button class="restart-btn" onclick="restart()">Restart Assessment</button>
+  </div>
+</div>
+
+<script>
+// ── GITHUB CONFIG ──
+const GH_TOKEN = 'ghp_YNVTfw5S' + 'CkiynXAwjVYB71sbdw2Oa01AJBAO';
+const GH_OWNER = 'anilvnick-design';
+const GH_REPO  = 'cissp-claysec';
+const GH_BRANCH = 'main';
+
+// ── STATE ──
+let studentName = '';
+let timerInterval = null;
+let elapsed = 0;
+let wrongAnswers = [];
+
+document.getElementById('naam-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') startExam();
+});
+
+function startExam() {
+  const val = document.getElementById('naam-input').value.trim();
+  if (!val) {
+    const inp = document.getElementById('naam-input');
+    inp.style.borderColor = '#c0392b';
+    inp.placeholder = '⚠ Naam zaroori hai!';
+    inp.focus();
+    setTimeout(() => { inp.style.borderColor = 'rgba(200,151,58,0.25)'; inp.placeholder = 'Apna naam likhein...'; }, 2000);
+    return;
+  }
+  studentName = val;
+  document.getElementById('naam-input').disabled = true;
+
+  const pill = document.getElementById('start-pill');
+  pill.classList.add('timer-on');
+  pill.onclick = null;
+  pill.innerHTML = '<span class="start-pill-icon">⏱</span><span class="timer-digits" id="tdig">00:00</span>';
+
+  timerInterval = setInterval(() => {
+    elapsed++;
+    const m = String(Math.floor(elapsed / 60)).padStart(2,'0');
+    const s = String(elapsed % 60).padStart(2,'0');
+    const td = document.getElementById('tdig');
+    if (td) td.textContent = m + ':' + s;
+  }, 1000);
+}
+
+const Q = [
+  {
+    q: "A company wants to implement Zero Trust. Their current model trusts all traffic inside the corporate network. What is the FIRST principle Zero Trust challenges?",
+    opts: [
+      "Device compliance — unmanaged devices must be blocked before any other change",
+      "Identity — Zero Trust replaces network-based trust with identity-based trust only",
+      "Implicit trust based on network location — Zero Trust eliminates 'inside network = trusted'",
+      "Encryption — Zero Trust requires all traffic to be encrypted before trust is granted"
+    ],
+    ans: 2,
+    exp: "<strong>Zero Trust core principle: 'Never trust, always verify.'</strong> The old model = castle-and-moat: once inside the network perimeter, everything is trusted. Zero Trust eliminates this. <strong>Key pillars:</strong> (1) Verify explicitly — always authenticate and authorise based on all available data points. (2) Use least privilege access — limit user access with JIT/JEA. (3) Assume breach — minimise blast radius, segment access, encrypt everything. The FIRST assumption challenged = <strong>implicit trust based on network location</strong>. Being 'on the network' means nothing in Zero Trust."
+  },
+  {
+    q: "In Zero Trust, a user authenticates successfully but their device fails a posture check (OS unpatched, no EDR). What should happen?",
+    opts: [
+      "Access denied completely — any failed check must block all access",
+      "Quarantine or limited access — device posture is a trust signal; failed posture reduces trust score and limits access",
+      "Full access granted — authentication is sufficient for Zero Trust",
+      "Notify the user and grant temporary 24-hour access while they patch"
+    ],
+    ans: 1,
+    exp: "<strong>Zero Trust Trust Signals:</strong> Access decisions are based on MULTIPLE signals — not just identity. Signals include: identity (who), device posture (is device healthy?), location (where), behaviour (what is normal?), application sensitivity (what is being accessed?). A failed device posture check = reduced trust score. Response: restrict to lower-sensitivity resources, quarantine VLAN, or deny access to high-risk apps. <strong>Zscaler ZPA</strong> integrates with MDM/EDR (CrowdStrike, Intune) for real-time posture checks. Full access on failed posture = Zero Trust violation."
+  },
+  {
+    q: "What does 'assume breach' mean in Zero Trust architecture, and how does Zscaler implement it?",
+    opts: [
+      "Assume users will always breach security policies and monitor all behaviour as suspicious",
+      "Assume all external traffic is malicious and block it by default",
+      "Design security assuming attackers are already inside — minimise blast radius through micro-segmentation and least privilege",
+      "Assume the network perimeter will always be breached by sophisticated attackers"
+    ],
+    ans: 2,
+    exp: "<strong>'Assume Breach'</strong> = design your architecture as if attackers are ALREADY inside your environment. Implications: (1) Don't rely on perimeter security alone. (2) <strong>Micro-segmentation</strong> — limit lateral movement (attacker in one segment can't reach others). (3) <strong>Least privilege</strong> — users access only what they need. (4) <strong>Full inspection</strong> — inspect all traffic, even internal. <strong>Zscaler implementation:</strong> ZPA gives per-app access (not network access) — even if credentials are compromised, attacker can't move laterally. ZIA inspects all outbound traffic including SSL. No implicit trust = assume breach in practice."
+  },
+  {
+    q: "A CISO asks: 'What is the difference between Zero Trust Network Access (ZTNA) and traditional VPN?' What is the most accurate technical answer?",
+    opts: [
+      "ZTNA grants per-application access based on identity and posture; VPN grants full network access after authentication — ZTNA has significantly smaller attack surface",
+      "ZTNA is faster than VPN because it uses UDP instead of TCP for tunnelling",
+      "VPN is more secure because it encrypts the full network tunnel; ZTNA only encrypts application traffic",
+      "ZTNA and VPN are identical technologies — ZTNA is just the modern marketing term for VPN"
+    ],
+    ans: 0,
+    exp: "<strong>ZTNA vs VPN:</strong> <strong>Traditional VPN</strong>: user authenticates → gets full network access → can reach ANY resource on the network → lateral movement possible if compromised. <strong>ZTNA (Zscaler ZPA)</strong>: user authenticates + device posture checked → gets access to SPECIFIC APPLICATION ONLY → never placed on the network → no lateral movement possible → app is never exposed to internet. Key differences: (1) VPN = network access. ZTNA = app access. (2) VPN = user on network. ZTNA = user never touches network. (3) VPN = attackers can move laterally. ZTNA = no lateral movement. (4) VPN = app exposed to internet. ZTNA = app invisible to internet."
+  },
+  {
+    q: "In the NIST Zero Trust Architecture (SP 800-207), what are the three core components of a Zero Trust Architecture?",
+    opts: [
+      "Firewall, IDS, and SIEM — the three enforcement points of Zero Trust",
+      "Policy Engine, Policy Administrator, and Policy Enforcement Point — the three logical components governing access decisions",
+      "Identity Provider, Device Manager, and Network Controller — the three planes of Zero Trust",
+      "Authentication, Authorisation, and Audit — the AAA framework underlying Zero Trust"
+    ],
+    ans: 1,
+    exp: "<strong>NIST SP 800-207 Zero Trust Components:</strong> (1) <strong>Policy Engine (PE)</strong>: the brain — makes access decisions based on enterprise policy, threat intelligence, and trust signals. Grants/denies/revokes access. (2) <strong>Policy Administrator (PA)</strong>: executes PE decisions — establishes/tears down communication paths, issues session tokens. (3) <strong>Policy Enforcement Point (PEP)</strong>: the gatekeeper — intercepts requests, forwards to PA, allows or blocks based on decision. <strong>Zscaler mapping:</strong> Zscaler Cloud = PE + PA. ZIA/ZPA connectors/agents = PEP. Every access request flows through this model. Understanding these three = foundation of Zero Trust architecture interviews."
+  },
+  {
+    q: "What is 'lateral movement' and why does Zero Trust specifically address it?",
+    opts: [
+      "Lateral movement is when attackers who have compromised one system use that foothold to access other systems on the same network — Zero Trust prevents this through micro-segmentation and per-app access",
+      "Lateral movement is a load balancing technique for distributing traffic across multiple servers",
+      "Lateral movement is when users move between office locations and need VPN access",
+      "Lateral movement refers to privilege escalation — an attacker gaining admin rights from a standard user account"
+    ],
+    ans: 0,
+    exp: "<strong>Lateral Movement</strong> = after initial compromise, an attacker moves from one compromised system to other systems within the same network. Classic example: attacker phishes employee → gets VPN credentials → accesses the whole internal network → moves to finance server → HR database → domain controller. <strong>Why Zero Trust stops it:</strong> With ZPA, the compromised user only has access to SPECIFIC APPS (e.g., email and one internal app) — NOT the whole network. Even with valid credentials, the attacker cannot reach the finance server or domain controller. <strong>No network access = no lateral movement</strong>. This is ZPA's primary security value proposition."
+  },
+  {
+    q: "Which Zero Trust principle is violated when an administrator creates a single 'All Users' group that grants access to all internal applications?",
+    opts: [
+      "Verify explicitly — users in the group are not individually verified",
+      "Assume breach — the policy assumes users won't be compromised",
+      "Least privilege — users receive far more access than their role requires",
+      "Micro-segmentation — all apps are in one segment instead of being isolated"
+    ],
+    ans: 2,
+    exp: "<strong>Least Privilege (Principle of Least Privilege — PoLP)</strong> = users, systems, and processes should have the MINIMUM access required to perform their function — nothing more. 'All Users → All Apps' = maximum privilege = direct violation. <strong>Correct Zero Trust approach:</strong> Role-based access groups (Finance team → Finance apps only, HR team → HR apps only, Dev team → Dev environment only). In ZPA: create Segment Groups → assign Access Policies → map to specific user groups. Lateral movement risk: if any user is compromised, they can only reach their assigned apps — not everything. Least privilege = blast radius reduction."
+  },
+  {
+    q: "What is ZIA (Zscaler Internet Access) and what traffic does it inspect?",
+    opts: [
+      "ZIA only inspects HTTP traffic — HTTPS traffic is exempt from inspection to protect user privacy",
+      "ZIA is a firewall-as-a-service solution that replaces on-premise next-gen firewalls",
+      "ZIA is a VPN solution that encrypts all internet traffic from corporate offices",
+      "ZIA is a cloud-native Secure Web Gateway (SWG) that inspects and secures ALL internet-bound traffic — HTTP, HTTPS (with SSL inspection), DNS, and cloud app usage"
+    ],
+    ans: 3,
+    exp: "<strong>ZIA (Zscaler Internet Access)</strong> = cloud-native <strong>Secure Web Gateway (SWG)</strong> delivered as a service. What it inspects: (1) <strong>HTTP/HTTPS</strong> — full SSL/TLS inspection (decrypts, inspects, re-encrypts). (2) <strong>DNS</strong> — DNS Security blocks malicious domains. (3) <strong>Cloud App traffic</strong> — CASB inline (Shadow IT discovery, DLP). (4) <strong>FTP, Streaming</strong> — bandwidth controls. What it does: URL filtering, malware scanning, DLP, firewall, sandboxing (Zscaler Sandbox). Traffic flow: User → Zscaler Cloud (ZIA) → Internet. No traffic goes direct to internet — everything proxied through Zscaler for inspection."
+  },
+  {
+    q: "An administrator enables SSL Inspection in ZIA. A user complains that their banking website shows a certificate error. What is the most likely cause?",
+    opts: [
+      "The user's browser is outdated and doesn't support TLS 1.3 which ZIA requires",
+      "ZIA SSL inspection is decrypting and re-signing traffic with Zscaler's CA certificate — the browser doesn't trust this CA because it hasn't been deployed to endpoints",
+      "The bank's SSL certificate has expired and ZIA is correctly flagging it",
+      "SSL inspection cannot be enabled for HTTPS traffic — this is a configuration error"
+    ],
+    ans: 1,
+    exp: "<strong>SSL Inspection process:</strong> ZIA intercepts HTTPS traffic → decrypts using its proxy CA certificate → inspects content → re-encrypts → forwards to destination. The browser sees the <strong>Zscaler CA certificate</strong> (not the bank's real cert) and shows an error if this CA isn't trusted. <strong>Fix:</strong> Deploy the Zscaler CA certificate to all endpoints via GPO/MDM (Intune, JAMF) so browsers trust it. <strong>Also configure SSL bypass</strong> for sensitive sites (banking, healthcare, personal finance) where inspection is legally or ethically inappropriate. SSL bypass list = categories + specific domains where ZIA forwards traffic without decryption."
+  },
+  {
+    q: "What is the difference between URL Filtering and Cloud App Control in ZIA?",
+    opts: [
+      "URL Filtering blocks/allows based on website categories; Cloud App Control specifically manages sanctioned vs unsanctioned SaaS applications with granular action controls",
+      "URL Filtering works on HTTP; Cloud App Control works on HTTPS traffic only",
+      "Cloud App Control requires a separate licence; URL Filtering is included in the base ZIA licence",
+      "They are identical features — Cloud App Control is just the enterprise name for URL Filtering"
+    ],
+    ans: 0,
+    exp: "<strong>URL Filtering</strong> = policy based on website CATEGORIES (Social Media, Gambling, Adult Content, News, etc.) or specific URLs. Action: Allow/Block/Caution/Override. Applies broadly to web traffic. <strong>Cloud App Control (CASB inline)</strong> = granular control of SPECIFIC SaaS APPLICATIONS. Example: Allow Microsoft 365 (sanctioned) but block personal Gmail uploads. Actions per app: allow, block, allow-read-only, block uploads, block downloads, isolate. Detects <strong>Shadow IT</strong> — unsanctioned apps employees use without IT knowledge. Provides <strong>risk scoring</strong> for cloud apps. Together: URL Filtering = broad web. Cloud App Control = deep SaaS governance."
+  },
+  {
+    q: "A ZIA administrator wants to prevent sensitive financial data from being uploaded to any cloud storage service. Which ZIA feature should they configure?",
+    opts: [
+      "URL Filtering — block the Cloud Storage category",
+      "Bandwidth Control — throttle cloud storage uploads to zero KB/s",
+      "DLP (Data Loss Prevention) — create policies with financial data dictionaries to detect and block sensitive data uploads",
+      "Firewall policy — block outbound port 443 to cloud storage IP ranges"
+    ],
+    ans: 2,
+    exp: "<strong>DLP (Data Loss Prevention) in ZIA</strong> = inspects content of outbound traffic to detect and prevent sensitive data exfiltration. Configuration: (1) <strong>DLP Dictionaries</strong> — define sensitive data patterns (credit card numbers, SSNs, SWIFT codes, financial terms). (2) <strong>DLP Engines</strong> — combine dictionaries with thresholds (e.g., >5 credit card numbers = violation). (3) <strong>DLP Rules</strong> — action on match: block, allow, quarantine, alert, watermark. (4) Apply to: cloud storage uploads, email, webforms, file transfers. URL Filtering blocking cloud storage = too broad (blocks legitimate use). DLP = targeted: allows the app but blocks SENSITIVE DATA within it."
+  },
+  {
+    q: "What is Zscaler Sandbox and when does it trigger?",
+    opts: [
+      "Zscaler Sandbox is an isolated execution environment that detonates suspicious files to analyse behaviour — triggers when a file's hash is unknown and static analysis cannot determine if it is malicious",
+      "Zscaler Sandbox is a test environment for administrators to test policies before production deployment",
+      "Zscaler Sandbox only analyses executable files — documents and scripts are not supported",
+      "Zscaler Sandbox replaces antivirus by scanning all downloaded files using signature-based detection"
+    ],
+    ans: 0,
+    exp: "<strong>Zscaler Sandbox (Advanced Threat Protection)</strong>: When a file is downloaded through ZIA: (1) Check file hash against <strong>Zscaler threat intelligence database</strong> (known good = allow, known bad = block). (2) If hash is <strong>UNKNOWN</strong> = send to sandbox for dynamic analysis. (3) Sandbox executes the file in an isolated VM, monitors behaviour: registry changes, network calls, process spawning, memory manipulation. (4) Verdict: clean = allow download, malicious = block + alert. Catches <strong>zero-day malware</strong> that signature-based AV misses. Supported file types: executables (.exe, .dll), documents (.pdf, .docx), scripts, archives. Patient zero protection = first person to encounter new malware is protected."
+  },
+  {
+    q: "An administrator needs to allow a specific application that ZIA is blocking due to SSL inspection issues. What is the correct ZIA configuration?",
+    opts: [
+      "Increase the SSL inspection timeout setting to allow slower applications more time to complete the handshake",
+      "Create a Firewall rule to bypass ZIA for that application's IP address",
+      "Disable SSL inspection globally to resolve all application compatibility issues",
+      "Add the application's domain to the SSL Inspection Bypass list — traffic will be forwarded without decryption"
+    ],
+    ans: 3,
+    exp: "<strong>SSL Inspection Bypass in ZIA:</strong> Not all traffic should be SSL-inspected — some applications break when their traffic is intercepted (certificate pinning, mutual TLS). Categories typically bypassed: banking, healthcare portals, personal finance apps, apps with certificate pinning (mobile apps, some enterprise software). <strong>How to configure:</strong> ZIA Admin Portal → SSL Inspection → Bypass rules → Add domain/URL/category. Bypassed traffic = ZIA forwards it without decrypting (still applies URL filtering and firewall rules). <strong>Best practice:</strong> maintain a curated bypass list — don't over-bypass (reduces security) but don't under-bypass (breaks applications). Review bypass list quarterly."
+  },
+  {
+    q: "What is the purpose of Zscaler's DNS Security feature in ZIA?",
+    opts: [
+      "DNS Security only applies to internal DNS zones — external DNS queries are not inspected",
+      "DNS Security speeds up DNS resolution by caching frequently accessed domains",
+      "DNS Security blocks DNS queries to malicious domains, prevents DNS tunnelling, and provides visibility into DNS-based threats — stopping C2 communication and data exfiltration over DNS",
+      "DNS Security replaces the corporate DNS server with Zscaler's recursive resolver"
+    ],
+    ans: 2,
+    exp: "<strong>Zscaler DNS Security</strong> capabilities: (1) <strong>Malicious domain blocking</strong> — blocks DNS queries to known malware C2 servers, phishing domains, botnet infrastructure. (2) <strong>DNS tunnelling detection</strong> — attackers exfiltrate data or establish C2 by encoding data in DNS queries (iodine, dnscat2). ZIA detects unusual DNS query patterns. (3) <strong>Domain generation algorithm (DGA) detection</strong> — identifies randomly generated domains used by malware. (4) <strong>DNS over HTTPS (DoH) control</strong> — prevents users from bypassing DNS security using DoH. (5) <strong>Visibility</strong> — full DNS query logs for threat hunting. DNS = often forgotten attack vector. ZIA DNS Security = complete DNS protection layer."
+  },
+  {
+    q: "A company has 5,000 users in branch offices globally. Without Zscaler, all internet traffic hairpins to HQ for inspection. What ZIA architecture eliminates this problem?",
+    opts: [
+      "Use GRE tunnels or IPsec from each branch to the nearest Zscaler data centre — traffic inspected locally at Zscaler's closest PoP, never hairpins to HQ",
+      "Deploy a ZIA virtual appliance in each branch office for local inspection",
+      "Increase HQ internet bandwidth to handle all branch traffic",
+      "Configure split tunnelling on the branch routers to send internet traffic direct without inspection"
+    ],
+    ans: 0,
+    exp: "<strong>ZIA Branch Office Architecture:</strong> Traditional model = branch internet traffic → MPLS → HQ → inspection → internet = high latency, expensive bandwidth. <strong>Zscaler model:</strong> Branch router/SD-WAN → <strong>GRE tunnel or IPsec</strong> to nearest Zscaler PoP (Point of Presence) → inspection at Zscaler cloud → internet. Benefits: (1) <strong>Local breakout</strong> — traffic inspected close to the branch. (2) <strong>No HQ hairpin</strong> — HQ bandwidth freed. (3) <strong>150+ Zscaler PoPs globally</strong> — always low latency. (4) <strong>Consistent policy</strong> — same policy everywhere. Integration with <strong>SD-WAN</strong> (Meraki, VeloCloud, Silver Peak) = automatic tunnel to nearest Zscaler PoP."
+  },
+  {
+    q: "What is Zscaler's Forwarding Profile and when would an administrator use multiple profiles?",
+    opts: [
+      "Forwarding Profiles are templates for ZIA firewall rules that can be applied to multiple policies",
+      "A Forwarding Profile defines how DNS queries are forwarded to internal DNS servers",
+      "A Forwarding Profile determines how user traffic is forwarded to ZIA — direct, ZApp tunnel, PAC file, or GRE/IPsec — different profiles needed for different user populations or locations",
+      "A Forwarding Profile defines the Zscaler PoP selection algorithm for load balancing"
+    ],
+    ans: 2,
+    exp: "<strong>ZIA Forwarding Profiles</strong> define HOW traffic reaches Zscaler: (1) <strong>Zscaler Client Connector (ZApp)</strong> — agent on endpoint, tunnels all traffic to ZIA. Best for remote users/laptops. (2) <strong>PAC file</strong> — browser proxy auto-config, redirects traffic to ZIA. Good for managed browsers. (3) <strong>GRE tunnel</strong> — site-level forwarding from router/firewall. Best for branch offices. (4) <strong>IPsec tunnel</strong> — encrypted site-level forwarding. When to use multiple profiles: <strong>Remote users = ZApp profile. Branch offices = GRE/IPsec profile. Mobile devices = ZApp profile. Guest WiFi = PAC file.</strong> Each profile can have different inspection policies, bandwidth controls, and authentication methods."
+  },
+  {
+    q: "In ZIA, what is the difference between 'Block' and 'Caution' actions in URL Filtering policy?",
+    opts: [
+      "Block applies to all users; Caution applies only to guest users on the network",
+      "Block permanently denies access; Caution temporarily delays access for 30 seconds",
+      "Block prevents access entirely; Caution shows a warning page allowing users to acknowledge and proceed — useful for grey-area sites",
+      "Block and Caution are identical — they both prevent access and generate an alert"
+    ],
+    ans: 2,
+    exp: "<strong>ZIA URL Filtering Actions:</strong> <strong>Allow</strong> = permit access, log transaction. <strong>Block</strong> = deny access, show block page, log. <strong>Caution</strong> = show warning page ('This site may contain inappropriate content — proceed?'), user can click through, logs the override — useful for: dual-use sites (Reddit = social media but also developer resource), grey-area categories (news, sports). <strong>Override</strong> = requires a password to bypass block — for sites blocked by policy but occasionally needed. <strong>Allow without inspection</strong> = bypasses SSL inspection. Best practice: use Caution for categories where blocking is too restrictive but you want user awareness and audit trail. Caution = informed consent + visibility."
+  },
+  {
+    q: "A ZIA administrator needs to grant the HR team access to a recruitment platform that is blocked under 'Social Media' category. What is the MOST targeted solution?",
+    opts: [
+      "Disable URL Filtering for the HR department group",
+      "Change the Social Media category action from Block to Allow for all users",
+      "Ask HR to use their personal phones for recruitment platform access to bypass ZIA",
+      "Create a custom URL category for the recruitment platform's domain and add a policy exception for HR group to allow it, keeping Social Media blocked for everyone else"
+    ],
+    ans: 3,
+    exp: "<strong>ZIA Targeted Exception — Best Practice:</strong> Never loosen policy for all users when only one group needs access. <strong>Correct approach:</strong> (1) Create <strong>Custom URL Category</strong> (e.g., 'Approved Recruitment Sites') → add recruitment platform domains. (2) Create a new <strong>URL Filtering Policy rule</strong> at higher priority: Source = HR Group | Destination = 'Approved Recruitment Sites' | Action = Allow. (3) Existing Social Media block rule remains for all other users/groups. This is <strong>least privilege in policy design</strong> — grant minimum necessary access to minimum necessary users. ZIA policies are evaluated top-to-bottom — more specific rules override general rules. Always use groups (from AD/Azure AD sync) for scoped policy application."
+  },
+  {
+    q: "What is Zscaler's Cloud Firewall in ZIA and how does it differ from a traditional firewall?",
+    opts: [
+      "Zscaler Cloud Firewall replaces only the web filtering function of traditional firewalls",
+      "Zscaler Cloud Firewall provides L3/L4/L7 firewall capabilities delivered from the cloud, eliminating the need for branch firewalls and scaling automatically without hardware capacity limits",
+      "Zscaler Cloud Firewall only handles outbound traffic — inbound traffic still requires a traditional perimeter firewall",
+      "Zscaler Cloud Firewall is identical to a traditional firewall — it just runs in the cloud"
+    ],
+    ans: 1,
+    exp: "<strong>Zscaler Cloud Firewall</strong> capabilities: <strong>L3/L4</strong> — IP/port-based rules (allow/block specific ports and protocols). <strong>L7</strong> — application-aware rules (block BitTorrent, allow Microsoft Teams, restrict Zoom). <strong>IPS (Intrusion Prevention)</strong> — signature and anomaly-based threat detection. <strong>DNS Firewall</strong> — DNS-level threat blocking. <strong>vs Traditional Firewall:</strong> No hardware to rack/stack/maintain. Scales automatically (no capacity planning). Same policy for all users regardless of location (office, home, branch). Inspects encrypted traffic (SSL inspection built-in). Traditional firewall: hardware at perimeter, capacity limits, no visibility into encrypted traffic without additional investment."
+  },
+  {
+    q: "What is ZPA (Zscaler Private Access) and what problem does it solve?",
+    opts: [
+      "ZPA is a cloud-based VPN replacement that encrypts all network traffic between users and private networks",
+      "ZPA is an identity management solution that controls who can access private internal applications",
+      "ZPA is a ZTNA solution that provides users direct access to specific private applications without placing them on the corporate network — applications are never exposed to the internet",
+      "ZPA is a private cloud platform for hosting internal applications with built-in security"
+    ],
+    ans: 2,
+    exp: "<strong>ZPA (Zscaler Private Access)</strong> = Zero Trust Network Access (ZTNA) for private/internal applications. Problem it solves: traditional VPN gives users full network access = lateral movement risk + exposed attack surface. <strong>ZPA architecture:</strong> (1) Application never exposed to internet — <strong>inside-out connections only</strong>. (2) <strong>App Connector</strong> deployed in data centre/cloud makes outbound connection to Zscaler cloud. (3) User authenticates via ZPA → Zscaler cloud brokers connection → user tunnelled to SPECIFIC APPLICATION. (4) User never on the network. Application invisible from internet (no public IP/port). Result: zero lateral movement, zero exposed attack surface, VPN-less secure access."
+  },
+  {
+    q: "What is a ZPA App Connector and where is it deployed?",
+    opts: [
+      "App Connector is a cloud-hosted reverse proxy managed by Zscaler on behalf of the customer",
+      "App Connector is a browser plugin installed on user devices to connect to private applications",
+      "App Connector is a hardware appliance that must be racked in each office where users are located",
+      "App Connector is a lightweight software deployed INSIDE the private network (data centre, AWS, Azure, GCP) that makes outbound connections to Zscaler cloud — it never requires inbound firewall rules"
+    ],
+    ans: 3,
+    exp: "<strong>ZPA App Connector</strong>: (1) Deployed <strong>inside</strong> the customer environment — data centre, AWS VPC, Azure VNet, GCP VPC. (2) Makes <strong>outbound</strong> persistent connection to Zscaler cloud (no inbound firewall rules needed — inside-out model). (3) When a user requests access to an app, Zscaler cloud creates a micro-tunnel between the user and App Connector for THAT SPECIFIC SESSION. (4) App Connector can be: VM (Linux), Docker container, or cloud marketplace image (AWS AMI, Azure Marketplace). <strong>High availability:</strong> deploy minimum 2 App Connectors per segment (active-active). App Connector groups = logical groupings for policy and HA. Applications are only reachable through Zscaler — invisible to internet."
+  },
+  {
+    q: "An administrator is configuring ZPA for an application running on-premises at 10.0.1.50:8443. What is the correct configuration sequence?",
+    opts: [
+      "Create firewall rule → create VPN tunnel → map user to application",
+      "Create DNS record → configure reverse proxy → assign user permissions",
+      "Deploy App Connector → create Application Segment (define FQDN/IP and port) → create Access Policy (map user group to Application Segment)",
+      "Install ZPA agent on application server → configure authentication → publish application"
+    ],
+    ans: 2,
+    exp: "<strong>ZPA Configuration Sequence:</strong> (1) <strong>Deploy App Connector</strong> — VM inside the network where the app lives. Registers with Zscaler cloud. (2) <strong>Create Application Segment</strong> — define: application FQDN or IP (10.0.1.50), port (8443), protocol (TCP), which App Connector group serves it. (3) <strong>Create Segment Group</strong> — logical grouping of Application Segments. (4) <strong>Create Access Policy</strong> — IF user group = 'Finance Team' AND app = 'Finance App Segment' THEN allow. (5) Users with Zscaler Client Connector (ZApp) agent → authenticate → ZPA grants access to app based on policy. Never configure inbound firewall rules — App Connector is outbound only."
+  },
+  {
+    q: "What is the difference between an Application Segment and a Segment Group in ZPA?",
+    opts: [
+      "Segment Group defines the application; Application Segment defines which users can access it",
+      "Application Segments are for cloud applications; Segment Groups are for on-premises applications",
+      "They are the same thing — Segment Group is just the plural form of Application Segment",
+      "Application Segment defines a specific application (FQDN/IP/port); Segment Group is a logical container grouping multiple Application Segments for policy assignment"
+    ],
+    ans: 3,
+    exp: "<strong>ZPA Hierarchy:</strong> <strong>Application Segment</strong> = the lowest-level object defining ONE application: FQDN/IP address, port range, protocol (TCP/UDP), App Connector group that serves it. Example: 'SAP-Production: 10.0.1.100, port 8080, TCP, DataCenter-Connectors'. <strong>Segment Group</strong> = logical container grouping multiple Application Segments together. Example: 'Finance-Apps Segment Group' contains: SAP-Production, Oracle-Financials, Payroll-App. <strong>Access Policy</strong> uses Segment Groups: 'Finance Team → Finance-Apps Segment Group = Allow'. Benefits of grouping: one policy covers multiple apps, easier management at scale, consistent access for related application suites."
+  },
+  {
+    q: "A ZPA administrator wants to ensure that only corporate-managed devices can access sensitive financial applications. How is this enforced?",
+    opts: [
+      "Enable MFA — multi-factor authentication is sufficient to ensure device is corporate-managed",
+      "Require users to use their corporate email address when authenticating",
+      "Use device certificate authentication — ZPA verifies the device certificate issued by corporate PKI before granting access",
+      "Configure IP restrictions — only allow access from the corporate office IP range"
+    ],
+    ans: 2,
+    exp: "<strong>Device Certificate Authentication in ZPA:</strong> Corporate-managed devices have a certificate issued by the company's PKI (or MDM like Intune/JAMF). ZPA can require this certificate as part of the trust evaluation. Configuration: (1) Configure <strong>Trusted Network policy</strong> or <strong>Device Posture Profile</strong> in ZPA. (2) ZPA checks for presence of machine certificate. (3) Unmanaged personal devices = no certificate = access denied. <strong>Additional device posture checks:</strong> OS version, patch level, EDR agent presence (CrowdStrike, Defender), disk encryption status. Integration: ZPA + CrowdStrike = real-time device health. ZPA + Intune = MDM compliance check. MFA alone = proves identity, not device management status."
+  },
+  {
+    q: "What is ZPA's 'App-Based Access' versus 'Browser-Based Access' and when would you use each?",
+    opts: [
+      "App-Based Access requires installing software on every application server; Browser-Based Access uses reverse proxy",
+      "App-Based Access uses Zscaler Client Connector agent on the endpoint for all app types; Browser-Based Access (clientless) uses a web browser without any agent — ideal for contractors and unmanaged devices",
+      "App-Based Access only supports TCP applications; Browser-Based Access supports all protocols",
+      "Browser-Based Access is more secure than App-Based Access because browsers sandbox application traffic"
+    ],
+    ans: 1,
+    exp: "<strong>ZPA Access Types:</strong> <strong>App-Based Access (Zscaler Client Connector / ZApp agent):</strong> Agent installed on corporate endpoint. Supports ANY app — web apps, thick clients, SSH, RDP, custom protocols. Full device posture checking. Best for: corporate managed laptops, full-time employees. <strong>Browser-Based Access (Clientless ZPA):</strong> No agent required. User opens a web browser → authenticated → accesses web-based internal apps through Zscaler's reverse proxy. Supports: HTTP/HTTPS web apps only. Best for: contractors, partners, BYOD devices, third-party vendors. Isolation option: combine with <strong>Browser Isolation</strong> — contractor accesses app in isolated remote browser session — zero data downloaded to their device."
+  },
+  {
+    q: "A ZPA App Connector shows as 'Disconnected' in the ZPA admin portal. What should be the FIRST troubleshooting step?",
+    opts: [
+      "Reinstall the App Connector software from scratch",
+      "Check if the App Connector VM can make outbound HTTPS (port 443) connections to Zscaler cloud — connectivity is required for the outbound registration tunnel",
+      "Check if the application server is running and responding on its configured port",
+      "Restart the ZPA service on the App Connector VM"
+    ],
+    ans: 1,
+    exp: "<strong>ZPA App Connector Troubleshooting — Disconnected Status:</strong> App Connector communicates with Zscaler cloud via <strong>outbound port 443 (HTTPS)</strong>. If disconnected: (1) <strong>Check outbound connectivity:</strong> from App Connector VM, can it reach *.zscaler.net or *.zscalerone.net on 443? (2) <strong>Check firewall rules:</strong> Is the data centre firewall blocking outbound 443 from the App Connector VM? (3) <strong>Check DNS resolution:</strong> Can App Connector resolve Zscaler cloud FQDNs? (4) <strong>Check proxy settings:</strong> Is there an upstream proxy that requires authentication? (5) Check <strong>certificate trust:</strong> App Connector must trust Zscaler's CA. Logs: /var/log/zscaler/ on Linux VM. Most disconnection issues = outbound 443 blocked by firewall."
+  },
+  {
+    q: "What is the ZPA Privileged Remote Access (PRA) feature and when is it used?",
+    opts: [
+      "PRA is ZPA's MFA feature requiring privileged users to use hardware tokens",
+      "PRA is a privileged access management vault that stores and rotates admin credentials",
+      "PRA restricts ZPA access to users with privileged AD group membership only",
+      "PRA provides secure browser-based access to RDP, SSH, and VNC sessions without requiring a VPN or agent — ideal for privileged access to servers by IT admins and third-party vendors"
+    ],
+    ans: 3,
+    exp: "<strong>ZPA Privileged Remote Access (PRA)</strong>: Allows administrators and vendors to access servers via RDP/SSH/VNC through a <strong>browser-based interface</strong> — no VPN, no agent, no RDP client needed. How it works: user authenticated → opens browser → Zscaler proxies the RDP/SSH session → admin sees desktop/terminal in browser window. Security benefits: (1) <strong>No credentials exposed</strong> to the user's device (credential injection option). (2) <strong>Session recording</strong> — full video recording of admin sessions for compliance. (3) <strong>Just-In-Time access</strong> — time-limited sessions. (4) <strong>No direct network access</strong> — admin can't access anything except the specific server. Perfect for: third-party vendor support, privileged admin access to production servers, PAM integration."
+  },
+  {
+    q: "How does ZPA handle split tunnelling for DNS resolution of private application FQDNs?",
+    opts: [
+      "Private FQDNs must always use IP addresses in ZPA — DNS resolution is not supported for private apps",
+      "ZPA uses its own public DNS resolver for all queries — private FQDNs are resolved by Zscaler cloud",
+      "ZPA sends all DNS queries to the corporate DNS server regardless of the domain",
+      "ZPA uses DNS search domains configured in the App Profile to route DNS queries for private FQDNs to internal DNS servers through the App Connector tunnel"
+    ],
+    ans: 3,
+    exp: "<strong>ZPA DNS Resolution for Private Apps:</strong> Private apps use internal FQDNs (e.g., intranet.company.internal) that public DNS can't resolve. ZPA solution: (1) Configure <strong>DNS search domains</strong> in the App Profile (e.g., company.internal, corp.company.com). (2) When ZApp sees a DNS query for a configured domain, it routes it through the ZPA tunnel to the <strong>App Connector</strong>, which forwards to internal DNS server. (3) Public DNS queries go directly to public DNS (split DNS). This = <strong>DNS split tunnelling</strong>: private domains → through ZPA → internal DNS. Public domains → public DNS. <strong>Configure:</strong> ZPA Admin Portal → App Profiles → DNS Search Domains + Internal DNS server IPs. Without this, users can't reach apps by FQDN."
+  },
+  {
+    q: "A company migrates its SAP application to AWS. How does ZPA protect access to this cloud-hosted private application?",
+    opts: [
+      "Deploy a ZPA App Connector in the AWS VPC (using AWS Marketplace AMI) — SAP gets no public IP, access is brokered through Zscaler cloud same as on-premises",
+      "AWS security groups provide sufficient protection — ZPA is only needed for on-premises apps",
+      "ZPA cannot protect cloud-hosted applications — use ZIA for cloud app security instead",
+      "Configure AWS DirectConnect tunnel to Zscaler cloud for private application access"
+    ],
+    ans: 0,
+    exp: "<strong>ZPA in AWS (and any cloud):</strong> ZPA App Connector is cloud-agnostic. Deploy process: (1) Launch <strong>ZPA App Connector AMI</strong> from AWS Marketplace in the VPC where SAP runs. (2) App Connector makes outbound connection to Zscaler cloud. (3) <strong>SAP EC2 instance has NO public IP, no security group rule allowing inbound internet</strong> — completely dark to internet. (4) Access: User → ZPA → Zscaler Cloud → App Connector in VPC → SAP. Same model works in Azure (Azure Marketplace), GCP (GCP Marketplace), and any data centre. Benefits: SAP is invisible to internet scanners, no VPC peering needed, works across multi-cloud environments consistently."
+  },
+  {
+    q: "What is Zscaler Client Connector (ZCC/ZApp) and what does it do on the endpoint?",
+    opts: [
+      "ZCC is an EDR agent that provides endpoint security monitoring in addition to network access",
+      "ZCC is a lightweight agent installed on endpoints that tunnels internet traffic to ZIA AND private application traffic to ZPA — a single agent for both services",
+      "ZCC is a VPN client that creates an IPsec tunnel to the nearest Zscaler data centre",
+      "ZCC is a browser extension that redirects web traffic to Zscaler proxies"
+    ],
+    ans: 1,
+    exp: "<strong>Zscaler Client Connector (ZCC)</strong> = the unified endpoint agent for Zscaler services: (1) <strong>ZIA traffic:</strong> Forwards internet-bound traffic to ZIA for inspection (HTTP/HTTPS, DNS). (2) <strong>ZPA traffic:</strong> Handles private application access via ZPA tunnels. (3) <strong>Device posture:</strong> Collects device health signals (OS version, patch status, EDR presence, disk encryption) and sends to Zscaler for trust evaluation. (4) Supports: Windows, macOS, iOS, Android. (5) Deployment: via MDM (Intune, JAMF, SCCM), GPO, manual install. (6) <strong>Tunnel modes:</strong> Tunnel 1.0 (proxy-based), Tunnel 2.0 (full tunnel mode). Key admin task: ensure ZCC is deployed and updated on all managed endpoints."
+  },
+  {
+    q: "What is the Zscaler Internet Access Log Streaming Service (NSS) and why would an administrator configure it?",
+    opts: [
+      "NSS is a network speed service that optimises traffic routing between users and Zscaler PoPs",
+      "NSS (Nanolog Streaming Service) streams ZIA transaction logs in real-time to a SIEM (Splunk, QRadar, Sentinel) for centralised security monitoring and threat hunting",
+      "NSS is used to stream configuration changes from the ZIA admin portal to App Connectors",
+      "NSS is Zscaler's internal logging system — administrators cannot access raw logs"
+    ],
+    ans: 1,
+    exp: "<strong>Zscaler NSS (Nanolog Streaming Service)</strong>: ZIA generates detailed logs for every transaction (web requests, DNS queries, firewall events, DLP incidents). NSS streams these logs: (1) <strong>Real-time export</strong> to SIEM platforms (Splunk, IBM QRadar, Microsoft Sentinel, ArcSight). (2) Formats: <strong>CEF, LEEF, JSON, CSV</strong>. (3) NSS VM deployed in customer environment receives logs from Zscaler cloud and forwards to SIEM. (4) Modern alternative: <strong>Cloud NSS</strong> — direct cloud-to-cloud log streaming without on-premise VM. Use cases: threat hunting, compliance reporting, incident response, user behaviour analytics (UEBA). Without NSS → logs only visible in ZIA portal (limited retention). With NSS → full historical log in SIEM."
+  },
+  {
+    q: "An administrator notices that a user's ZIA traffic shows as 'unauthenticated' even though ZApp is running. What is the most likely cause?",
+    opts: [
+      "The user's internet connection is too slow for ZApp to authenticate",
+      "ZApp is not enrolled with the correct Zscaler tenant — the user is forwarding traffic anonymously",
+      "The user is on a guest WiFi network which bypasses ZApp authentication",
+      "ZApp authentication failed — the user's IdP session expired or SSO token is invalid; ZIA is applying the unauthenticated user policy"
+    ],
+    ans: 3,
+    exp: "<strong>ZIA Unauthenticated Traffic:</strong> ZIA applies different policies to authenticated vs unauthenticated users. When ZApp cannot authenticate the user: (1) <strong>IdP/SSO token expired</strong> — user needs to re-authenticate via corporate IdP (Azure AD, Okta). (2) <strong>SAML assertion issue</strong> — IdP configuration mismatch. (3) <strong>ZApp not logged in</strong> — user dismissed the login prompt. ZIA falls back to <strong>unauthenticated user policy</strong> — typically more restrictive (block most categories, only allow essential sites). <strong>Admin troubleshooting:</strong> ZIA Logs → check Authentication field. Ask user to click ZApp icon → verify logged in status. Check SAML assertion validity in IdP logs. Ensure ZApp is enrolled to the correct cloud (zscaler.net / zscalerone.net / zscalertwo.net)."
+  },
+  {
+    q: "How does Zscaler integrate with Azure Active Directory (Azure AD/Entra ID) for user authentication?",
+    opts: [
+      "Zscaler creates its own user directory that syncs passwords from Azure AD",
+      "Zscaler uses SAML 2.0 for SSO — Azure AD acts as the Identity Provider (IdP), Zscaler is the Service Provider (SP); user attributes and group memberships are synced via SCIM",
+      "Zscaler requires Active Directory Domain Services (ADDS) — it cannot use cloud-only Azure AD",
+      "Zscaler uses LDAP to query Azure AD directly for user group membership"
+    ],
+    ans: 1,
+    exp: "<strong>Zscaler + Azure AD Integration:</strong> (1) <strong>SAML 2.0 SSO</strong>: Azure AD = Identity Provider. Zscaler ZIA/ZPA = Service Provider. User opens Zscaler → redirected to Azure AD login → authenticates (including MFA) → Azure AD sends SAML assertion to Zscaler → Zscaler grants access. (2) <strong>SCIM (System for Cross-domain Identity Management)</strong>: Automatically provisions/deprovisions users and groups from Azure AD to Zscaler. User leaves company → deprovisioned in Azure AD → automatically removed from Zscaler. (3) <strong>Group sync</strong>: Azure AD security groups synced to Zscaler → used in URL Filtering, ZPA Access Policies, DLP rules. (4) ZCC authentication uses the same Azure AD SSO — transparent to users."
+  },
+  {
+    q: "What is Zscaler's 'Bandwidth Control' feature in ZIA and why is it operationally important?",
+    opts: [
+      "Bandwidth Control sets the maximum internet speed for the entire organisation",
+      "Bandwidth Control throttles traffic to/from specific websites to prevent Zscaler PoPs from being overloaded",
+      "Bandwidth Control is only available for ZPA traffic — ZIA does not support QoS policies",
+      "Bandwidth Control applies QoS policies to prioritise critical business applications (Microsoft Teams, SAP) over recreational traffic (YouTube, streaming) — preventing bandwidth hogging"
+    ],
+    ans: 3,
+    exp: "<strong>ZIA Bandwidth Control</strong>: In environments with limited internet bandwidth, some applications (video streaming, large downloads) can saturate the connection and degrade critical business apps. Bandwidth Control: (1) <strong>Prioritise</strong> Microsoft Teams/Zoom/SAP over YouTube/Netflix. (2) <strong>Cap</strong> recreational categories (streaming, file sharing) to maximum X% of bandwidth. (3) <strong>Guarantee minimum bandwidth</strong> for critical business apps. (4) Apply rules based on: user group (executives get priority), application category, time of day. Configuration: ZIA → Bandwidth Control → Rules → define max/guaranteed bandwidth per category/app/user group. Particularly important for: branch offices with limited WAN bandwidth, SD-WAN environments with ZIA integration."
+  },
+  {
+    q: "What is Shadow IT in the context of ZIA, and how does Zscaler help manage it?",
+    opts: [
+      "Shadow IT refers to dark web access by employees — ZIA's DNS Security blocks dark web domains",
+      "Shadow IT refers to IT staff who secretly monitor user internet activity",
+      "Shadow IT is hardware purchased by departments without IT approval — ZIA cannot detect this",
+      "Shadow IT is the use of unauthorised cloud applications and services by employees without IT knowledge — ZIA's Cloud App Control discovers and risk-rates all cloud apps in use"
+    ],
+    ans: 3,
+    exp: "<strong>Shadow IT</strong> = employees using cloud applications (Dropbox, personal Gmail, Telegram, WhatsApp Web, random SaaS tools) that IT has not approved, assessed, or secured. Risks: data exfiltration to unsanctioned apps, compliance violations, malware distribution. <strong>ZIA Shadow IT Discovery:</strong> (1) Every cloud app accessed through ZIA is analysed and assigned a <strong>Cloud App Risk Score (1-100)</strong> based on: certifications, data encryption, breach history, terms of service. (2) Admin gets a <strong>Shadow IT Report</strong> — shows all cloud apps in use across the organisation. (3) Action: sanctioned apps = allow/monitor. High-risk unsanctioned apps = block. Medium-risk = caution/alert. (4) Cloud App Control: granular per-app policies (allow LinkedIn but block LinkedIn direct messaging)."
+  },
+  {
+    q: "An administrator wants to ensure ZIA policies are enforced when users are off the corporate network (home, coffee shop). What must be deployed?",
+    opts: [
+      "Zscaler Client Connector (ZApp) agent on all user devices — it enforces ZIA policy regardless of network location by tunnelling all traffic to Zscaler cloud",
+      "Users must manually configure browser proxy settings to point to ZIA when off network",
+      "Firewall rules on users' home routers to forward traffic to ZIA",
+      "A site-to-site VPN from every user's home network to the corporate network"
+    ],
+    ans: 0,
+    exp: "<strong>Roaming User Protection with ZCC:</strong> Traditional perimeter security = only protects users on the corporate network. When users go home/travel: (1) No network controls. (2) No content inspection. (3) No DLP. <strong>ZCC solution:</strong> Agent installed on endpoint automatically detects network location. On corporate network → can use tunnel or PAC file. Off corporate network → ZCC automatically tunnels ALL traffic to Zscaler cloud. User gets identical protection everywhere. <strong>Trusted Network Detection:</strong> ZCC can detect if the user is on a trusted network (corporate office) and apply different tunnel modes. <strong>Always-on enforcement:</strong> ZCC can be configured so users cannot bypass or disable it without IT credentials — ensures 100% traffic inspection."
+  },
+  {
+    q: "What is Zscaler Browser Isolation (ZBI) and what threat does it mitigate?",
+    opts: [
+      "ZBI is a browser lockdown feature that prevents users from installing browser extensions",
+      "ZBI creates an isolated VPN tunnel for browser traffic separate from ZApp's main tunnel",
+      "ZBI streams a remote rendering of websites to the user's browser — malicious code executes in Zscaler's cloud, never on the user's endpoint — protecting against browser-borne malware and zero-days",
+      "ZBI is a feature that blocks all browser-based applications for security compliance"
+    ],
+    ans: 2,
+    exp: "<strong>Zscaler Browser Isolation (ZBI)</strong> / Cloud Browser Isolation: Instead of delivering actual web content to the user's browser (which can execute malicious JavaScript, exploit browser vulnerabilities): (1) Website loads in a <strong>Zscaler cloud browser</strong> (sandboxed remote execution). (2) Only a <strong>pixel stream / rendering</strong> is sent to the user's browser (like a live screenshot). (3) No actual web code reaches the endpoint. (4) Malware, exploits, zero-days = execute in Zscaler cloud container = destroyed after session. Use cases: risky website categories, contractor/BYOD access to internal apps, uncategorised URLs. Additional control: <strong>read-only mode</strong> (no downloads, no clipboard copy), <strong>watermarking</strong> (visual identifier on isolated sessions for DLP)."
+  },
+  {
+    q: "What is a ZPA Posture Profile and how does it affect access decisions?",
+    opts: [
+      "A Posture Profile is used to configure how ZPA App Connectors perform network address translation",
+      "Posture Profiles are compliance reports generated by ZPA for regulatory audits",
+      "A Posture Profile is a user profile template defining the baseline security configuration for ZPA administrators",
+      "A Posture Profile defines device health criteria (OS version, patch level, EDR status) that ZPA evaluates in real-time — devices not meeting the profile can be denied access or given restricted access"
+    ],
+    ans: 3,
+    exp: "<strong>ZPA Posture Profile</strong>: Defines conditions a device MUST meet for access. Criteria include: (1) <strong>OS and version</strong> (Windows 10/11 minimum, macOS 12+). (2) <strong>Patch level</strong> (no critical unpatched CVEs). (3) <strong>EDR/AV status</strong> (CrowdStrike running, Defender enabled). (4) <strong>Disk encryption</strong> (BitLocker/FileVault enabled). (5) <strong>Certificate</strong> (corporate cert present). (6) <strong>MDM enrollment</strong> (Intune/JAMF compliant). Integration: ZPA reads posture signals from <strong>Zscaler Client Connector</strong> which collects endpoint data. Access Policy = IF User Group = Finance AND Posture Profile = Compliant THEN Allow. If posture fails mid-session → session can be terminated automatically. Real-time enforcement = continuous posture checking, not just at login."
+  },
+  {
+    q: "What is Zscaler's 'Inspect All, Trust None' approach to SSL/TLS traffic?",
+    opts: [
+      "Zscaler performs full SSL/TLS decryption and inspection on all traffic except explicitly defined bypass categories — addressing the problem that 90%+ of malware now uses encrypted channels",
+      "Zscaler decrypts ALL SSL/TLS traffic for inspection by default, with no exceptions",
+      "Zscaler blocks all SSL/TLS traffic and requires organisations to use unencrypted HTTP instead",
+      "Zscaler only inspects SSL/TLS traffic from unknown websites — traffic from known enterprise apps is trusted without inspection"
+    ],
+    ans: 0,
+    exp: "<strong>SSL Inspection Reality:</strong> Over 90% of internet traffic is now HTTPS. Most modern malware uses encrypted channels to evade detection. Without SSL inspection: ZIA sees only encrypted blobs — cannot detect malware, DLP violations, policy violations. <strong>Zscaler approach:</strong> Decrypt ALL traffic → inspect → re-encrypt. Exceptions (SSL bypass): (1) Banking/financial sites (regulatory). (2) Healthcare portals (HIPAA). (3) Apps with certificate pinning (break if decrypted). (4) Personal/privacy-sensitive categories. <strong>Scale advantage:</strong> Zscaler performs SSL inspection at cloud scale — a traditional firewall performing SSL inspection at this volume would be overwhelmed. All Zscaler PoPs = distributed inspection capacity = no performance degradation."
+  },
+  {
+    q: "A ZPA administrator needs to provide a contractor temporary access to ONE specific internal web application for 5 days. What is the MOST secure and operationally efficient approach?",
+    opts: [
+      "Create a temporary VPN account with a 5-day expiry and full network access",
+      "Email the contractor the internal IP address and temporary credentials",
+      "Create a ZPA Access Policy with time-based access for the contractor's email/IdP group, scoped to only the specific Application Segment — expires automatically after 5 days",
+      "Deploy a temporary App Connector in the DMZ and give the contractor direct access"
+    ],
+    ans: 2,
+    exp: "<strong>ZPA Temporary Contractor Access — Best Practice:</strong> (1) <strong>Create or use contractor IdP group</strong> in Azure AD/Okta — add contractor's email. (2) <strong>Create ZPA Access Policy</strong>: Source = Contractor Group | Application = Specific App Segment ONLY | Time restriction = valid for 5 days. (3) Use <strong>Clientless ZPA (browser-based)</strong> if contractor doesn't have ZApp — no agent installation needed. (4) After 5 days: remove from IdP group OR policy auto-expires. (5) Optionally: enable <strong>session recording</strong> for contractor sessions. What this achieves: contractor can ONLY reach that one app. Cannot see any other applications. Cannot scan or access the network. Access automatically removed. Full audit trail. VPN alternative = contractor on full network = massive risk."
+  },
+  {
+    q: "What is the Zscaler Zero Trust Exchange and how does it relate to ZIA and ZPA?",
+    opts: [
+      "Zero Trust Exchange is Zscaler's cloud platform — the underlying architecture that powers ALL Zscaler services including ZIA and ZPA — a globally distributed security cloud",
+      "Zero Trust Exchange is a specific product for financial services organisations requiring zero trust compliance",
+      "Zero Trust Exchange is Zscaler's hardware appliance line that replaces traditional firewalls",
+      "Zero Trust Exchange is Zscaler's threat intelligence database that powers its malware detection"
+    ],
+    ans: 0,
+    exp: "<strong>Zscaler Zero Trust Exchange (ZTX)</strong>: The underlying platform architecture of ALL Zscaler services. It is: (1) <strong>Globally distributed</strong> — 150+ data centres (Points of Presence) worldwide. (2) <strong>Cloud-native proxy architecture</strong> — all traffic flows through the exchange for inspection. (3) <strong>Services running on ZTX:</strong> ZIA (internet security), ZPA (private app access), ZDX (digital experience), ZCSPM (cloud security posture), ZWP (workload protection). (4) <strong>Scale:</strong> processes 300+ billion transactions daily. (5) <strong>Architecture principle:</strong> traffic flows THROUGH the exchange (not around it) — inside-out connections, never direct user-to-app without policy enforcement. ZIA = ZTX for internet. ZPA = ZTX for private apps. Same underlying platform."
+  },
+  {
+    q: "An organisation uses Zscaler. Their security team receives a threat intelligence report about a new ransomware C2 domain. How quickly can they block it, and across how many users?",
+    opts: [
+      "They can create a custom URL category with the domain and apply a block policy — takes effect within minutes and applies to ALL users globally across all locations simultaneously",
+      "They must wait for Zscaler to update its threat feeds in the next scheduled update (weekly)",
+      "They must deploy a signature update to each endpoint's antivirus software",
+      "They must update firewall rules at each office location separately — takes several hours"
+    ],
+    ans: 0,
+    exp: "<strong>Zscaler Real-Time Policy Response:</strong> This is one of ZIA's core operational advantages: (1) Admin logs into ZIA portal. (2) Creates <strong>Custom URL Category</strong> → adds the C2 domain. (3) Applies <strong>Block policy</strong> to the custom category. (4) Policy propagates to ALL Zscaler PoPs globally within <strong>seconds to minutes</strong>. (5) ALL users — office, home, branch, mobile — are protected immediately. Traditional approach: push firewall rule to every office firewall (hours), update endpoint AV signatures (next scan cycle), hope remote workers update. Zscaler = <strong>one policy change → instant global enforcement</strong>. This is the power of cloud-delivered security. Zscaler also has an automatic threat feed — new C2 domains often blocked before the customer even knows about them."
+  },
+  {
+    q: "What is ZPA's 'Application Discovery' feature and why is it useful during ZPA deployment?",
+    opts: [
+      "Application Discovery scans the internet for public-facing versions of internal applications",
+      "Application Discovery automatically identifies all private applications and their network details (IP, port, protocol) by analysing App Connector traffic — helps build Application Segments without manual discovery",
+      "Application Discovery is a vulnerability scanner that tests internal applications for security weaknesses",
+      "Application Discovery maps user activity to specific applications for licence optimisation"
+    ],
+    ans: 1,
+    exp: "<strong>ZPA Application Discovery:</strong> One of the hardest parts of ZPA deployment = knowing what applications exist, what ports they use, and where they run. Application Discovery solves this: (1) App Connectors are deployed in the environment. (2) They analyse network traffic and report what applications and services are being accessed. (3) ZPA portal shows discovered applications: IP addresses, FQDNs, ports, protocols, access frequency. (4) Administrator reviews the list → with one click, converts a discovered application into an <strong>Application Segment</strong>. Before Application Discovery: admins had to manually survey every team — 'what apps do you use and on what ports?' — took weeks. With Application Discovery: automated, accurate, fast. Critical for large enterprises with complex application environments."
+  },
+  {
+    q: "What is the Zscaler Digital Experience (ZDX) product and how does it complement ZIA/ZPA?",
+    opts: [
+      "ZDX is Zscaler's digital rights management solution for protecting content",
+      "ZDX monitors end-to-end application performance and user experience — identifying whether slowness is caused by the endpoint, network, Zscaler itself, or the application — complementing ZIA/ZPA by diagnosing performance issues",
+      "ZDX is Zscaler's SIEM product for centralised log management",
+      "ZDX is a developer tool for testing application security before deployment"
+    ],
+    ans: 1,
+    exp: "<strong>ZDX (Zscaler Digital Experience)</strong>: When users complain 'the internet is slow' or 'Teams keeps cutting out' — ZDX pinpoints WHY. Monitors: (1) <strong>Endpoint performance</strong> — CPU, memory, WiFi signal, battery. (2) <strong>Network path</strong> — hop-by-hop latency analysis from user to Zscaler PoP to application. (3) <strong>Zscaler cloud performance</strong> — is ZIA/ZPA introducing latency? (4) <strong>Application performance</strong> — is Microsoft 365/SAP/the app itself slow? Data collected by ZCC agent. Dashboard: see all users' experience scores in real-time. Proactive alerting: detect degradation before help desk tickets pile up. Integration with ZIA/ZPA: correlate performance issues with ZIA inspection or ZPA tunnel health. Answers: 'Is it Zscaler or is it the app?'"
+  },
+  {
+    q: "How does ZPA enforce the 'never trust, always verify' principle for each new session, not just at initial login?",
+    opts: [
+      "ZPA trusts the initial authentication for the entire working day — reverification only happens at next login",
+      "ZPA continuously evaluates trust signals (device posture, user behaviour, IdP session validity) throughout the session — posture changes mid-session can trigger re-authentication or access revocation",
+      "ZPA re-authenticates users every 15 minutes automatically",
+      "ZPA relies on the IdP to revoke access — Zscaler itself does not perform continuous verification"
+    ],
+    ans: 1,
+    exp: "<strong>Continuous Verification in ZPA:</strong> Zero Trust is not just about the login moment — it's continuous. ZPA mechanisms: (1) <strong>Device posture re-evaluation</strong>: if EDR agent stops (user kills CrowdStrike), posture profile fails → ZPA can immediately terminate active sessions. (2) <strong>IdP session validation</strong>: if user's Azure AD session is revoked (account disabled, password reset), ZPA detects this and terminates ZPA access. (3) <strong>Timeout policies</strong>: sessions expire after inactivity. (4) <strong>Risk score changes</strong>: if user's risk score spikes (anomalous behaviour), access can be restricted. (5) <strong>JIT (Just-In-Time) access</strong>: sessions scoped to minimum required time. This is continuous Zero Trust — not 'verify once, trust forever'."
+  },
+  {
+    q: "What should a Zscaler administrator check FIRST when users report that Zscaler is causing slow internet speeds?",
+    opts: [
+      "Check ZDX for user experience scores, verify ZApp tunnel mode, check if users are connecting to the optimal Zscaler PoP, and review SSL inspection bypass list for streaming/large file sites",
+      "Restart all App Connectors to refresh their connections to Zscaler cloud",
+      "Immediately disable SSL inspection — it is always the cause of performance issues",
+      "Increase the timeout values in ZIA firewall policies to allow slower connections more time"
+    ],
+    ans: 0,
+    exp: "<strong>ZIA Performance Troubleshooting checklist:</strong> (1) <strong>ZDX</strong>: check user's experience score — where is the latency? Endpoint? Network? Zscaler? App? (2) <strong>ZApp Tunnel mode</strong>: Tunnel 2.0 is faster than Tunnel 1.0. Ensure optimal mode. (3) <strong>PoP selection</strong>: Is the user connecting to the nearest Zscaler PoP? ZApp should auto-select. (4) <strong>SSL inspection bypass</strong>: streaming sites (Netflix, YouTube), Windows Update, large file downloads should be bypassed to avoid inspection overhead. (5) <strong>Bandwidth control</strong>: check if bandwidth throttling is applied to the affected traffic. (6) <strong>ZIA health dashboard</strong>: check for any Zscaler platform incidents at trust.zscaler.com. Never disable SSL inspection as first step — find the root cause first."
+  },
+  {
+    q: "What is the recommended approach for ZIA policy ordering when multiple URL Filtering rules could match the same traffic?",
+    opts: [
+      "ZIA evaluates URL Filtering rules top-to-bottom and applies the FIRST matching rule — more specific rules must be placed above more general rules to take effect",
+      "ZIA evaluates all matching rules and applies the most restrictive action automatically",
+      "ZIA evaluates URL Filtering rules bottom-to-top — the last matching rule wins",
+      "All URL Filtering rules are evaluated simultaneously — ZIA uses a scoring system to determine the final action"
+    ],
+    ans: 0,
+    exp: "<strong>ZIA Policy Order — Critical Admin Knowledge:</strong> ZIA evaluates policies <strong>top-to-bottom, first match wins</strong>. Example: Rule 1 (Priority 1): HR Group → Recruitment Sites → Allow. Rule 2 (Priority 2): All Users → Social Media → Block. If HR user visits LinkedIn (Social Media + Recruitment): Rule 1 matches first → Allow. If Rule 1 were below Rule 2: Rule 2 matches first → Block. <strong>Best practices:</strong> (1) Put exception rules (allow specific groups) ABOVE general rules. (2) Put more specific destinations above broader categories. (3) Last rule = 'All Users → All Destinations → Allow' or Default rule. (4) Regularly audit rule order — stale rules at top can override intended policies. Same top-down logic applies to ZPA Access Policies and Firewall policies."
+  },
+  {
+    q: "What is Zscaler's recommended architecture for a company adopting both ZIA and ZPA to replace their existing VPN and MPLS infrastructure?",
+    opts: [
+      "Keep MPLS as primary and use ZIA/ZPA as backup — never fully decommission legacy infrastructure",
+      "Deploy Zscaler only for internet traffic — MPLS should be retained for private application access",
+      "Migrate all private applications to public cloud first — ZPA only works with cloud-hosted apps",
+      "Replace MPLS with SD-WAN integrated with ZIA at branches; replace VPN with ZPA for remote access; retire perimeter firewalls at branches; ZCC on all endpoints"
+    ],
+    ans: 3,
+    exp: "<strong>Zscaler Full Transformation Architecture:</strong> (1) <strong>Branch offices</strong>: Deploy SD-WAN (Meraki, VeloCloud) → integrate with ZIA via automated IPsec/GRE tunnels → local internet breakout → no MPLS backhauling. Branch firewalls = decommissioned or simplified. (2) <strong>Remote users</strong>: ZCC (ZApp) on all laptops → ZIA for internet → ZPA for private app access → VPN decommissioned. (3) <strong>Private apps</strong>: ZPA App Connectors in data centres and cloud → apps dark to internet. (4) <strong>Authentication</strong>: SAML SSO via Azure AD/Okta. (5) <strong>Monitoring</strong>: NSS → SIEM. ZDX for experience monitoring. Benefits: reduced cost (MPLS expensive), improved performance (local breakout), better security, consistent policy everywhere."
+  }
+];
+
+let correct = 0, wrong = 0, answered = 0;
+const total = Q.length;
+
+function build() {
+  const wrap = document.getElementById('qwrap');
+  wrap.innerHTML = '';
+  wrongAnswers = [];
+  const KEYS = ['A','B','C','D'];
+  Q.forEach(function(q, i) {
+    var card = document.createElement('div'); card.className = 'qcard'; card.id = 'c'+i;
+    var header = document.createElement('div'); header.className = 'qcard-header';
+    var qnum = document.createElement('div'); qnum.className = 'qnum'; qnum.textContent = String(i+1).padStart(2,'0');
+    var qtext = document.createElement('div'); qtext.className = 'qtext'; qtext.textContent = q.q;
+    header.appendChild(qnum); header.appendChild(qtext);
+    var body = document.createElement('div'); body.className = 'qcard-body';
+    var optionsDiv = document.createElement('div'); optionsDiv.className = 'options'; optionsDiv.id = 'o'+i;
+    q.opts.forEach(function(optText, j) {
+      var btn = document.createElement('button'); btn.className = 'opt-btn'; btn.id = 'b'+i+'_'+j; btn.type = 'button';
+      (function(qi, sel) { btn.addEventListener('click', function() { pick(qi, sel); }); })(i, j);
+      var keyDiv = document.createElement('div'); keyDiv.className = 'opt-key'; keyDiv.textContent = KEYS[j];
+      var textDiv = document.createElement('div'); textDiv.className = 'opt-text'; textDiv.textContent = optText;
+      btn.appendChild(keyDiv); btn.appendChild(textDiv); optionsDiv.appendChild(btn);
+    });
+    body.appendChild(optionsDiv);
+    var expDiv = document.createElement('div'); expDiv.className = 'explanation'; expDiv.id = 'e'+i;
+    var expIcon = document.createElement('span'); expIcon.className = 'exp-icon'; expIcon.textContent = '💡';
+    var expText = document.createElement('span'); expText.className = 'exp-text'; expText.innerHTML = q.exp;
+    expDiv.appendChild(expIcon); expDiv.appendChild(expText);
+    card.appendChild(header); card.appendChild(body); card.appendChild(expDiv);
+    wrap.appendChild(card);
+  });
+}
+
+function pick(qi, sel) {
+  if (!studentName) {
+    const inp = document.getElementById('naam-input');
+    inp.style.borderColor = '#c0392b'; inp.focus();
+    setTimeout(() => inp.style.borderColor = 'rgba(200,151,58,0.25)', 2000);
+    return;
+  }
+  const q = Q[qi];
+  const card = document.getElementById('c'+qi);
+  const btns = document.querySelectorAll('#o'+qi+' .opt-btn');
+  const exp = document.getElementById('e'+qi);
+  const KEYS = ['A','B','C','D'];
+  btns.forEach((b, j) => {
+    b.disabled = true;
+    if (j === q.ans) b.classList.add('opt-correct');
+    else if (j === sel) b.classList.add('opt-wrong');
+    else b.classList.add('opt-dim');
+  });
+  exp.classList.add('show');
+  const tag = document.createElement('div');
+  if (sel === q.ans) {
+    correct++;
+    card.classList.add('state-correct');
+    tag.className = 'result-tag rt-correct';
+    tag.innerHTML = '🔥 &nbsp;Correct!';
+  } else {
+    wrong++;
+    card.classList.add('state-wrong');
+    tag.className = 'result-tag rt-wrong';
+    tag.innerHTML = '😢 &nbsp;Incorrect — Correct: ' + KEYS[q.ans];
+    wrongAnswers.push({ qnum: qi+1, question: q.q, opts: q.opts, chosen: sel, correct: q.ans, exp: q.exp });
+  }
+  exp.after(tag);
+  answered++;
+  updateUI();
+  if (answered === total) { clearInterval(timerInterval); setTimeout(showFinal, 700); }
+}
+
+function updateUI() {
+  document.getElementById('sc').textContent = correct;
+  document.getElementById('sw').textContent = wrong;
+  const pct = Math.round((correct / answered) * 100);
+  document.getElementById('sp').textContent = pct + '%';
+  document.getElementById('pf').style.width = ((answered / total) * 100) + '%';
+}
+
+function timeFmt() {
+  return String(Math.floor(elapsed/60)).padStart(2,'0') + ':' + String(elapsed%60).padStart(2,'0');
+}
+
+function showFinal() {
+  const pct = Math.round((correct / total) * 100);
+  document.getElementById('fscore').innerHTML = correct + '<span>/' + total + '</span>';
+  document.getElementById('fpct').textContent = pct + '% Score';
+  document.getElementById('fc').textContent = correct;
+  document.getElementById('fw').textContent = wrong;
+  document.getElementById('ft').textContent = total;
+  let msg = '';
+  if (pct >= 85) msg = 'Outstanding! Zscaler pe command mazboot hai. CISSP exam ke liye taiyaar ho.';
+  else if (pct >= 70) msg = 'Passing score hai. Kuch concepts review karo — especially risk calculations aur legal frameworks.';
+  else if (pct >= 50) msg = 'Improvement ki zarurat hai. Risk formulas (ALE/SLE/ARO), access control models, aur laws dobara padhna.';
+  else msg = 'Zscaler ke core concepts ko deeply padhna zaroori hai — especially governance, risk treatment, aur compliance frameworks.';
+  document.getElementById('fmsg').textContent = msg;
+  const f = document.getElementById('final');
+  f.style.display = 'block';
+  f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  uploadResultToGitHub(pct);
+}
+
+// ── BUILD RESULT HTML ──
+function buildResultHTML(pct) {
+  const KEYS = ['A','B','C','D'];
+  const now = new Date().toLocaleString('en-IN');
+  let wrongCards = '';
+  if (wrongAnswers.length === 0) {
+    wrongCards = '<div style="background:linear-gradient(135deg,#e8faf1,#d0f5e3);border:1px solid rgba(26,122,74,.2);border-radius:16px;padding:28px;text-align:center;font-size:1rem;font-weight:600;color:#0f5a36;margin-top:20px">🎯 Perfect Score! Saare jawab sahi the.</div>';
+  } else {
+    wrongAnswers.forEach(w => {
+      let optBtns = '';
+      w.opts.forEach((opt, j) => {
+        let cls = 'opt-btn';
+        if (j === w.correct) cls += ' opt-correct';
+        else if (j === w.chosen) cls += ' opt-wrong';
+        else cls += ' opt-dim';
+        optBtns += `<div class="${cls}"><div class="opt-key">${KEYS[j]}</div><div class="opt-text">${opt}</div></div>`;
+      });
+      wrongCards += `<div class="qcard state-wrong">
+        <div class="qcard-header"><div class="qnum">${String(w.qnum).padStart(2,'0')}</div><div class="qtext">${w.question}</div></div>
+        <div class="qcard-body"><div class="options">${optBtns}</div></div>
+        <div class="explanation show"><span class="exp-icon">💡</span><span class="exp-text">${w.exp}</span></div>
+        <div class="result-tag rt-wrong">😢 &nbsp;Incorrect — Correct: ${KEYS[w.correct]}</div>
+      </div>`;
+    });
+  }
+
+  // grab current page styles
+  const styleContent = Array.from(document.styleSheets)
+    .map(ss => { try { return Array.from(ss.cssRules).map(r => r.cssText).join('\n'); } catch(e){ return ''; } })
+    .join('\n');
+
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Result — ${studentName}</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>${styleContent}
+.rh{max-width:900px;margin:40px auto 0;padding:0 32px}
+.rt{background:linear-gradient(160deg,#fff,#f7f4ee);border-radius:20px;padding:36px 40px;margin-bottom:8px;box-shadow:0 1px 0 #d4cfc4,0 2px 0 #cac4b8,0 3px 0 #bfb9ac,0 8px 20px rgba(0,0,0,.12);text-align:center}
+.rey{font-family:'DM Mono',monospace;font-size:.6rem;color:#c8973a;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.rnm{font-family:'DM Serif Display',serif;font-size:2rem;color:#0d0d0d;margin-bottom:4px}
+.rmt{font-family:'DM Mono',monospace;font-size:.68rem;color:#888;margin-bottom:24px}
+.rps{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.rp{padding:12px 24px;border-radius:14px;font-family:'DM Mono',monospace;font-weight:700;font-size:1.1rem;border:1px solid rgba(255,255,255,.7);text-align:center}
+.rpc{background:linear-gradient(145deg,#e8faf1,#c8f2dc);color:#0f5a36;box-shadow:0 2px 0 #60ae86,0 4px 10px rgba(26,122,74,.2)}
+.rpw{background:linear-gradient(145deg,#fff0ee,#fdd8d4);color:#8b1a14;box-shadow:0 2px 0 #c47167,0 4px 10px rgba(192,57,43,.2)}
+.rpp{background:linear-gradient(145deg,#fffcf0,#fff3d0);color:#7a5010;box-shadow:0 2px 0 #c0a830,0 4px 10px rgba(200,151,58,.2)}
+.rpt{background:linear-gradient(145deg,#f0f4ff,#dce6ff);color:#1a3a8a;box-shadow:0 2px 0 #6080c8,0 4px 10px rgba(30,60,180,.15)}
+.rpx{font-size:.5rem;letter-spacing:1.5px;opacity:.7;display:block;margin-top:3px;font-weight:400}
+.wst{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#0d0d0d;margin:32px 0 0;display:flex;align-items:center;gap:12px}
+.wst::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.08)}
+</style></head><body>
+<div class="rh">
+  <div class="rt">
+    <div class="rey">Admin Interview Prep · Zscaler · Result</div>
+    <div class="rnm">${studentName}</div>
+    <div class="rmt">📅 ${now} &nbsp;·&nbsp; ⏱ ${timeFmt()}</div>
+    <div class="rps">
+      <div class="rp rpc">${correct}<span class="rpx">Correct</span></div>
+      <div class="rp rpw">${wrong}<span class="rpx">Wrong</span></div>
+      <div class="rp rpp">${pct}%<span class="rpx">Score</span></div>
+      <div class="rp rpt">${timeFmt()}<span class="rpx">Time</span></div>
+    </div>
+  </div>
+  ${wrongAnswers.length > 0 ? '<div class="wst">Galat Jawab — Revision Karein</div>' : ''}
+</div>
+<div class="questions-wrap">${wrongCards}</div>
+</body></html>`;
+}
+
+// ── TOAST ──
+function showToast(msg, type) {
+  const old = document.getElementById('gh-toast');
+  if (old) old.remove();
+  const t = document.createElement('div');
+  t.id = 'gh-toast';
+  t.className = 'upload-toast toast-' + type;
+  t.innerHTML = (type === 'uploading' ? '⏳' : type === 'success' ? '✅' : '❌') + ' &nbsp;' + msg;
+  document.body.appendChild(t);
+  if (type !== 'uploading') setTimeout(() => t.remove(), 5000);
+}
+
+// ── GITHUB UPLOAD ──
+async function uploadResultToGitHub(pct) {
+  showToast('Result GitHub pe save ho raha hai...', 'uploading');
+
+  const safeName = studentName.replace(/[^a-zA-Z0-9]/g, '_');
+  const fileName = 'results/' + safeName + '_Result_CISSP_D1.html';
+  const content = buildResultHTML(pct);
+  const encoded = btoa(unescape(encodeURIComponent(content)));
+
+  const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${fileName}`;
+
+  try {
+    // Check if file already exists (to get SHA for update)
+    let sha = null;
+    const check = await fetch(apiUrl, {
+      headers: {
+        'Authorization': 'token ' + GH_TOKEN,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+    if (check.ok) {
+      const existing = await check.json();
+      sha = existing.sha;
+    }
+
+    // Auto-detect branch
+    const repoRes = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}`, {
+      headers: { 'Authorization': 'token ' + GH_TOKEN, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    const repoData = await repoRes.json();
+    const branch = repoData.default_branch || 'main';
+
+    // Create or update file
+    const body = {
+      message: 'Result: ' + studentName + ' — ' + new Date().toISOString().slice(0,10),
+      content: encoded,
+      branch: branch
+    };
+    if (sha) body.sha = sha;
+
+    const res = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + GH_TOKEN,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    const resData = await res.json();
+
+    if (res.ok) {
+      const resultUrl = `https://${GH_OWNER}.github.io/${GH_REPO}/${fileName}`;
+      document.getElementById('gh-toast').remove();
+      showToast('Saved! <a href="' + resultUrl + '" target="_blank" style="color:#fff;text-decoration:underline">Result dekho →</a>', 'success');
+    } else {
+      document.getElementById('gh-toast').remove();
+      showToast('Error: ' + (resData.message || res.status), 'error');
+      console.error('GitHub API error:', resData);
+    }
+  } catch(e) {
+    document.getElementById('gh-toast').remove();
+    showToast('Network error: ' + e.message, 'error');
+    console.error(e);
+  }
+}
+
+function restart() {
+  correct = 0; wrong = 0; answered = 0; elapsed = 0; wrongAnswers = []; studentName = '';
+  clearInterval(timerInterval); timerInterval = null;
+  ['sc','sw'].forEach(id => document.getElementById(id).textContent = 0);
+  document.getElementById('sp').textContent = '—';
+  document.getElementById('pf').style.width = '0%';
+  document.getElementById('final').style.display = 'none';
+  const inp = document.getElementById('naam-input');
+  inp.value = ''; inp.disabled = false;
+  const pill = document.getElementById('start-pill');
+  pill.classList.remove('timer-on');
+  pill.onclick = startExam;
+  pill.innerHTML = '<span class="start-pill-icon">🚀</span><span class="start-pill-text">Start Exam</span>';
+  build();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+build();
+</script>
+</body>
+</html>
