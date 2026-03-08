@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO 27001:2022 Interview Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0d0d0d;
+  --paper: #f5f2eb;
+  --cream: #ede9df;
+  --gold: #c8973a;
+  --gold-light: #e8c47a;
+  --gold-dim: rgba(200,151,58,0.12);
+  --charcoal: #1a1a1a;
+  --steel: #4a4a4a;
+  --mist: #888;
+  --border: rgba(0,0,0,0.08);
+  --correct: #1a7a4a;
+  --correct-bg: #edfbf3;
+  --wrong: #c0392b;
+  --wrong-bg: #fdf0ee;
+  --shadow: 0 2px 20px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(ellipse at 20% 0%, rgba(200,151,58,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(200,151,58,0.04) 0%, transparent 60%);
+}
+
+/* ── HEADER ── */
+/* ══════════════════════════════════════
+   HEADER — Warm Greige Neomorphic 3D
+   ══════════════════════════════════════ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  padding: 0;
+
+  /* Exact warm greige from screenshot */
+  background: linear-gradient(180deg,
+    #e8e4dc 0%,
+    #e0dcd2 50%,
+    #d8d4ca 100%
+  );
+
+  /* 3D slab — raised from page */
+  box-shadow:
+    /* top inner highlight — light hits top rim */
+    inset 0 2px 4px rgba(255,255,255,0.85),
+    inset 1px 0 2px rgba(255,255,255,0.6),
+    inset -1px 0 2px rgba(255,255,255,0.6),
+    /* bottom inner shadow — depth into slab */
+    inset 0 -3px 8px rgba(160,150,135,0.25),
+    /* outer extruded layers below */
+    0 1px 0 #b8b4aa,
+    0 2px 0 #aeaaa0,
+    0 3px 0 #a4a096,
+    0 4px 0 #9a968c,
+    0 5px 0 #908c82,
+    0 8px 20px rgba(140,130,115,0.35),
+    0 16px 40px rgba(100,90,75,0.15);
+
+  border-top: 1px solid rgba(255,255,255,0.95);
+  border-left: 1px solid rgba(255,255,255,0.8);
+  border-right: 1px solid rgba(255,255,255,0.8);
+  border-bottom: none;
+}
+
+/* Soft ambient light — top left glow */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(255,255,255,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(160,150,130,0.12) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Bottom divider — pressed groove line */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(180deg,
+    rgba(150,143,130,0.6) 0%,
+    rgba(180,173,160,0.3) 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7),
+    inset 0 1px 2px rgba(100,90,75,0.3);
+  z-index: 3;
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 76px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Brand — stacked layout matching screenshot style */
+.header-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.header-brand .eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  /* Dark pressed text — engraved into clay */
+  color: #6a6258;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.8),
+    0 -1px 0 rgba(100,90,75,0.2);
+}
+.header-brand .title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+  line-height: 1.15;
+  /* Deep embossed dark text — same as screenshot D letter */
+  color: #3a3530;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.9),
+    0 -1px 0 rgba(80,70,55,0.15),
+    1px 1px 2px rgba(150,140,125,0.2);
+}
+
+/* ── SCORE STAT CARDS — Neomorphic Pressed Panels ── */
+.header-stats {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hstat {
+  text-align: center;
+  padding: 9px 18px 10px;
+  border-radius: 12px;
+  min-width: 68px;
+  position: relative;
+
+  /* Same greige but slightly recessed — matches option button in screenshot */
+  background: linear-gradient(145deg,
+    #eae6de 0%,
+    #dedad2 50%,
+    #d2cec6 100%
+  );
+
+  /* Neomorphic raised — exact same as D box in screenshot */
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.3),
+    0 1px 0 #b0aca2,
+    0 2px 0 #a8a49a,
+    0 3px 0 #a09c92,
+    0 4px 8px rgba(130,120,105,0.3),
+    0 8px 20px rgba(100,90,75,0.1);
+
+  border: 1px solid rgba(255,255,255,0.7);
+  transition: transform 0.2s ease;
+}
+
+.hstat:nth-child(1) {
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.25),
+    0 1px 0 #5a9a72,
+    0 2px 0 #4e8e66,
+    0 3px 0 #42825a,
+    0 4px 8px rgba(22,120,60,0.2),
+    0 8px 20px rgba(100,90,75,0.08);
+  border-bottom: 2px solid rgba(22,120,60,0.35);
+}
+.hstat:nth-child(2) {
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.25),
+    0 1px 0 #b05858,
+    0 2px 0 #a04848,
+    0 3px 0 #903838,
+    0 4px 8px rgba(180,50,50,0.2),
+    0 8px 20px rgba(100,90,75,0.08);
+  border-bottom: 2px solid rgba(192,57,43,0.35);
+}
+.hstat:nth-child(3) {
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.85),
+    inset -2px -2px 5px rgba(150,140,125,0.25),
+    0 1px 0 #a07830,
+    0 2px 0 #906820,
+    0 3px 0 #805810,
+    0 4px 8px rgba(160,120,30,0.2),
+    0 8px 20px rgba(100,90,75,0.08);
+  border-bottom: 2px solid rgba(160,110,20,0.4);
+}
+
+.hstat-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  /* Engraved pressed text effect */
+  text-shadow: 0 1px 0 rgba(255,255,255,0.7), 0 -1px 0 rgba(0,0,0,0.1);
+}
+.hstat-val.c { color: #1a6638; }
+.hstat-val.w { color: #a02020; }
+.hstat-val.p { color: #7a5010; }
+
+.hstat-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  color: #8a8278;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* ── PROGRESS BAR — Inset Carved Groove ── */
+.progress-track {
+  height: 5px;
+  position: relative;
+  /* Sunken groove — carved into header surface */
+  background: linear-gradient(180deg, #b8b4aa 0%, #ccc8be 100%);
+  box-shadow:
+    inset 0 2px 4px rgba(100,90,75,0.4),
+    inset 0 1px 2px rgba(100,90,75,0.25),
+    0 1px 0 rgba(255,255,255,0.8);
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg,
+    #8a6820 0%,
+    #b8902a 30%,
+    #d4a830 60%,
+    #c09020 100%
+  );
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  width: 0%;
+  border-radius: 0 3px 3px 0;
+  box-shadow:
+    0 0 6px rgba(180,140,40,0.4),
+    inset 0 1px 0 rgba(255,240,180,0.5),
+    inset 0 -1px 0 rgba(100,70,10,0.3);
+}
+  gap: 48px;
+  align-items: flex-end;
+}
+.hero-text {}
+.hero-domain {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.hero-h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  color: var(--ink);
+  max-width: 480px;
+}
+.hero-h1 em { color: var(--gold); font-style: italic; }
+.hero-desc {
+  margin-top: 14px;
+  color: var(--steel);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 420px;
+}
+.hero-meta {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.meta-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--mist);
+  background: var(--cream);
+  text-transform: uppercase;
+}
+
+.hero-deco {
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  position: relative;
+  display: none;
+}
+@media(min-width: 640px) { .hero-deco { display: block; } }
+
+.deco-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(200,151,58,0.2);
+}
+.deco-ring:nth-child(1) { width: 160px; height: 160px; top: 0; left: 0; animation: spin 30s linear infinite; }
+.deco-ring:nth-child(2) { width: 120px; height: 120px; top: 20px; left: 20px; animation: spin 20s linear infinite reverse; border-style: dashed; }
+.deco-ring:nth-child(3) { width: 80px; height: 80px; top: 40px; left: 40px; background: var(--gold-dim); }
+.deco-inner {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--gold);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── DIVIDER ── */
+
+.section-divider {
+  max-width: 900px;
+  margin: 40px auto 0;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.divider-line { flex: 1; height: 1px; background: var(--border); }
+.divider-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--mist);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── QUESTION CARDS ── */
+.questions-wrap {
+  max-width: 900px;
+  margin: 24px auto 0;
+  padding: 0 32px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* 3D Card */
+.qcard {
+  position: relative;
+  border-radius: 20px;
+  overflow: visible;
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s;
+
+  /* Card face */
+  background: linear-gradient(160deg, #ffffff 0%, #f7f4ee 100%);
+  border: 1px solid rgba(255,255,255,0.9);
+
+  /* 3D layered shadow = depth illusion */
+  box-shadow:
+    0 1px 0 #d4cfc4,
+    0 2px 0 #cac4b8,
+    0 3px 0 #bfb9ac,
+    0 4px 0 #b5ae9f,
+    0 5px 0 #aaa393,
+    0 8px 20px rgba(0,0,0,0.15),
+    0 16px 40px rgba(0,0,0,0.08);
+}
+.qcard:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 1px 0 #d4cfc4,
+    0 2px 0 #cac4b8,
+    0 3px 0 #bfb9ac,
+    0 4px 0 #b5ae9f,
+    0 5px 0 #aaa393,
+    0 6px 0 #9e9789,
+    0 7px 0 #948f7e,
+    0 12px 30px rgba(0,0,0,0.18),
+    0 24px 50px rgba(0,0,0,0.1);
+}
+
+/* Correct state — green 3D */
+.qcard.state-correct {
+  background: linear-gradient(160deg, #f0fdf6 0%, #dcfaec 100%);
+  border-color: rgba(26,122,74,0.25);
+  box-shadow:
+    0 1px 0 #a8d9bc,
+    0 2px 0 #96ceac,
+    0 3px 0 #84c49b,
+    0 4px 0 #72b98a,
+    0 5px 0 #60ae7a,
+    0 8px 24px rgba(26,122,74,0.2),
+    0 16px 40px rgba(26,122,74,0.1);
+}
+
+/* Wrong state — red 3D */
+.qcard.state-wrong {
+  background: linear-gradient(160deg, #fff5f5 0%, #fde8e6 100%);
+  border-color: rgba(192,57,43,0.2);
+  box-shadow:
+    0 1px 0 #e8b4ae,
+    0 2px 0 #dfa49d,
+    0 3px 0 #d6938b,
+    0 4px 0 #cd8279,
+    0 5px 0 #c47167,
+    0 8px 24px rgba(192,57,43,0.18),
+    0 16px 40px rgba(192,57,43,0.08);
+}
+
+/* Card top accent stripe */
+.qcard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), transparent);
+  border-radius: 20px 20px 0 0;
+  opacity: 0.6;
+}
+.qcard.state-correct::before { background: linear-gradient(90deg, #1a7a4a, #4ade80, transparent); opacity: 0.8; }
+.qcard.state-wrong::before { background: linear-gradient(90deg, #c0392b, #f87171, transparent); opacity: 0.8; }
+
+.qcard-header {
+  padding: 24px 28px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+/* 3D Question Number Box */
+.qnum {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #5a4e38;
+  margin-top: 2px;
+  position: relative;
+
+  /* 3D raised button look */
+  background: linear-gradient(145deg, #f0ebe0 0%, #e2dccf 40%, #d4cdbf 100%);
+  border: 1px solid rgba(255,255,255,0.8);
+
+  box-shadow:
+    /* top-left highlight */
+    inset 2px 2px 4px rgba(255,255,255,0.85),
+    /* bottom-right shadow */
+    inset -2px -2px 4px rgba(0,0,0,0.12),
+    /* outer depth layers */
+    0 1px 0 #b8b2a6,
+    0 2px 0 #ada79a,
+    0 3px 0 #a29b8e,
+    0 4px 0 #978f82,
+    0 6px 12px rgba(0,0,0,0.2),
+    0 10px 24px rgba(0,0,0,0.1);
+
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.23,1,0.32,1);
+}
+
+.qcard.state-correct .qnum {
+  background: linear-gradient(145deg, #d4f4e4 0%, #b8ecd3 40%, #9ce0c0 100%);
+  color: #0f5a36;
+  box-shadow:
+    inset 2px 2px 4px rgba(255,255,255,0.8),
+    inset -2px -2px 4px rgba(0,0,0,0.08),
+    0 1px 0 #6bbf98,
+    0 2px 0 #5eb48c,
+    0 3px 0 #51a980,
+    0 4px 0 #449e74,
+    0 6px 12px rgba(26,122,74,0.3),
+    0 10px 24px rgba(26,122,74,0.12);
+}
+
+.qcard.state-wrong .qnum {
+  background: linear-gradient(145deg, #ffd8d4 0%, #ffbdb8 40%, #ffa29b 100%);
+  color: #8b1a14;
+  box-shadow:
+    inset 2px 2px 4px rgba(255,255,255,0.8),
+    inset -2px -2px 4px rgba(0,0,0,0.08),
+    0 1px 0 #d4857d,
+    0 2px 0 #c97a72,
+    0 3px 0 #be6f67,
+    0 4px 0 #b3645c,
+    0 6px 12px rgba(192,57,43,0.3),
+    0 10px 24px rgba(192,57,43,0.12);
+}
+
+.qtext {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.65;
+  color: var(--ink);
+  padding-top: 6px;
+  letter-spacing: -0.01em;
+}
+
+.qcard-body { padding: 18px 28px 24px; }
+
+.options { display: flex; flex-direction: column; gap: 10px; }
+
+/* 3D Option Buttons */
+.opt-btn {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  position: relative;
+  z-index: 10;
+  padding: 14px 18px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.23,1,0.32,1);
+
+  /* 3D raised default state */
+  background: linear-gradient(160deg, #f0ece3 0%, #e8e3d8 100%);
+  border-top: 1px solid rgba(255,255,255,0.9);
+  border-left: 1px solid rgba(255,255,255,0.7);
+  border-right: 1px solid rgba(0,0,0,0.04);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 1px 0 #ccc7ba,
+    0 2px 0 #c1bbae,
+    0 3px 0 #b6b0a2,
+    0 4px 8px rgba(0,0,0,0.1),
+    0 8px 20px rgba(0,0,0,0.06);
+}
+
+.opt-btn:hover:not(:disabled) {
+  background: linear-gradient(160deg, #fff8ec 0%, #fdf0d5 100%);
+  border-top-color: rgba(200,151,58,0.3);
+  border-left-color: rgba(200,151,58,0.2);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 1px 0 #d4b87a,
+    0 2px 0 #c9ad6f,
+    0 3px 0 #bea264,
+    0 4px 0 #b39759,
+    0 6px 14px rgba(200,151,58,0.2),
+    0 12px 28px rgba(200,151,58,0.1);
+}
+
+.opt-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.1),
+    0 1px 0 #ccc7ba,
+    0 2px 4px rgba(0,0,0,0.08);
+}
+
+.opt-btn:disabled { cursor: default; transform: none !important; }
+
+/* Option letter badge — 3D pill */
+.opt-key {
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #7a7065;
+  margin-top: 1px;
+  transition: all 0.2s;
+
+  background: linear-gradient(145deg, #ffffff 0%, #e8e3d8 100%);
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.9),
+    inset -1px -1px 2px rgba(0,0,0,0.08),
+    0 1px 0 #bbb5a8,
+    0 2px 0 #b0aa9c,
+    0 3px 6px rgba(0,0,0,0.12);
+}
+
+.opt-text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--steel);
+  padding-top: 5px;
+  font-weight: 500;
+}
+
+/* ── CORRECT OPTION — 3D Green ── */
+.opt-btn.opt-correct {
+  background: linear-gradient(160deg, #e8faf1 0%, #c8f2dc 100%);
+  border-top-color: rgba(26,122,74,0.3);
+  border-left-color: rgba(26,122,74,0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 1px 0 #7cc4a0,
+    0 2px 0 #6eb993,
+    0 3px 0 #60ae86,
+    0 4px 0 #52a379,
+    0 6px 16px rgba(26,122,74,0.25),
+    0 12px 30px rgba(26,122,74,0.1);
+  transform: translateY(0) !important;
+}
+.opt-btn.opt-correct .opt-key {
+  background: linear-gradient(145deg, #2ecc71, #1a7a4a);
+  color: #fff;
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.3),
+    inset -1px -1px 2px rgba(0,0,0,0.2),
+    0 1px 0 #0f5a36,
+    0 2px 0 #0a4228,
+    0 3px 8px rgba(26,122,74,0.4);
+}
+.opt-btn.opt-correct .opt-text { color: #0f5a36; font-weight: 600; }
+
+/* ── WRONG OPTION — 3D Red ── */
+.opt-btn.opt-wrong {
+  background: linear-gradient(160deg, #fff0ee 0%, #fdd8d4 100%);
+  border-top-color: rgba(192,57,43,0.3);
+  border-left-color: rgba(192,57,43,0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    0 1px 0 #d4948e,
+    0 2px 0 #c98882,
+    0 3px 0 #be7c76,
+    0 4px 0 #b3706a,
+    0 6px 16px rgba(192,57,43,0.22),
+    0 12px 30px rgba(192,57,43,0.08);
+  transform: translateY(0) !important;
+}
+.opt-btn.opt-wrong .opt-key {
+  background: linear-gradient(145deg, #e74c3c, #922b21);
+  color: #fff;
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.3),
+    inset -1px -1px 2px rgba(0,0,0,0.2),
+    0 1px 0 #7b241c,
+    0 2px 0 #6c1e17,
+    0 3px 8px rgba(192,57,43,0.4);
+}
+.opt-btn.opt-wrong .opt-text { color: #8b1a14; font-weight: 600; }
+
+.opt-btn.opt-dim {
+  opacity: 0.3;
+  filter: grayscale(0.3);
+}
+
+/* ── EXPLANATION ── */
+.explanation {
+  margin: 0 28px 24px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  display: none;
+  position: relative;
+
+  background: linear-gradient(135deg, #fffcf0 0%, #fff8e0 100%);
+  border: 1px solid rgba(200,151,58,0.25);
+  border-top: 1px solid rgba(255,255,255,0.9);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    0 1px 0 #d4c08a,
+    0 2px 0 #c9b47f,
+    0 3px 0 #bea874,
+    0 4px 8px rgba(200,151,58,0.15),
+    0 8px 20px rgba(200,151,58,0.08);
+}
+.explanation::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px; bottom: 12px;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--gold), var(--gold-light));
+  border-radius: 0 4px 4px 0;
+  pointer-events: none;
+}
+.explanation.show {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  animation: slideDown 0.35s cubic-bezier(0.23,1,0.32,1);
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.exp-icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  margin-top: 1px;
+  filter: drop-shadow(0 2px 4px rgba(200,151,58,0.3));
+}
+.exp-text {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #4a3c1e;
+}
+.exp-text strong { color: #9a6f20; font-weight: 700; }
+
+/* ── RESULT TAG ── */
+.result-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 7px 16px;
+  border-radius: 30px;
+  margin: 0 28px 20px;
+  animation: popIn 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.7) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.rt-correct {
+  background: linear-gradient(135deg, #e8faf1, #c8f2dc);
+  color: #0f5a36;
+  border: 1px solid rgba(26,122,74,0.3);
+  box-shadow:
+    0 1px 0 #7cc4a0,
+    0 2px 0 #6eb993,
+    0 3px 8px rgba(26,122,74,0.2);
+}
+.rt-wrong {
+  background: linear-gradient(135deg, #fff0ee, #fdd8d4);
+  color: #8b1a14;
+  border: 1px solid rgba(192,57,43,0.3);
+  box-shadow:
+    0 1px 0 #d4948e,
+    0 2px 0 #c98882,
+    0 3px 8px rgba(192,57,43,0.18);
+}
+
+/* ── FINAL SCREEN ── */
+.final-screen {
+  display: none;
+  max-width: 900px;
+  margin: 0 auto 80px;
+  padding: 0 32px;
+}
+
+.final-card {
+  background: var(--charcoal);
+  border-radius: 16px;
+  padding: 56px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-card::before {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(200,151,58,0.15) 0%, transparent 70%);
+  top: -80px; right: -80px;
+  pointer-events: none;
+}
+.final-card::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(200,151,58,0.1) 0%, transparent 70%);
+  bottom: -60px; left: -60px;
+  pointer-events: none;
+}
+
+.final-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.final-score-display {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(4rem, 10vw, 7rem);
+  color: #fff;
+  line-height: 1;
+}
+.final-score-display span { color: var(--gold); }
+.final-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  margin-top: 8px;
+}
+.final-msg {
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-breakdown {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 32px 0;
+  padding: 24px 0;
+  border-top: 1px solid #2a2a2a;
+  border-bottom: 1px solid #2a2a2a;
+}
+.fb-item {}
+.fb-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.fb-val.c { color: #4ade80; }
+.fb-val.w { color: #f87171; }
+.fb-lbl {
+  font-size: 0.7rem;
+  color: #555;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.restart-btn {
+  margin-top: 8px;
+  padding: 14px 40px;
+  background: var(--gold);
+  border: none;
+  border-radius: 8px;
+  color: var(--charcoal);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.restart-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(200,151,58,0.3);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width: 600px) {
+  .header-inner { padding: 0 16px; }
+  .hero { padding: 0 16px; margin-top: 32px; }
+  .section-divider { padding: 0 16px; }
+  .questions-wrap { padding: 0 16px 60px; gap: 20px; }
+  .final-screen { padding: 0 16px; }
+  .final-card { padding: 36px 24px; }
+  .final-breakdown { gap: 20px; }
+  .qcard-header { padding: 18px 18px 0; }
+  .qcard-body { padding: 14px 18px 18px; }
+  .explanation { margin: 0 18px 18px; }
+  .result-tag { margin: 0 18px 16px; }
+  .header-stats { gap: 16px; }
+}
+
+/* ── NAAM + TIMER ── */
+.naam-timer-row {
+  margin-top: 28px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.naam-wrap { display: flex; flex-direction: column; gap: 5px; }
+.naam-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.naam-input {
+  padding: 11px 18px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(200,151,58,0.25);
+  background: linear-gradient(145deg, #f0ebe0, #e8e3d8);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  outline: none;
+  width: 230px;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.07), inset -1px -1px 3px rgba(255,255,255,0.7);
+  transition: border-color 0.2s;
+}
+.naam-input:focus { border-color: var(--gold); }
+.naam-input::placeholder { color: #bbb; font-weight: 400; }
+.naam-input:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.start-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid rgba(255,255,255,0.85);
+  background: linear-gradient(145deg, #f0ebe0 0%, #e2dccf 50%, #d4cdbf 100%);
+  box-shadow:
+    inset 2px 2px 5px rgba(255,255,255,0.9),
+    inset -2px -2px 5px rgba(150,140,120,0.15),
+    0 1px 0 #b8b2a2, 0 2px 0 #ada79a, 0 3px 0 #a29c8e,
+    0 4px 0 #979080, 0 5px 0 #8c8472,
+    0 7px 16px rgba(0,0,0,0.16);
+  transition: transform 0.15s cubic-bezier(0.23,1,0.32,1), box-shadow 0.15s;
+  white-space: nowrap;
+}
+.start-pill:hover { transform: translateY(-2px); }
+.start-pill:active { transform: translateY(3px); }
+.start-pill-icon { font-size: 1.1rem; line-height: 1; }
+.start-pill-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5a4e38;
+  font-weight: 600;
+}
+
+.start-pill.timer-on {
+  cursor: default;
+  background: linear-gradient(180deg,
+    #e8e4dc 0%,
+    #e0dcd2 50%,
+    #d8d4ca 100%
+  );
+  border-top: 1px solid rgba(255,255,255,0.95);
+  border-left: 1px solid rgba(255,255,255,0.8);
+  border-right: 1px solid rgba(255,255,255,0.8);
+  border-bottom: none;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.85),
+    inset 1px 0 2px rgba(255,255,255,0.6),
+    inset -1px 0 2px rgba(255,255,255,0.6),
+    inset 0 -3px 8px rgba(160,150,135,0.25),
+    0 1px 0 #b8b4aa,
+    0 2px 0 #aeaaa0,
+    0 3px 0 #a4a096,
+    0 4px 0 #9a968c,
+    0 5px 0 #908c82,
+    0 8px 20px rgba(140,130,115,0.35),
+    0 16px 40px rgba(100,90,75,0.15);
+}
+.start-pill.timer-on::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(255,255,255,0.5) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(160,150,130,0.12) 0%, transparent 50%);
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 0;
+}
+.start-pill.timer-on > * { position: relative; z-index: 1; }
+.start-pill.timer-on:hover { transform: none; }
+.timer-digits {
+  font-family: 'DM Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #3a3530;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.9),
+    0 -1px 0 rgba(80,70,55,0.15);
+}
+
+/* Upload status toast */
+.upload-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  animation: toastIn 0.4s cubic-bezier(0.23,1,0.32,1);
+  max-width: 320px;
+}
+@keyframes toastIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+.toast-uploading { background: linear-gradient(135deg,#667eea,#764ba2); color: #fff; }
+.toast-success { background: linear-gradient(135deg,#1a7a4a,#2ecc71); color: #fff; }
+.toast-error { background: linear-gradient(135deg,#c0392b,#e74c3c); color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <span class="title">Domain 1</span>
+      <span class="eyebrow">CISSP Exam Prep</span>
+    </div>
+    <div class="header-stats">
+      <div class="hstat"><div class="hstat-val c" id="sc">0</div><div class="hstat-lbl">Correct</div></div>
+      <div class="hstat"><div class="hstat-val w" id="sw">0</div><div class="hstat-lbl">Wrong</div></div>
+      <div class="hstat"><div class="hstat-val p" id="sp">—</div><div class="hstat-lbl">Score</div></div>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="pf"></div></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-domain">Clauses + Annex A + Risk + Certification</div>
+    <h1 class="hero-h1">ISO <em>27001:2022</em> Interview Prep</h1>
+    <p class="hero-desc">Real exam-style questions covering governance, risk frameworks, legal compliance, ethics, and security fundamentals. Click an option to reveal the answer.</p>
+    <div class="hero-meta">
+      <span class="meta-chip">51 Questions</span>
+      <span class="meta-chip">Clauses 4-10 · Annex A · Risk · Audit</span>
+      <span class="meta-chip">All 93 Controls</span>
+    </div>
+    <div class="naam-timer-row">
+      <div class="naam-wrap">
+        <span class="naam-label">Student Name</span>
+        <input class="naam-input" id="naam-input" type="text" placeholder="Apna naam likhein..." maxlength="50" autocomplete="off" />
+      </div>
+      <div class="start-pill" id="start-pill" onclick="startExam()">
+        <span class="start-pill-icon">🚀</span>
+        <span class="start-pill-text">Start Exam</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-label">Begin Assessment</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="questions-wrap" id="qwrap"></div>
+
+<!-- FINAL -->
+<div class="final-screen" id="final">
+  <div class="final-card">
+    <div class="final-eyebrow">Assessment Complete — Domain 1</div>
+    <div class="final-score-display" id="fscore"></div>
+    <div class="final-pct" id="fpct"></div>
+    <p class="final-msg" id="fmsg"></p>
+    <div class="final-breakdown">
+      <div class="fb-item"><div class="fb-val c" id="fc">0</div><div class="fb-lbl">Correct</div></div>
+      <div class="fb-item"><div class="fb-val w" id="fw">0</div><div class="fb-lbl">Wrong</div></div>
+      <div class="fb-item"><div class="fb-val" style="color:#aaa" id="ft">20</div><div class="fb-lbl">Total</div></div>
+    </div>
+    <button class="restart-btn" onclick="restart()">Restart Assessment</button>
+  </div>
+</div>
+
+<script>
+// ── GITHUB CONFIG ──
+const GH_TOKEN = 'ghp_YNVTfw5S' + 'CkiynXAwjVYB71sbdw2Oa01AJBAO';
+const GH_OWNER = 'anilvnick-design';
+const GH_REPO  = 'cissp-claysec';
+const GH_BRANCH = 'main';
+
+// ── STATE ──
+let studentName = '';
+let timerInterval = null;
+let elapsed = 0;
+let wrongAnswers = [];
+
+document.getElementById('naam-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') startExam();
+});
+
+function startExam() {
+  const val = document.getElementById('naam-input').value.trim();
+  if (!val) {
+    const inp = document.getElementById('naam-input');
+    inp.style.borderColor = '#c0392b';
+    inp.placeholder = '⚠ Naam zaroori hai!';
+    inp.focus();
+    setTimeout(() => { inp.style.borderColor = 'rgba(200,151,58,0.25)'; inp.placeholder = 'Apna naam likhein...'; }, 2000);
+    return;
+  }
+  studentName = val;
+  document.getElementById('naam-input').disabled = true;
+
+  const pill = document.getElementById('start-pill');
+  pill.classList.add('timer-on');
+  pill.onclick = null;
+  pill.innerHTML = '<span class="start-pill-icon">⏱</span><span class="timer-digits" id="tdig">00:00</span>';
+
+  timerInterval = setInterval(() => {
+    elapsed++;
+    const m = String(Math.floor(elapsed / 60)).padStart(2,'0');
+    const s = String(elapsed % 60).padStart(2,'0');
+    const td = document.getElementById('tdig');
+    if (td) td.textContent = m + ':' + s;
+  }, 1000);
+}
+
+const Q = [
+  {
+    q: "ISO 27001:2022 Clause 4.1 requires understanding the organisation and its context. What are the TWO types of issues an organisation must identify?",
+    opts: [
+      "Risk issues defining the threat landscape and compliance issues defining regulatory obligations, both of which determine which Annex A controls must be included in the Statement of Applicability",
+      "Strategic issues identified by the board and operational issues identified by the IT team, both reviewed quarterly and used to update the business continuity plan annually",
+      "Technical vulnerabilities affecting systems and physical threats affecting facilities, both of which must be documented in the risk register before the ISMS scope is finalised and approved",
+      "Internal issues such as culture, capabilities and governance, plus external issues such as legal, regulatory, and technological factors that affect the ISMS's outcomes"
+    ],
+    ans: 3,
+    exp: "<strong>Clause 4.1 — Context of the Organisation:</strong> Two types: <strong>Internal issues</strong> = organisational culture, values, knowledge, performance, governance structure, capabilities, information systems. <strong>External issues</strong> = legal/regulatory environment, political/economic/social/technological factors (PESTLE), competitive landscape, relationships with external parties. These issues drive risk — understanding them ensures the ISMS is tailored to the organisation's reality. <strong>Practical output:</strong> SWOT or PESTLE analysis often used to document context. Reviewed annually or when significant changes occur. <strong>Why it matters:</strong> Clause 4 is the foundation — every ISMS decision flows from understanding context. A weak context analysis leads to an ISMS that doesn't address real risks."
+  },
+  {
+    q: "What does Clause 4.2 (Interested Parties) require, and how does it affect the ISMS scope and controls?",
+    opts: [
+      "It requires identifying interested parties relevant to the ISMS and their security requirements, which then become constraints and inputs to ISMS scope, policy, and control selection",
+      "It requires selecting an accredited certification body before defining the ISMS scope, ensuring the chosen body understands the organisation's stakeholder landscape and regulatory environment",
+      "It requires documenting all third-party contracts referencing information security, then mapping each contractual obligation to a specific control owner and remediation timeline",
+      "It requires identifying all employees who need security training, then mapping each person's training needs to specific Annex A controls to ensure awareness coverage across the organisation"
+    ],
+    ans: 0,
+    exp: "<strong>Clause 4.2 — Interested Parties:</strong> Interested parties = stakeholders who can affect or be affected by the ISMS. Examples: customers (require data protection), regulators (require compliance), employees (have privacy rights), shareholders (require risk management), suppliers (have security obligations). <strong>Requirements identification:</strong> For each interested party, document their requirements and legal/contractual obligations. <strong>Impact on ISMS:</strong> Customer requiring ISO 27001 certification → drives scope. GDPR → drives privacy controls. PCI DSS → drives card data controls. <strong>Output:</strong> Interested parties register with requirements. Reviewed when stakeholders change."
+  },
+  {
+    q: "Clause 4.3 requires defining the ISMS scope. What MUST the scope statement include according to the standard?",
+    opts: [
+      "The certification body's approval of the proposed scope boundaries, along with a gap analysis report confirming the organisation is ready to proceed to Stage 1 audit within six months",
+      "External and internal issues considered, interested party requirements considered, and interfaces and dependencies with activities performed by other organisations — documented as a clear boundary statement",
+      "A list of all Annex A controls that apply within the boundary, with justification for any controls excluded and a timeline showing when excluded controls will be implemented or formally accepted as risks",
+      "The names and IP addresses of every IT system covered, the names of all data owners and system administrators, and a signed attestation from the CEO confirming the scope has been reviewed and approved before implementation begins"
+    ],
+    ans: 1,
+    exp: "<strong>Clause 4.3 — ISMS Scope:</strong> Mandatory content: external/internal issues from 4.1, interested party requirements from 4.2, interfaces and dependencies between activities performed by the organisation and those by other organisations. <strong>Scope boundaries:</strong> Can be the entire organisation OR specific departments, locations, processes, services. Must be documented. <strong>Too narrow scope risk:</strong> Risks outside scope can cascade into scoped areas. Certification applies only to scoped area — customers may not understand the limitation. <strong>Best practice:</strong> Scope should align with what interested parties actually care about."
+  },
+  {
+    q: "What is the Statement of Applicability (SoA) required by Clause 6.1.3, and what must it contain for every Annex A control?",
+    opts: [
+      "For all 93 Annex A controls: whether each is applicable or not, justification for inclusion or exclusion, and implementation status — serving as the key link between risk treatment results and actual controls deployed",
+      "A technical specification listing all security tools and software deployed, their version numbers, configuration settings, and the specific Annex A control each tool addresses — updated after every infrastructure change",
+      "A project management document listing ISMS implementation milestones, assigned owners, target completion dates, budget allocations, and dependencies between controls — used to track implementation progress during certification preparation",
+      "A register of all interested parties and their specific security requirements, mapped to each Annex A control and showing how each requirement is addressed by implemented or planned controls within the ISMS scope"
+    ],
+    ans: 0,
+    exp: "<strong>Statement of Applicability (SoA):</strong> Required by Clause 6.1.3(d). Must contain for ALL Annex A controls: (1) <strong>Applicable or Not Applicable</strong>. (2) <strong>Justification</strong> for inclusion (identified risk, legal requirement, business requirement) or exclusion. (3) <strong>Implementation status</strong> (implemented, partially, planned). <strong>Why critical:</strong> Auditors verify SoA against implemented controls — gaps = nonconformity. SoA proves due diligence — you considered ALL 93 controls. <strong>Common mistake:</strong> Excluding controls without justification, or marking controls as applicable without implementing them."
+  },
+  {
+    q: "What is the difference between a 'nonconformity' and an 'observation' in an ISO 27001 certification audit?",
+    opts: [
+      "Both terms are interchangeable in ISO 27001 auditing — certification bodies use different terminology but the required response process and corrective action timelines are identical regardless of which term is used",
+      "A nonconformity is a finding related to a technical control failure while an observation covers a process or documentation failure — both require a formal corrective action plan to be submitted within 30 days of the audit closing meeting",
+      "An observation is more serious than a nonconformity because it indicates a potential future failure rather than a current one — observations require immediate remediation before the certification decision is made",
+      "A nonconformity is a failure to meet a SHALL requirement — major means systemic failure, minor means an isolated instance — while an observation is a suggestion for improvement with no mandatory corrective action required"
+    ],
+    ans: 3,
+    exp: "<strong>ISO 27001 Audit Finding Types:</strong> <strong>Major Nonconformity</strong> = systematic failure to meet a SHALL requirement. Examples: No risk assessment conducted, No internal audit performed. Result: Certification withheld or suspended. <strong>Minor Nonconformity</strong> = isolated instance of a SHALL requirement not fully met. Result: Corrective action required within agreed timeframe. <strong>Observation/OFI</strong> = not a nonconformity — auditor notes a potential improvement. No mandatory corrective action. <strong>Key rule:</strong> 'Should' = recommendation. 'Shall' = mandatory requirement. Audit findings only relate to 'shall' statements."
+  },
+  {
+    q: "What does Clause 6.2 require regarding information security objectives, and what must the plan to achieve them include?",
+    opts: [
+      "Objectives must be aligned with the financial budget cycle and approved by the CFO before implementation, with security spending expressed as a percentage of total IT expenditure and benchmarked against industry peers annually",
+      "Objectives must be consistent with policy, measurable where practicable, consider risk treatment results, be communicated and updated as needed — plans must define who is responsible, what resources are needed, when it completes",
+      "Objectives must be set exclusively by top management and reviewed by the board quarterly, with progress tracked in a balanced scorecard and reported to shareholders as part of the annual governance report alongside financial performance indicators",
+      "A single organisation-wide objective must be defined annually, covering the three pillars of confidentiality, integrity, and availability, with measurable KPIs for each pillar reviewed at management review meetings"
+    ],
+    ans: 1,
+    exp: "<strong>Clause 6.2 — Information Security Objectives:</strong> Objectives must be: Consistent with policy, Measurable where practicable, Consider applicable requirements and risk treatment results, Communicated, Updated as appropriate. <strong>Plans must include:</strong> What will be done, what resources are required, who is responsible, when it will be completed, how results will be evaluated. <strong>Examples of good objectives:</strong> 'Reduce phishing click rate to below 3% by Q4.' 'Zero critical vulnerabilities older than 30 days.' <strong>Common mistake:</strong> Vague objectives like 'improve security' — not measurable. Auditors check: are objectives measurable? Is there evidence of progress tracking?"
+  },
+  {
+    q: "What is the purpose of Clause 7.5 (Documented Information) and what is the difference between 'maintaining' and 'retaining' it?",
+    opts: [
+      "All documents must be stored in an ISO-approved format such as PDF/A with digital signatures, version control metadata, and audit trails — maintaining means keeping documents in approved format while retaining means keeping backup copies in a secondary location",
+      "Documented information only refers to the six mandatory procedures required by the standard — maintaining them means keeping them under change control while retaining means archiving superseded versions for at least five years after replacement",
+      "Maintaining documented information means keeping living documents current and available for use such as policies and procedures — retaining means keeping historical records as evidence that activities occurred such as audit reports and training records",
+      "Maintaining and retaining are identical requirements both meaning the same thing — the distinction is only grammatical and has no practical implication for how organisations manage their ISMS documentation and records"
+    ],
+    ans: 2,
+    exp: "<strong>Clause 7.5 — Documented Information:</strong> <strong>Maintain</strong> = living documents kept current: information security policy, risk assessment procedure, SoA. Updated when things change. <strong>Retain</strong> = records as objective evidence: completed risk assessments, audit reports, management review minutes, training attendance. Historical — not changed after creation. <strong>Controls required:</strong> Distribution, access, version control, retention periods, disposition. <strong>Common required documents:</strong> Scope, policy, risk assessment, SoA, objectives, competence records, audit results, management review results, nonconformities."
+  },
+  {
+    q: "Clause 9.3 requires a Management Review. Who must conduct it, and what outputs must it produce?",
+    opts: [
+      "An external consultant facilitates the review annually, combining ISO 27001 requirements with other management system reviews — producing a single integrated management report covering quality, environment, and security together",
+      "The CISO and security team conduct the review quarterly using incident data, vulnerability scan results, and patch compliance metrics as inputs — producing a security dashboard report shared with department heads and the IT steering committee",
+      "Top management must conduct the review at planned intervals — inputs include audit results, performance metrics, risk status, and interested party feedback — outputs must include decisions on continual improvement, resource needs, and ISMS changes",
+      "The internal audit team conducts the review independently from the security function, using audit findings as the primary input and producing a formal report submitted to the board for approval at the annual general meeting"
+    ],
+    ans: 2,
+    exp: "<strong>Clause 9.3 — Management Review:</strong> <strong>Who:</strong> Top management — not CISO alone. <strong>Frequency:</strong> At planned intervals (typically annually). <strong>Required Inputs:</strong> Status of previous actions, changes in external/internal issues, security performance, fulfilment of objectives, risk assessment results, audit findings, interested party feedback, OFIs. <strong>Required Outputs:</strong> Decisions on continual improvement opportunities, any changes to ISMS, resource needs. <strong>Evidence required:</strong> Management review minutes as retained documented information. <strong>Common finding:</strong> Review not conducted by actual top management, or inputs/outputs not documented."
+  },
+  {
+    q: "What does Clause 10.2 (Continual Improvement) require and how does it map to the PDCA model?",
+    opts: [
+      "It requires improving only the technical controls within the ISMS boundary, with process and documentation improvements handled separately under the corrective action process defined in Clause 10.1 of the standard",
+      "It requires annual replacement of technical security controls with newer and more effective technologies, driven by a formal technology refresh programme approved by the IT steering committee and funded through the annual capital expenditure budget",
+      "It requires that the organisation continually improve the suitability, adequacy, and effectiveness of the ISMS — driven by nonconformities, audit findings, management review outputs, and changing risks — representing the Act phase of the PDCA cycle",
+      "It requires engaging an external consultant each year to perform an independent gap analysis against the latest version of ISO 27001 and produce a formal improvement roadmap for management approval and board-level sign-off"
+    ],
+    ans: 2,
+    exp: "<strong>Clause 10.2 — Continual Improvement:</strong> The ISMS must continually improve its: <strong>Suitability</strong> (does it fit the organisation?), <strong>Adequacy</strong> (does it cover what's needed?), <strong>Effectiveness</strong> (does it actually work?). <strong>PDCA mapping:</strong> Plan (Clauses 4-6) → Do (Clause 8) → Check (Clause 9) → Act (Clause 10). <strong>Inputs:</strong> Clause 10.1 corrections, audit findings, management review outputs, risk updates, incidents, regulatory changes. <strong>Key distinction:</strong> Corrective action = reactive fix. Continual improvement = proactive enhancement even without failures."
+  },
+  {
+    q: "What are the mandatory elements of an ISO 27001 risk assessment process per Clause 6.1.2?",
+    opts: [
+      "The assessment must cover only the systems and processes within the ISMS scope boundary, using a qualitative scale defined by the organisation and reviewed by an independent party to confirm that the results meet ISO 31000 alignment requirements",
+      "The assessment must use the OCTAVE or FAIR quantitative methodology, assign Annual Loss Expectancy values to each identified risk, and be conducted by a CRISC-certified professional using tools approved by the certification body before the ISMS goes live",
+      "The assessment must be reviewed and approved by the board annually, include a formal business impact analysis covering all business processes, and map every identified risk to a specific Annex A control before treatment decisions are made",
+      "The assessment must define risk acceptance criteria, identify assets, owners, threats and vulnerabilities, analyse likelihood and impact, and evaluate risks against acceptance criteria using a consistent methodology"
+    ],
+    ans: 3,
+    exp: "<strong>Clause 6.1.2 — Risk Assessment Requirements:</strong> (1) Define <strong>risk acceptance criteria</strong> (risk appetite). (2) <strong>Identify risks</strong>: assets and owners, threats, vulnerabilities, potential consequences. (3) <strong>Analyse risks</strong>: assess likelihood and consequence, determine risk level. (4) <strong>Evaluate risks</strong>: compare against acceptance criteria, prioritise for treatment. <strong>Methodology:</strong> Must produce consistent, valid, comparable results. No prescribed method — organisations choose (qualitative, quantitative, hybrid). <strong>Output:</strong> Risk register with all identified risks, levels, and owners."
+  },
+  {
+    q: "What are the four risk treatment options in ISO 27001, and how does an organisation decide which to apply?",
+    opts: [
+      "Modify (mitigate with controls), Retain (accept), Avoid (stop the activity), and Share (transfer via insurance or contract) — chosen based on the cost-benefit relationship between treatment cost and risk level relative to the organisation's risk appetite",
+      "Prevent, Detect, Respond, and Recover — aligned to the four phases of the NIST Cybersecurity Framework — the choice is based on which phase of the attack lifecycle the risk most likely occurs in and what existing controls already cover",
+      "Accept, Escalate, Automate, and Outsource — the choice depends on whether the risk involves a manual process, a technical system, a third-party service, or a regulatory requirement that must be formally escalated to the board",
+      "Reduce, Remove, Replace, and Report — chosen based on whether the risk can be eliminated through process redesign, replaced with a safer alternative, or reported to a regulator as a legally required disclosure under applicable data protection law"
+    ],
+    ans: 0,
+    exp: "<strong>ISO 27001 Risk Treatment Options (Clause 6.1.3):</strong> <strong>Modify</strong>: apply controls to reduce likelihood or impact. Most common. <strong>Retain</strong>: accept the risk — appropriate when below acceptance threshold or treatment cost exceeds benefit. Must be explicitly approved by risk owner. <strong>Avoid</strong>: stop the activity creating the risk. Most effective but may not be viable. <strong>Share</strong>: transfer to third party via cyber insurance or outsourcing. Note: legal/reputational risk cannot be fully transferred. <strong>Risk Treatment Plan</strong>: documents chosen treatment, controls selected, responsible person, timeline, and residual risk."
+  },
+  {
+    q: "What is residual risk in ISO 27001, and who must formally accept it after treatment is applied?",
+    opts: [
+      "Residual risk is the portion of risk covered by cyber insurance after the policy deductible — formally accepted by the CFO when signing the insurance policy, with the insurance limit representing the organisation's maximum tolerated financial exposure from security incidents",
+      "Residual risk must always be zero before certification — any remaining risk above a low rating requires additional controls to be implemented before the Stage 2 certification audit can be scheduled with the certification body",
+      "Residual risk is automatically calculated by the ISMS tool after all Annex A controls are marked as implemented — the system assigns a residual risk level that is automatically accepted if it falls below the organisation's pre-defined risk appetite threshold",
+      "Residual risk is the risk remaining after treatment is applied — it must be formally accepted by risk owners (accountable business managers, not just the security team) with documented evidence showing the risk owner has reviewed and explicitly approved the remaining level"
+    ],
+    ans: 3,
+    exp: "<strong>Residual Risk:</strong> Risk remaining AFTER applying controls. Example: Before MFA login risk = High. After MFA residual = Low. <strong>Formal acceptance required by risk owner</strong> (accountable business manager). Documentation = risk treatment plan with risk owner signature/approval. <strong>Why risk owner, not security team?</strong> Risk owners are accountable for business outcomes and can make informed acceptance decisions. Security team only recommends. <strong>If residual still above threshold:</strong> additional controls required OR risk owner explicitly accepts exception with documented rationale. <strong>Auditor check:</strong> Is residual risk documented? Accepted by the right person? Acceptance date recorded?"
+  },
+  {
+    q: "ISO 27001:2022 Annex A has how many controls across how many themes compared to the 2013 version?",
+    opts: [
+      "The 2022 version has 100 controls across 3 themes combining administrative and organisational controls into a single governance domain, with physical and technical controls maintained as separate themes as they were in the previous version",
+      "The 2022 version retains 114 controls across 14 domains identical to 2013 — only the control wording and guidance in ISO 27002 was updated while the Annex A structure and control numbering remained completely unchanged for backwards compatibility",
+      "The 2022 version has 93 controls across 4 themes — Organisational (37), People (8), Physical (14), and Technological (34) — reduced from 114 controls across 14 domains in 2013, with 11 new controls added and many others merged or renamed",
+      "The 2022 version increased to 120 controls across 5 themes by adding a new AI and Emerging Technology domain containing 6 controls specifically addressing machine learning, cloud-native architectures, and zero-trust network access implementations"
+    ],
+    ans: 2,
+    exp: "<strong>ISO 27001:2022 Annex A Structure:</strong> MAJOR change from 2013 (114 controls, 14 domains) to 2022 (93 controls, 4 themes). <strong>4 Themes:</strong> Organisational (5.1-5.37 = 37 controls), People (6.1-6.8 = 8 controls), Physical (7.1-7.14 = 14 controls), Technological (8.1-8.34 = 34 controls). <strong>11 NEW controls in 2022:</strong> Threat intelligence (5.7), Cloud services (5.23), ICT readiness for BCP (5.30), Physical security monitoring (7.4), Configuration management (8.9), Information deletion (8.10), Data masking (8.11), Data leakage prevention (8.12), Monitoring activities (8.16), Web filtering (8.23), Secure coding (8.28). Transition deadline from 2013 to 2022: October 2025."
+  },
+  {
+    q: "Control 5.2 (Information Security Roles and Responsibilities) requires what, and what governance principle does it reinforce?",
+    opts: [
+      "It requires information security roles and responsibilities to be defined and allocated — reinforcing that security is everyone's responsibility but specific roles such as CISO, data owners, and system owners have defined accountabilities for protecting specific assets",
+      "It requires a formal security organisation chart approved by the board and filed with the certification body before the Stage 1 audit — showing all security roles, reporting lines, and the CISO's position within the corporate governance hierarchy",
+      "It requires only IT staff and the CISO to have formally defined security roles, while business users are covered by the acceptable use policy — ensuring security specialists are accountable and business users are not burdened with technical responsibilities",
+      "It requires all employees to have identical security responsibilities documented in a single universal job description, so that security accountability cannot be delegated to a specific individual and remains equally distributed across the entire workforce without exception"
+    ],
+    ans: 0,
+    exp: "<strong>Control 5.2 — Roles and Responsibilities:</strong> Requires defining who is responsible for: protecting specific assets, performing ISMS processes, managing specific risks. <strong>Key roles:</strong> Top management (overall accountability), CISO/ISMS Manager (operational responsibility), Information Asset Owners (accountable for their assets), System Owners (responsible for system security), All employees (following policies). <strong>Segregation of duties (5.3):</strong> Conflicting duties must be separated — the person who initiates a transaction should not approve it. <strong>Documentation:</strong> Job descriptions, RACI matrix, role charters — maintained as documented information."
+  },
+  {
+    q: "Control 5.7 (Threat Intelligence) is NEW in ISO 27001:2022. What does it require the organisation to do with threat intelligence?",
+    opts: [
+      "It requires subscribing to a commercial threat intelligence feed from a vendor listed on an approved supplier register, with feeds automatically imported into the SIEM system and matched against network logs to generate alerts without requiring manual analyst review",
+      "It requires collecting, analysing, and producing threat intelligence relevant to the organisation's threats — intelligence must be actionable, contextually relevant, and timely — shared with appropriate stakeholders to inform risk decisions and control improvements",
+      "It requires appointing a dedicated threat intelligence analyst responsible for producing weekly reports on the global threat landscape, briefing senior management monthly, and updating the risk register whenever a new threat actor targeting the industry is identified",
+      "It requires sharing all internally identified threat intelligence with national CERTs and sector ISACs within 24 hours of discovery, ensuring that the organisation contributes to the broader security community while receiving threat feeds in return under formal data-sharing agreements"
+    ],
+    ans: 1,
+    exp: "<strong>Control 5.7 — Threat Intelligence (NEW in 2022):</strong> Three levels: <strong>Strategic</strong> = high-level trends, geopolitical risks. <strong>Tactical</strong> = attacker TTPs, MITRE ATT&CK. <strong>Operational/Technical</strong> = specific IOCs (IPs, domains, hashes). <strong>Requirements:</strong> Intelligence must be relevant, timely, accurate, and actionable. Shared with appropriate stakeholders. <strong>Sources:</strong> ISACs, OSINT, commercial TI platforms, government CERTs, MISP communities. <strong>Output:</strong> Updated risk assessments, enhanced controls, improved incident detection."
+  },
+  {
+    q: "Control 5.23 (Information Security for Use of Cloud Services) is new in 2022. What must organisations define for cloud services?",
+    opts: [
+      "Organisations must transfer full security responsibility to the cloud service provider through contractual indemnities — the CSP is solely liable for any security incidents affecting data stored or processed in their infrastructure under shared responsibility principles",
+      "Organisations must only use cloud providers that hold ISO 27001 certification — any provider without current certification must be removed from the approved supplier list within 90 days and replaced with a certified alternative to maintain ISMS compliance",
+      "Organisations must host all cloud services in the same country as their headquarters to satisfy data sovereignty requirements — cross-border cloud deployments require explicit board approval and must be disclosed to the certification body in the SoA",
+      "Organisations must define and implement processes for acquisition, use, management, and exit from cloud services — covering security requirements, shared responsibility understanding, contractual security obligations, ongoing monitoring, and safe exit strategy"
+    ],
+    ans: 3,
+    exp: "<strong>Control 5.23 — Cloud Services (NEW in 2022):</strong> Requirements: (1) <strong>Selection criteria</strong>: define security requirements before adopting a cloud service. (2) <strong>Shared responsibility model</strong>: understand what CSP vs organisation secures (IaaS/PaaS/SaaS differ). (3) <strong>Contractual requirements</strong>: data location, encryption, access controls, incident notification, audit rights. (4) <strong>Monitoring</strong>: ongoing CSP security posture monitoring (certs, audit reports). (5) <strong>Exit strategy</strong>: data retrieval, deletion verification, transition plan. <strong>Practical tools:</strong> CSA STAR certification, CSP SOC 2 reports, CSA CCM as evaluation framework."
+  },
+  {
+    q: "Control 5.9 requires an inventory of information and associated assets. What must it contain and who is accountable?",
+    opts: [
+      "The inventory must identify information and associated assets (information, software, physical, services, people), classify them by sensitivity, assign ownership to accountable individuals, and be kept current — the owner is accountable for the asset's security throughout its lifecycle",
+      "The inventory must list only IT hardware assets such as servers, workstations, and network devices with their serial numbers, locations, and assigned support contracts — software and information assets are tracked separately by the software asset management process",
+      "The inventory must use a certified asset management platform approved by the certification body and integrated with the organisation's CMDB — manual spreadsheet inventories are not acceptable as they cannot demonstrate the continuous update controls required for compliance",
+      "The inventory must be completed once during the initial ISMS implementation phase using an automated discovery tool — after initial population it becomes a static reference document updated only when major infrastructure changes are formally approved through the change management process"
+    ],
+    ans: 0,
+    exp: "<strong>Control 5.9 — Asset Inventory:</strong> Asset types: <strong>Information</strong> (databases, files, contracts), <strong>Software</strong> (applications, OS), <strong>Physical</strong> (computers, servers, removable media), <strong>Services</strong> (cloud services, utilities), <strong>People</strong> (personnel with specialised knowledge). <strong>Inventory must capture:</strong> Asset name, classification, owner, location, format, backup info. <strong>Asset Owner responsibilities:</strong> Ensure asset is inventoried, classified, protected, and properly disposed of. <strong>Common finding:</strong> Inventory incomplete (shadow IT missing), no assigned owners, not kept current."
+  },
+  {
+    q: "Controls 5.12, 5.13, and 5.14 cover information classification, labelling, and transfer. What is the correct relationship between them?",
+    opts: [
+      "Transfer rules are defined first to establish handling requirements, then the labelling scheme is derived from transfer restrictions, and finally classification categories are created to match the labelling scheme — working backwards from operational constraints to policy definitions",
+      "Classification defines categories based on confidentiality requirements, labelling applies consistent marks to information matching its classification, and transfer rules define how each classification level must be handled during sharing — all three must be mutually consistent",
+      "Classification and labelling apply only to digital information stored on corporate systems — physical documents are covered by the clean desk policy in Control 7.7, and verbal information transfers have no classification or labelling requirements under the standard",
+      "All three controls apply exclusively to information shared with external parties — internal information transfers between employees within the same organisation are excluded from classification, labelling, and transfer control requirements by the standard"
+    ],
+    ans: 1,
+    exp: "<strong>Controls 5.12-5.14 — Classification → Labelling → Transfer:</strong> <strong>5.12 Classification:</strong> Define scheme (Public, Internal, Confidential, Restricted). Owner classifies information. <strong>5.13 Labelling:</strong> Apply labels matching classification — physical stamps, electronic metadata, watermarks. <strong>5.14 Transfer:</strong> Rules per classification level per transfer method — email encryption, chain of custody for physical, NDAs for verbal. Transfer agreements with external parties. <strong>Common failures:</strong> Inconsistent classification, missing labels on sensitive documents, unencrypted email used for confidential data."
+  },
+  {
+    q: "Control 5.15 covers access control. What core principles must the access control policy enforce?",
+    opts: [
+      "The policy must restrict access control configuration to the IT department only, ensuring that business managers cannot grant or revoke access rights — this segregation prevents conflicts of interest and ensures access decisions are always technically reviewed before implementation",
+      "The policy must mirror the access control requirements of ISO 27002:2022 exactly, adopting the recommended controls verbatim without customisation — any deviation from ISO 27002 guidance must be approved by the certification body before implementation",
+      "The policy must address business and security requirements, enforce need-to-know and least privilege principles, define segregation of duties requirements, ensure consistency across IT and physical access, and establish regular access review requirements",
+      "The policy must mandate multi-factor authentication for every user account without exception, prohibit the use of shared or generic accounts in all circumstances, and require password complexity rules of at least 16 characters with rotation every 30 days across all systems and applications"
+    ],
+    ans: 2,
+    exp: "<strong>Control 5.15 — Access Control Policy:</strong> Must address: access control rules, rights and restrictions based on role/need-to-know/least privilege, segregation of duties, alignment with information classification, access review requirements. <strong>Key principles:</strong> <strong>Need-to-know</strong>: access only to information needed for role. <strong>Least privilege</strong>: minimum access rights necessary. <strong>Segregation of duties</strong>: no single person controls an entire critical process. <strong>Access review</strong>: periodic review to remove unnecessary access (5.18). Related controls: 5.16 Identity management, 5.17 Authentication information, 8.2 Privileged access."
+  },
+  {
+    q: "Controls 5.19–5.22 cover supplier relationships. What must a complete supplier security management programme include?",
+    opts: [
+      "All supplier audits must be conducted by the certification body as part of the annual surveillance audit — organisations cannot conduct their own supplier assessments as this would constitute a conflict of interest under the standard's independence requirements",
+      "Supplier security only applies to cloud service providers under Control 5.23 — traditional suppliers providing physical goods or on-site services are excluded from the supplier security controls in the 5.19-5.22 range of the 2022 Annex A",
+      "A documented supplier policy, security requirements embedded in contracts including incident notification and audit rights, ongoing monitoring of supplier security performance against requirements, and managing security impacts of changes to supplier services",
+      "Supplier security is fully managed through a standard NDA signed at contract start — the NDA legally transfers security liability to the supplier, meaning the organisation has fulfilled all ISO 27001 requirements for supplier relationship management without further monitoring"
+    ],
+    ans: 2,
+    exp: "<strong>Controls 5.19–5.22 — Supplier Security:</strong> <strong>5.19:</strong> Policy covering assessment criteria, contractual requirements, monitoring approach. <strong>5.20:</strong> Contracts must include security requirements, classification handling, incident notification, audit rights, data deletion, subcontractor requirements. <strong>5.21:</strong> ICT supply chain — SBOM for software, verify ICT supplier security practices. <strong>5.22:</strong> Regular performance review using SOC 2/ISO 27001 certs and KPIs. Manage changes with security impact assessment. <strong>Link to 5.23:</strong> cloud services are a specific type of supplier."
+  },
+  {
+    q: "Control 5.30 (ICT Readiness for Business Continuity) is new in 2022. What does it specifically require beyond a general BCP?",
+    opts: [
+      "It requires outsourcing all ICT functions to a highly resilient cloud provider with a guaranteed 99.99% SLA — this contractual commitment satisfies the ICT continuity requirement without the need for internal redundancy planning or disaster recovery documentation",
+      "It requires planning, implementing, testing, and reviewing ICT continuity arrangements based on BIA findings — ensuring ICT capabilities can recover within required RTOs and RPOs to support business continuity during and after disruption",
+      "It requires creating a single consolidated business continuity plan that merges ICT recovery procedures with business process continuity steps — the 2022 addition replaces the need for separate BCP and DRP documents that were previously maintained as distinct artefacts",
+      "It requires testing ICT continuity arrangements exclusively through live failover exercises — tabletop exercises and walkthroughs are not considered sufficient evidence of ICT readiness under the 2022 version and will result in an observation during surveillance audits"
+    ],
+    ans: 1,
+    exp: "<strong>Control 5.30 — ICT Readiness for Business Continuity (NEW in 2022):</strong> (1) <strong>BIA</strong>: identify critical ICT services, determine RTOs and RPOs. (2) <strong>ICT continuity plans</strong>: documented recovery plans matching BIA requirements. (3) <strong>Implementation</strong>: redundancy, failover, backup systems, DR sites. (4) <strong>Testing</strong>: regular tests — tabletop, failover, DR drills. (5) <strong>Review</strong>: update after tests, incidents, organisational changes. <strong>Key distinction:</strong> BCP = business process continuity. ICT continuity = technology layer supporting those processes. Both required."
+  },
+  {
+    q: "Control 5.29 (Information Security During Disruption) requires what, and why is it critical during crisis events?",
+    opts: [
+      "It only applies to natural disasters such as floods, fires, and power outages — cyber incidents are handled entirely by the incident response procedure and are explicitly excluded from the disruption continuity controls in the Annex A 5.29 control scope",
+      "It requires suspending non-essential security controls during a declared disaster to redirect security team resources toward recovery activities — allowing emergency access bypasses to be granted without approval so that recovery can proceed as quickly as possible",
+      "It requires automatically transferring all security monitoring responsibilities to the cloud provider during disruptions — on-premises monitoring systems are designed to fail safely and cloud-based monitoring maintains coverage without requiring any manual intervention",
+      "It requires that information security controls remain effective during disruptions — preventing attackers from exploiting crises when security teams are distracted, emergency access is granted, and normal approval procedures are bypassed under time pressure"
+    ],
+    ans: 3,
+    exp: "<strong>Control 5.29 — Information Security During Disruption:</strong> Disruptions create security vulnerabilities — attackers exploit crises. <strong>Requirements:</strong> Plan for maintaining security controls during disruption. Define minimum acceptable security level. Document what controls can be temporarily relaxed (with approval) and what compensating controls replace them. <strong>Examples:</strong> If primary access control fails → backup manual sign-in. If SIEM goes down → manual log review until restored. <strong>Link to BCM:</strong> 5.29 = security perspective of BCP. BCP ensures business processes continue. 5.29 ensures security continues protecting those processes during the crisis."
+  },
+  {
+    q: "Control 6.1 requires pre-employment screening. What factors determine how deep the screening must go?",
+    opts: [
+      "All employees and contractors require identical background checks regardless of their role, access level, or the sensitivity of information they will handle — uniform application is required to avoid discrimination claims and ensure equitable treatment across the workforce",
+      "Screening is only required for permanent employees — contractors and temporary workers are excluded because their agencies are responsible for conducting background checks before placing individuals with client organisations",
+      "Screening must always include criminal record checks, credit history, employment references, educational verification, and a five-year address history — all five elements are mandatory for every role under the standard regardless of job function or seniority",
+      "Screening depth is proportionate to business requirements, the information to be accessed, applicable laws and regulations, and perceived risk — higher-risk roles such as those with privileged access or sensitive data handling require more extensive investigation"
+    ],
+    ans: 3,
+    exp: "<strong>Control 6.1 — Screening:</strong> Risk-based approach. Factors: <strong>Role sensitivity</strong> (privileged access, financial systems, C-suite). <strong>Information access</strong> (will they handle confidential/restricted data?). <strong>Legal requirements</strong> (regulated industries mandate specific checks). <strong>Elements</strong> (where legally permissible): identity verification, employment history, qualifications, criminal record, credit check (financial roles), references. <strong>Legal constraints:</strong> GDPR governs screening data collection and retention. Must obtain consent. <strong>Contractors:</strong> Often through supplier agreements (5.20) requiring equivalent screening. <strong>Common finding:</strong> No documented screening process or inconsistent application."
+  },
+  {
+    q: "Control 6.3 requires information security awareness, education, and training. How should effectiveness be demonstrated?",
+    opts: [
+      "Effectiveness is demonstrated by the security team completing the training first and then cascading it to other departments — a train-the-trainer model where managers certify their teams is the preferred approach for demonstrating comprehensive coverage",
+      "Effectiveness is automatically demonstrated when training is delivered using an LMS platform — the system automatically records completion timestamps and generates compliance reports that serve as objective evidence for the certification audit without further analysis",
+      "Effectiveness must be measured through assessment scores, phishing simulation click rate trends, incident report rates, and policy violation rates — training content must be updated based on results and remain relevant to job function and current threats",
+      "Effectiveness is demonstrated by achieving a 100% completion rate for the mandatory annual training module — the standard requires all personnel to complete training within the calendar year with no exceptions permitted except for extended medical leave"
+    ],
+    ans: 2,
+    exp: "<strong>Control 6.3 — Awareness, Education and Training:</strong> <strong>Requirements:</strong> Provided at hire and periodically. Updated when policies/threats change. Relevant to job function. <strong>Topics:</strong> Security policy, acceptable use, authentication, incident reporting, phishing/social engineering, data handling, clean desk. <strong>Effectiveness measurement:</strong> Pre/post assessment scores, phishing simulation click rates (trend), incident reports from employees, policy violation rates. <strong>Documented information:</strong> Training attendance records, assessment results, phishing metrics — retained as evidence. <strong>Auditor checks:</strong> Are ALL personnel trained? Is there evidence? Has content been updated recently?"
+  },
+  {
+    q: "Controls 6.4 and 6.5 cover disciplinary process and responsibilities after termination. What must each address?",
+    opts: [
+      "Control 6.4 requires automatically deleting all user accounts within one hour of termination notification while 6.5 requires conducting a mandatory exit interview to document all information assets returned by the departing employee before their final day",
+      "Control 6.4 requires a formal disciplinary process for security violations serving as a deterrent — scaled to severity and following employment law — while 6.5 requires communicating and enforcing post-employment security obligations such as NDAs and confidentiality agreements",
+      "Control 6.4 requires escalating all security violations directly to law enforcement regardless of severity, while 6.5 requires the organisation to maintain surveillance of former employees for a defined period to detect any misuse of information they held during employment",
+      "Both controls only apply to employees who are involuntarily terminated for cause — voluntary resignations and retirements are excluded because departing employees who leave willingly present no security risk to the organisation under the standard"
+    ],
+    ans: 1,
+    exp: "<strong>Control 6.4 — Disciplinary Process:</strong> Formal, documented process for security policy violations. Purpose: deterrent AND consistent response. Must: be fair, follow employment law, scale to severity (warning → termination → police). Apply equally regardless of seniority. <strong>Control 6.5 — Responsibilities After Termination:</strong> Certain obligations survive employment. Mechanisms: NDAs, non-compete clauses, IP assignment agreements, ongoing confidentiality obligations. At offboarding: explicitly remind departing employees in writing. <strong>Common risk:</strong> Disgruntled departing employees with valid access = insider threat. Immediate access revocation is critical."
+  },
+  {
+    q: "Control 7.1 requires physical security perimeters. What approach should be used and what controls are needed at each layer?",
+    opts: [
+      "A single unified perimeter is sufficient for most organisations — layered perimeters are only required for data centres and government facilities — standard office environments need only basic door locks and a reception desk staffed during business hours",
+      "Multiple perimeters should be defined — outer building, secure office areas, and restricted areas such as server rooms — each with controls proportionate to the sensitivity of information protected, including access control, intruder detection, and visitor management",
+      "Physical perimeters only apply to areas containing IT equipment — open-plan offices, meeting rooms, and reception areas are excluded from perimeter controls because they contain no information assets that require protection under the standard",
+      "The perimeter must be managed entirely by the facilities management department without involvement from the IT or information security teams — physical and information security are separate governance domains that must not overlap to avoid conflicting accountability"
+    ],
+    ans: 1,
+    exp: "<strong>Control 7.1 — Physical Security Perimeters:</strong> <strong>Layered approach:</strong> Outer (building/site) → Inner (secure office areas) → Restricted (server rooms) → High-security (data centre). <strong>Controls at each layer:</strong> Outer: fencing, reception, CCTV. Inner: badge access, visitor sign-in, escort policy. Restricted: biometric/PIN+badge, mantrap, no tailgating. High-security: multi-factor physical auth, motion detection, environmental monitoring. <strong>Requirements:</strong> Entry points controlled and monitored, intruder alarm, automatic door closing. Perimeter strength proportionate to information sensitivity."
+  },
+  {
+    q: "Control 7.4 (Physical Security Monitoring) is new in ISO 27001:2022. What does it require organisations to implement?",
+    opts: [
+      "It requires continuously monitoring premises using appropriate tools such as CCTV, alarms, access logs, and guards to detect and deter unauthorised physical access — monitoring must be effective, alerts must be acted upon, and privacy requirements must be respected",
+      "It requires installing CCTV cameras in all areas of the workplace including employee workstations and personal desk areas — footage must be retained for a minimum of one year and be accessible to management and HR for performance monitoring purposes",
+      "It requires real-time biometric monitoring of all persons entering and exiting every secure area — biometric data must be stored in a centralised database and retained for seven years to support forensic investigations following any physical security incident",
+      "It only applies to data centres and network equipment rooms — monitoring of general office environments, reception areas, car parks, and external building perimeters is considered optional under the 2022 version of the standard"
+    ],
+    ans: 0,
+    exp: "<strong>Control 7.4 — Physical Security Monitoring (NEW in 2022):</strong> Monitoring tools: CCTV (with retention, privacy notices), intrusion detection/alarms, security guards/patrols, access control logs, visitor logs. <strong>Requirements:</strong> Continuous monitoring for high-risk areas. Alerts must be responded to. Footage/logs retained per policy and legal requirements. Privacy compliance (GDPR requires CCTV signage, data minimisation). <strong>Balance:</strong> Employee monitoring must respect privacy laws. <strong>Evidence for auditors:</strong> CCTV operational, access logs maintained, alarm test records, response procedures documented."
+  },
+  {
+    q: "Control 7.9 covers security of assets off-premises. What risks must be addressed and what controls must be applied?",
+    opts: [
+      "Off-premises security only applies to company-owned devices — personal devices used under a BYOD policy are entirely the employee's responsibility and the organisation has no obligation to enforce security controls on personally owned equipment",
+      "Assets must never be removed from company premises under any circumstances — all off-premises work must be conducted using thin client terminals connecting to virtualised desktops, and any employee found removing physical equipment faces immediate disciplinary action regardless of business justification",
+      "Security controls for off-premises assets are the same as on-premises controls — no additional measures are required because the organisation's endpoint management tools provide identical protection regardless of whether the device is inside or outside the corporate network",
+      "Risks including theft, loss, unauthorised access, and environmental damage must be addressed with controls such as full disk encryption, VPN for remote access, prohibition on unprotected public WiFi, physical protection when travelling, and immediate reporting of lost or stolen devices"
+    ],
+    ans: 3,
+    exp: "<strong>Control 7.9 — Security of Assets Off-Premises:</strong> <strong>Risks:</strong> Theft, loss, shoulder surfing, unsecured WiFi interception, customs inspection, environmental damage. <strong>Required controls:</strong> Full disk encryption (BitLocker/FileVault), VPN for corporate access, physical protection in public, immediate loss/theft reporting enabling remote wipe. <strong>Prohibited:</strong> Public WiFi without VPN, leaving device unlocked in public. <strong>Border crossing:</strong> Customs may demand access — use travel laptops with minimal data for high-risk countries. <strong>Related controls:</strong> 8.1 (user endpoint devices), 6.7 (remote working)."
+  },
+  {
+    q: "Control 7.10 covers storage media. What is required at the disposal and reuse stage, and why is file deletion insufficient?",
+    opts: [
+      "Formatting the drive using the operating system's standard format function is sufficient — this process overwrites the file allocation table making all previous data inaccessible to anyone without advanced data recovery capabilities or access to specialist laboratory equipment",
+      "Disposal only requires documenting that the media has been decommissioned in the asset inventory — the physical handling and destruction of the media itself is the responsibility of the hardware maintenance team and is outside the scope of information security controls",
+      "Simple deletion is insufficient as data can be recovered — acceptable methods include certified overwriting (NIST 800-88), degaussing for magnetic media, physical destruction for SSDs, or certified third-party disposal with a certificate of destruction as evidence",
+      "Moving files to the Recycle Bin and emptying it is sufficient for disposal — modern operating systems overwrite deleted file space within 24 hours as part of routine disk maintenance, making data recovery impossible without specialist forensic tools that most attackers do not possess"
+    ],
+    ans: 2,
+    exp: "<strong>Control 7.10 — Storage Media Disposal:</strong> <strong>Why deletion is insufficient:</strong> Data can be forensically recovered. <strong>Acceptable methods:</strong> <strong>Overwriting</strong>: NIST 800-88 compliant multi-pass (HDDs). <strong>Degaussing</strong>: magnetic erasure (HDDs). <strong>Physical destruction</strong>: shredding, crushing, incineration (SSDs — overwrite unreliable on SSDs). <strong>Cryptographic erasure</strong>: delete the encryption key (cloud/SSD). <strong>Certificate of destruction</strong>: third-party disposal companies provide cert as evidence. <strong>Lifecycle:</strong> Controls apply at acquisition, use, transport, storage, AND disposal. <strong>GDPR implication:</strong> Data on disposed media = potential personal data breach."
+  },
+  {
+    q: "Control 8.2 covers privileged access rights. What controls beyond standard user access management are specifically required?",
+    opts: [
+      "Privileged access must be allocated on a need-to-use basis, use dedicated accounts separate from daily-use accounts, require stronger authentication such as MFA, be comprehensively logged, reviewed more frequently than standard access, and time-limited where possible",
+      "Privileged accounts must be shared among team members to ensure business continuity when primary administrators are unavailable — shared credentials should be stored in a sealed envelope in the IT manager's office and changed after each use is logged",
+      "Privileged access is managed identically to standard user access — any differences in control stringency between privileged and non-privileged accounts represent gold-plating beyond what the standard requires and may introduce unnecessary complexity and cost",
+      "Privileged access must be managed through a commercial PAM tool from an approved vendor — manual processes and spreadsheet-based access registers are not acceptable as evidence for certification audits regardless of how rigorously they are maintained"
+    ],
+    ans: 0,
+    exp: "<strong>Control 8.2 — Privileged Access Rights:</strong> Privileged access = administrative/root access that can bypass normal controls. <strong>Required controls:</strong> (1) Separate privileged accounts (not daily-use account for admin tasks). (2) Need-to-use / JIT access. (3) MFA mandatory. (4) All activity logged and monitored. (5) Frequent review (quarterly vs annually for standard access). (6) Time-limited access for specific maintenance windows. (7) PAM tools for credential vaulting and session recording. <strong>Risk:</strong> Compromised privileged account = complete system control. Admin accounts are primary attacker targets."
+  },
+  {
+    q: "Control 8.7 requires protection against malware. Why is a technical control alone insufficient to satisfy this control?",
+    opts: [
+      "Protection requires a layered defence combining technical controls such as AV, EDR, email filtering, and web filtering with awareness training covering phishing recognition and with procedures covering software installation policy and incident response — malware evolves to bypass any single control",
+      "Technical malware controls are actually fully sufficient — the standard's requirement for training and procedures is considered optional guidance in ISO 27002 rather than a mandatory requirement in ISO 27001, so organisations with comprehensive endpoint protection can exclude the awareness element from their SoA",
+      "Technical controls only apply to Windows endpoints — Linux and macOS systems are inherently resistant to malware and are therefore excluded from the scope of Control 8.7, which was designed specifically for Windows-based corporate environments",
+      "Antivirus tools provide complete malware protection and satisfy all requirements of Control 8.7 — the standard was written before behavioural detection and EDR technologies existed, so modern AV tools exceed the original control intent without requiring additional process controls"
+    ],
+    ans: 0,
+    exp: "<strong>Control 8.7 — Protection Against Malware:</strong> <strong>Technical:</strong> Endpoint AV/EDR, email gateway, web filtering, application whitelisting, patching, network segmentation. <strong>Process:</strong> Software installation policy, removable media policy, patch management, incident response for malware. <strong>Awareness:</strong> Phishing training, social engineering awareness, suspicious activity reporting. <strong>Why layers matter:</strong> Zero-day bypasses signature AV. Fileless malware bypasses file scanning. Spear-phishing bypasses spam filters. Each layer catches what others miss. <strong>Recovery:</strong> Backup/restore capability is part of malware protection (ransomware recovery)."
+  },
+  {
+    q: "Control 8.8 covers management of technical vulnerabilities. What must the process include and how should prioritisation work?",
+    opts: [
+      "Annual penetration testing is the only requirement for Control 8.8 — the test scope must cover all systems within the ISMS boundary and be conducted by a CREST-certified provider with results reported to senior management within 30 days of the test completion date",
+      "Privileged access must be allocated on a need-to-use basis with dedicated accounts separate from daily-use accounts, require MFA, be comprehensively logged, reviewed more frequently, and time-limited where possible",
+      "Vulnerability management can be waived if the organisation holds cyber insurance with a policy value exceeding the potential impact of a successful exploit — the insurance policy serves as a risk transfer mechanism satisfying the risk treatment requirements of Clause 6.1.3",
+      "All identified vulnerabilities must be remediated within 24 hours regardless of severity or business context — the standard takes a zero-tolerance approach and any vulnerability older than one day constitutes a minor nonconformity during a surveillance audit"
+    ],
+    ans: 1,
+    exp: "<strong>Control 8.8 — Management of Technical Vulnerabilities:</strong> <strong>Identification:</strong> Automated scanning, vendor advisories, threat intelligence, penetration testing. <strong>Evaluation:</strong> CVSS score, exploitability (is there a working exploit?), asset criticality, exposure (internet-facing vs internal). <strong>Remediation timeline example:</strong> Critical (CVSS 9.0+, actively exploited) = 24-72 hours. High = 7-30 days. Medium = 60-90 days. Low = 180 days. <strong>When patch unavailable:</strong> Compensating controls (WAF, network isolation). <strong>Documentation:</strong> Vulnerability register, remediation tracking, exception process with risk acceptance."
+  },
+  {
+    q: "Control 8.9 (Configuration Management) is new in 2022. What does it require and what security risk does poor configuration create?",
+    opts: [
+      "It requires establishing, documenting, implementing, monitoring, and reviewing secure baseline configurations for all hardware, software, services, and networks — poor configuration management leads to default credentials, unnecessary services",
+      "Configuration management requires purchasing IT hardware exclusively from an approved vendor list — the risk of poor configuration is that unsupported hardware vendors may introduce backdoors into firmware that cannot be detected by standard security monitoring tools",
+      "Configuration management requires all systems to use identical security configurations regardless of their function, location, or risk profile — applying a single universal baseline eliminates configuration complexity and ensures consistent audit evidence across all systems",
+      "Configuration management is satisfied by documenting the current state of each system without making any changes to default settings — the documentation requirement means that even default configurations are acceptable as long as they are formally recorded and approved"
+    ],
+    ans: 0,
+    exp: "<strong>Control 8.9 — Configuration Management (NEW in 2022):</strong> <strong>Secure baselines:</strong> Define gold-standard config per system type. Harden: disable unnecessary services/ports, apply CIS Benchmarks, remove default credentials, principle of least functionality. <strong>Documentation:</strong> CIs in CMDB, change control for config changes. <strong>Monitoring:</strong> Continuously monitor for configuration drift using tools like SCCM, Ansible, AWS Config, Azure Policy. <strong>Risk of poor config:</strong> Default credentials = easiest attacker entry (Mirai botnet). Unnecessary services = expanded attack surface. Misconfigured S3 buckets = most common cloud data breach cause."
+  },
+  {
+    q: "Control 8.10 (Information Deletion) is new in 2022. What triggers deletion and what methods are acceptable for different media types?",
+    opts: [
+      "Deletion is only required when an employee leaves the organisation — at that point their personal files must be deleted within 24 hours, but files shared with colleagues or stored in team repositories may be retained indefinitely since they represent shared business assets",
+      "Deletion is triggered exclusively by GDPR right-to-erasure requests — other information types including commercially sensitive data, financial records, and security logs are subject only to archival requirements and do not fall within the scope of Control 8.10",
+      "Deletion is triggered when retention period expires, data is no longer needed, or legal hold is lifted — acceptable methods include cryptographic erasure for cloud and SSD, certified overwriting for HDD, and physical destruction — with deletion records maintained as evidence",
+      "Moving files to the Recycle Bin satisfies the deletion requirement — the standard does not prescribe specific technical methods and accepts any action that removes the files from the user's active working environment regardless of whether the data remains recoverable"
+    ],
+    ans: 2,
+    exp: "<strong>Control 8.10 — Information Deletion (NEW in 2022):</strong> <strong>Triggers:</strong> Retention period expired, data no longer needed (GDPR Article 5), legal hold lifted, system decommissioning, employee departure. <strong>Methods:</strong> <strong>Cryptographic erasure</strong>: delete encryption key — ideal for cloud and SSDs. <strong>Secure overwrite</strong>: NIST 800-88 compliant (HDDs). <strong>Physical destruction</strong>: shredding/degaussing. <strong>Cloud data:</strong> verify provider actually deletes (not just marks as deleted) — request certificates. <strong>Documentation:</strong> Retention schedule, deletion records, certificates of destruction. <strong>Common failure:</strong> Data retained beyond retention period due to lack of automated deletion processes."
+  },
+  {
+    q: "Control 8.11 (Data Masking) is new in 2022. In what contexts must it be applied and what techniques are available?",
+    opts: [
+      "Data masking is identical to encryption — both controls render data unreadable to unauthorised users and either one can be used interchangeably to satisfy the requirements of Control 8.11 depending on the organisation's technical capabilities and existing infrastructure",
+      "Data masking must be applied based on information classification, particularly in test environments, analytics, and application displays — techniques include substitution, shuffling, pseudonymisation, tokenisation",
+      "Data masking must be applied to all databases without exception — the classification of data within each database is irrelevant as any database could potentially contain sensitive information that might be exposed through legitimate access rights granted to developers",
+      "Data masking only applies to payment card numbers under PCI DSS — other types of personal and sensitive data are adequately protected by access control measures and encryption without needing masking or anonymisation at the application or database layer"
+    ],
+    ans: 1,
+    exp: "<strong>Control 8.11 — Data Masking (NEW in 2022):</strong> <strong>Key contexts:</strong> Test/dev environments (developers should not use real production data), analytics (anonymise PII), application UI (partial display), third-party sharing. <strong>Techniques:</strong> <strong>Substitution</strong>: replace with realistic fake value. <strong>Shuffling</strong>: shuffle values within a column. <strong>Pseudonymisation</strong>: consistent pseudonym, reversible with key. <strong>Tokenisation</strong>: replace with token (PCI DSS standard). <strong>Anonymisation</strong>: irreversible. <strong>Risk:</strong> Dev environments with live production data = major breach risk — source of many high-profile incidents."
+  },
+  {
+    q: "Control 8.12 (Data Leakage Prevention) is new in 2022. What must a DLP implementation consider beyond technology?",
+    opts: [
+      "DLP only monitors outbound email communications — other data transfer channels such as USB devices, cloud uploads, printing, screen capture, and verbal communication with external parties are not addressed by Control 8.12 and fall under separate controls",
+      "DLP must consider data discovery to know what sensitive data exists, policy definition for what constitutes leakage, technical controls across endpoint, email, cloud, and network, response procedures for alerts",
+      "DLP requires written consent from every employee before monitoring begins — without documented individual consent for each monitored channel the organisation is in breach of GDPR and employment law, making DLP implementation legally risky in most European jurisdictions",
+      "DLP is purely a technical control — installing a certified DLP product on all endpoints and email gateways fully satisfies the requirements of Control 8.12 without requiring any supporting policy, staff awareness programme, or response procedures for DLP-generated alerts"
+    ],
+    ans: 1,
+    exp: "<strong>Control 8.12 — Data Leakage Prevention (NEW in 2022):</strong> Holistic approach: <strong>Data discovery</strong>: know what sensitive data exists and where. <strong>Policy</strong>: what constitutes leakage, what data cannot leave. <strong>Technical controls:</strong> Endpoint DLP, Email DLP, Cloud/SaaS DLP, Network DLP. <strong>Process:</strong> Classification policy feeds DLP rules. Acceptable use policy. Third-party sharing agreements. <strong>Response:</strong> DLP alert triage, investigation, escalation procedures. <strong>Awareness:</strong> Staff trained on what they can/cannot share. <strong>Privacy balance:</strong> DLP monitoring must comply with employment law and GDPR. <strong>False positive management:</strong> High FP rate = alert fatigue = DLP ignored."
+  },
+  {
+    q: "Control 8.15 covers logging. What events must be logged and how must logs themselves be protected?",
+    opts: [
+      "Only security incidents that result in confirmed data breaches need to be logged — routine system events such as successful logins, normal administrative actions, and standard application transactions do not need to be retained as they add unnecessary volume and cost",
+      "Log retention is fixed at exactly 90 days across all systems — retaining logs beyond this period is not permitted under GDPR data minimisation principles, and the standard explicitly prohibits retention periods that exceed what is necessary for immediate security monitoring",
+      "Logs must capture user activities, exceptions, faults, and security events with consistent timestamps — logs must be protected from tampering and unauthorised deletion, access-controlled, backed up, and retained per policy with regular review to detect anomalies",
+      "Logs only need to be reviewed reactively when a security incident has been reported — proactive routine review of logs is optional and considered over-engineering for organisations of fewer than 500 employees regardless of the sensitivity of data they process"
+    ],
+    ans: 2,
+    exp: "<strong>Control 8.15 — Logging:</strong> <strong>Events to log:</strong> Login/logout success and failure, privileged access usage, system start/stop/errors, config changes, sensitive file access, network access, security alerts. <strong>Log content:</strong> Timestamp (synchronised via 8.17), user identity, event description, success/failure, source, affected resource. <strong>Log protection:</strong> Tamper-evident, protected from deletion by admins, access-controlled (only security/audit team), backed up, retained per policy (commonly 1 year online + archive). <strong>Log review:</strong> Automated SIEM analysis, exception-based alerting, periodic manual review."
+  },
+  {
+    q: "Control 8.16 (Monitoring Activities) is new in 2022. What does it require beyond simply collecting and storing logs?",
+    opts: [
+      "Storing logs in a SIEM platform fully satisfies monitoring requirements — the standard considers that having logs centrally available constitutes effective monitoring, and no further human review or alert-based response procedures are required to achieve conformance",
+      "Automated monitoring tools completely replace the need for human analysis — machine learning based anomaly detection is considered sufficient to satisfy Control 8.16 without any defined human escalation procedures or analyst review processes",
+      "Monitoring requires actively reviewing security events to detect anomalous behaviour in a timely manner — covering networks, systems, applications, and user behaviour — with proportionate coverage of critical systems, automated alerting, defined response procedures",
+      "Monitoring is only required for internet-facing systems and external network perimeter devices — internal systems such as workstations, internal servers, and application databases are excluded from the 8.16 monitoring requirement under the 2022 version"
+    ],
+    ans: 2,
+    exp: "<strong>Control 8.16 — Monitoring Activities (NEW in 2022):</strong> Previously implied — now explicit. <strong>Coverage:</strong> Networks (traffic anomalies), systems (errors, unusual processes), applications (access anomalies), user behaviour (UEBA), security tools (AV, IDS, DLP alerts). <strong>Requirements:</strong> Timely (detect in time to respond), proportionate (critical systems monitored continuously), alert-driven (automated detection), human review (supplements automated tools), response procedures (who responds, what actions). <strong>Effectiveness test:</strong> Run a simulated attack — does monitoring detect it? SIEM without tuned rules and analyst response = logs sit unread."
+  },
+  {
+    q: "Control 8.23 (Web Filtering) is new in 2022. What security objectives must web filtering achieve beyond content policy enforcement?",
+    opts: [
+      "Web filtering only applies to unmanaged and personally owned devices connecting to the corporate network — corporate managed devices with up-to-date AV and EDR software installed are not required to have web filtering because endpoint security tools provide equivalent protection",
+      "Web filtering must block malicious URLs, malware distribution sites, C2 infrastructure, and anonymisation proxies — using SSL inspection to cover HTTPS traffic — with regular database updates, exception processes for legitimate business needs, and a documented acceptable use policy",
+      "Web filtering requires blocking all cloud services and social media platforms to prevent data exfiltration — any business requirement to access cloud services must be routed through a formal exception request process approved by the CISO and documented in the SoA",
+      "Web filtering is exclusively a productivity and HR policy control designed to prevent personal internet use during working hours — it has no security function and is included in Annex A solely to help organisations enforce acceptable use policies for employment disciplinary purposes"
+    ],
+    ans: 1,
+    exp: "<strong>Control 8.23 — Web Filtering (NEW in 2022):</strong> Security-focused filtering: block known malicious URLs/domains (C2, phishing, malware distribution), block risky download types, prevent proxy bypass sites, control high-risk categories (hacking tools, exploit kits). <strong>Implementation:</strong> Secure Web Gateway (Zscaler, Netskope, Symantec), DNS filtering (Cisco Umbrella), browser-based filtering. <strong>Effectiveness:</strong> SSL/TLS inspection critical (most malware uses HTTPS), regular URL database updates, exception process. <strong>Policy requirements:</strong> Filtering policy documented, acceptable use policy explaining controls. <strong>Balance:</strong> Overly restrictive filtering leads to Shadow IT workarounds."
+  },
+  {
+    q: "Control 8.24 covers use of cryptography. What must the organisation's cryptography policy define?",
+    opts: [
+      "The policy only needs to address encryption in transit — data at rest is adequately protected by physical security controls defined in the 7.x range of Annex A, and applying encryption to stored data is considered optional gold-plating beyond standard requirements",
+      "The policy must specify AES-256 as the only acceptable encryption algorithm for all use cases — ISO 27001 mandates this specific algorithm, and any use of other algorithms including RSA, ECC, or ChaCha20-Poly1305 constitutes a nonconformity regardless of the context",
+      "Audit tests on production systems must be planned and agreed to minimise disruption — access must be minimal and time-limited, audit tools controlled and isolated after use, and data accessed during testing protected and deleted when no longer needed",
+      "Cryptography policy only applies to data shared with external parties — internal data storage and transmission within the organisation's private network is excluded from cryptographic controls because the trusted internal network boundary provides sufficient protection"
+    ],
+    ans: 2,
+    exp: "<strong>Control 8.24 — Use of Cryptography:</strong> <strong>Policy must address:</strong> When to use (scenarios requiring encryption per classification), approved algorithms (AES-256 symmetric, RSA-2048+/ECC-256+ asymmetric, SHA-256+ hashing), prohibited algorithms (MD5, SHA-1, DES, RC4). <strong>Key management lifecycle:</strong> Generation (secure random, appropriate length), distribution (secure channels), storage (HSM, key vault — never plaintext), rotation (scheduled), revocation (when compromise suspected), destruction (secure deletion). <strong>Common failures:</strong> Hardcoded keys in source code, keys stored alongside encrypted data, no key rotation, deprecated algorithms still in use."
+  },
+  {
+    q: "Control 8.25 covers the secure development lifecycle. What must a secure development policy define across the SDLC phases?",
+    opts: [
+      "Running a vulnerability scanner on completed applications before release is the only SDLC requirement — the scan report serves as evidence of security testing and satisfies the audit requirements for Control 8.25 without requiring security activities during earlier design or coding phases",
+      "ISO 27001 requires all software to be developed in a standard approved programming language from a defined list — use of non-standard languages or frameworks must be approved through the change management process before development begins on any new system",
+      "The policy must define security requirements in design, secure coding standards with developer training, security testing throughout the SDLC including SAST, DAST, and penetration testing, separation of dev/test/production environments, and security sign-off before release",
+      "Secure development requirements only apply to externally facing public-facing applications — internal tools, admin portals, and back-end services with no external user access are excluded from SDLC security controls because they present a lower risk profile"
+    ],
+    ans: 2,
+    exp: "<strong>Control 8.25 — Secure Development Life Cycle:</strong> Security built in from start. <strong>SDLC phases:</strong> Requirements (auth, authorisation, logging, encryption, input validation), Design (threat modelling, secure architecture), Development (OWASP Top 10, SAST, code review), Testing (DAST, pen test, regression), Deployment (hardened config, secrets management), Maintenance (vulnerability management, patch process). <strong>Related controls:</strong> 8.28 (secure coding), 8.29 (security testing), 8.30 (outsourced development), 8.31 (dev/test/prod separation). <strong>DevSecOps:</strong> Integrate security into CI/CD pipeline."
+  },
+  {
+    q: "Control 8.28 (Secure Coding) is new in 2022. What specific vulnerability categories must the secure coding policy address?",
+    opts: [
+      "Secure coding is fully satisfied by integrating automated SAST tools into the CI/CD pipeline — manual code review and penetration testing are not required once automated static analysis is in place as it provides continuous and comprehensive security coverage",
+      "The policy must address input validation, output encoding, authentication and session management, server-side access control, approved cryptography usage, error handling that does not expose sensitive information",
+      "Secure coding requirements only apply to web applications — desktop applications, mobile apps, internal scripts, batch processes, and infrastructure-as-code are excluded from the scope of Control 8.28 in the 2022 version of the standard",
+      "Secure coding only requires using the latest stable version of each programming language and framework — keeping dependencies current is sufficient to satisfy Control 8.28 because most vulnerabilities are found in outdated components rather than newly written application code"
+    ],
+    ans: 1,
+    exp: "<strong>Control 8.28 — Secure Coding (NEW in 2022):</strong> <strong>Requirements:</strong> Input validation (prevent SQL injection, XSS, command injection), output encoding (prevent XSS), strong authentication (no hardcoded credentials, secure sessions), server-side access control, approved algorithms only, errors to logs not users, dependency management (SBOM, update vulnerable libraries — Log4j incident). <strong>OWASP Top 10:</strong> A01 Broken Access Control, A02 Cryptographic Failures, A03 Injection, A04 Insecure Design, A05 Security Misconfiguration, A06 Vulnerable Components, A07 Auth Failures, A08 Integrity Failures, A09 Logging Failures, A10 SSRF. <strong>Evidence for auditors:</strong> Secure coding standard, developer training records, code review process, SAST results."
+  },
+  {
+    q: "Control 8.29 requires security testing in the development and acceptance process. What types are required and at what SDLC stages?",
+    opts: [
+      "Security testing is only required for applications processing payment card data under PCI DSS or personal health information under HIPAA — organisations that do not handle regulated data categories are excluded from the testing requirements of Control 8.29",
+      "Automated testing tools entirely replace manual security testing — once SAST and DAST are integrated into the CI/CD pipeline, manual expert penetration testing is no longer required and would constitute a duplication of effort that is not cost-effective for the organisation",
+      "Only penetration testing immediately before the final production release is required — all other testing types such as SAST, DAST, and dependency scanning are optional enhancements that go beyond what the standard mandates and are included only when the organisation has the budget",
+      "Security testing must be performed throughout the SDLC — SAST during development, DAST and SCA in test environments, penetration testing before release and periodically — with defined acceptance criteria that must be met before promoting code to production"
+    ],
+    ans: 3,
+    exp: "<strong>Control 8.29 — Security Testing in Development and Acceptance:</strong> <strong>SAST:</strong> Static code analysis during development/CI pipeline. Tools: Checkmarx, Veracode, SonarQube. Finds injection flaws, hardcoded credentials. <strong>DAST:</strong> Dynamic testing of running application. Tools: OWASP ZAP, Burp Suite. Run in test environment. <strong>SCA:</strong> Dependency scanning for known CVEs. Tools: Snyk, Black Duck. <strong>Penetration Testing:</strong> Manual expert testing before release and periodically. Scope agreed per Control 8.34. <strong>Acceptance criteria:</strong> Define security standard required before promoting to production. <strong>Regression testing:</strong> Rerun security tests after changes."
+  },
+  {
+    q: "Control 8.34 covers protection of information systems during audit testing. What must be controlled and why?",
+    opts: [
+      "Control 8.34 requires suspending all security monitoring systems during audit testing to prevent the monitoring tools from interfering with audit tool results — monitoring is restored immediately after testing is complete and all audit tools have been removed from the environment",
+      "Control 8.34 requires all audit findings to be classified as confidential with restricted distribution — findings must be encrypted during transmission to the certification body and stored in a security-cleared document management system after the audit closes",
+      "Control 8.34 requires physical padlocks on all server racks during ISO 27001 certification audits to prevent auditors from physically accessing equipment — auditors must be supervised at all times and may not touch any hardware during the audit process",
+      "Audit tests on production systems must be planned and agreed to minimise disruption — audit tools must be controlled and isolated after use, access must be minimal and time-limited, and data accessed during testing must be protected and deleted when no longer needed"
+    ],
+    ans: 3,
+    exp: "<strong>Control 8.34 — Protection During Audit Testing:</strong> Penetration tests, vulnerability scans, and compliance checks on production systems carry risks: system disruption, data exposure, unintended changes. <strong>Requirements:</strong> Plan and agree scope, timing, tools, and access with system owners before testing. Minimise disruption (schedule off-peak). Control audit tools — significant power, must be isolated after use. Minimal, time-limited, logged access. Remove access immediately after. Data accessed must be protected, retained minimally, then securely deleted. <strong>Practical application:</strong> Penetration test rules of engagement, written authorisation, evidence handling procedures."
+  },
+  {
+    q: "What are the stages of the ISO 27001 certification audit and what happens at each stage?",
+    opts: [
+      "Stage 1 reviews ISMS documentation and readiness, identifying major gaps — if ready, Stage 2 is an on-site certification audit verifying implementation and effectiveness — if passed with no major NCs, certificate is issued for 3 years with annual surveillance audits",
+      "Certification is granted immediately upon Stage 1 completion if no major nonconformities are found in the documentation review — the Stage 2 audit is only required if the Stage 1 report identifies gaps that the organisation needs time to remediate before demonstrating implementation",
+      "A single comprehensive on-site audit covers all ISMS requirements in one visit — the certification body combines documentation review and evidence testing into a single multi-day engagement that concludes with an immediate certification decision at the closing meeting",
+      "Certification requires completing a self-assessment questionnaire submitted to the certification body — a document reviewer scores the questionnaire remotely and issues the certificate if the score exceeds 80% without requiring any on-site or remote interview-based audit"
+    ],
+    ans: 0,
+    exp: "<strong>ISO 27001 Certification Process:</strong> <strong>Stage 1 — Documentation/Readiness Review:</strong> Reviews scope, policy, SoA, risk assessment, key documentation. Determines readiness for Stage 2. Typically 1-2 days. Output: readiness determination and recommendations. <strong>Stage 2 — Certification Audit:</strong> On-site/remote. Verifies ISMS implemented as documented and operating effectively. Interviews staff at all levels. Reviews objective evidence. Duration: proportionate to size (2-10+ days). <strong>Certification:</strong> No major NCs → certificate issued. Major NCs → corrective action → re-audit. Certificate valid 3 years. <strong>Surveillance audits:</strong> Annual in years 1 and 2. <strong>Recertification:</strong> Full audit in year 3."
+  },
+  {
+    q: "What does Clause 9.2 require for the internal audit programme and why must auditors be impartial?",
+    opts: [
+      "Internal audit is optional for organisations undergoing annual external penetration testing — the penetration test serves as an equivalent technical assessment and fulfils the Clause 9.2 requirement without requiring a separate management systems audit process",
+      "Internal audit only covers technical controls tested through automated scanning — process, documentation, and people controls are evaluated exclusively during the external certification audit and are not within the scope of the internal audit function",
+      "Internal audit can only be performed by the external certification body — internal teams cannot audit their own ISMS as they lack the technical independence required by the standard, and self-conducted audits would not be accepted as evidence during Stage 2 or surveillance audits",
+      "Internal audit must be conducted at planned intervals by objective and impartial auditors who do not audit their own work — covering all ISMS requirements, reporting results to management, and ensuring findings are addressed through the corrective action process"
+    ],
+    ans: 3,
+    exp: "<strong>Clause 9.2 — Internal Audit:</strong> <strong>Purpose:</strong> Independent assurance that ISMS conforms to requirements and is effectively implemented. <strong>Requirements:</strong> Planned intervals (typically annually or more for high-risk areas). Covers ALL ISMS requirements over the audit cycle. <strong>Auditor impartiality:</strong> Auditors must not audit their own work — CISO cannot audit their own ISMS. Options: cross-functional internal audit, different department, or outsourced internal audit. <strong>Documentation:</strong> Retained as documented information. Reported to management. <strong>Common failures:</strong> No audit conducted, CISO auditing own controls, findings not followed up with corrective actions."
+  },
+  {
+    q: "What is the difference between a first party, second party, and third party audit in the ISO 27001 context?",
+    opts: [
+      "The classification refers to the number of auditors present — a first-party audit has one auditor, a second-party audit has two, and a third-party audit has three or more — the number of auditors required is determined by the size and complexity of the organisation's ISMS",
+      "First party means the organisation audits itself (internal audit), second party means a customer or interested party audits a supplier, and third party means an independent accredited certification body conducts a formal audit resulting in a certifiable outcome",
+      "First, second, and third party refer to the severity level of the audit — a first-party audit is a routine health check, a second-party audit is a formal compliance review, and a third-party audit is the most critical level reserved for post-incident regulatory investigations",
+      "First-party audits are informal voluntary assessments with no documentary output — second-party audits produce a formal report with recommendations — third-party audits always result in immediate suspension of the organisation's ISO 27001 certificate if any findings are identified"
+    ],
+    ans: 1,
+    exp: "<strong>Audit Party Types:</strong> <strong>First Party (Internal Audit):</strong> Organisation audits itself. Required by Clause 9.2. Self-assessment — not independently credible for external assurance. <strong>Second Party (Customer/Supplier Audit):</strong> Customer audits supplier. Or organisation audits supply chain. Purpose: verify supplier controls meet contractual requirements. Used when third-party certification doesn't exist or doesn't cover specific areas. <strong>Third Party (Certification Audit):</strong> Conducted by accredited, independent Certification Body (BSI, Bureau Veritas, DNV, SGS, LRQA). Accredited by national bodies (UKAS, DAkkS, ANAB). Results in ISO 27001 certificate valid 3 years. Highest credibility."
+  },
+  {
+    q: "What must happen when a nonconformity is identified per Clause 10.1, and what distinguishes correction from corrective action?",
+    opts: [
+      "Nonconformities are recorded in the surveillance audit report and addressed collectively at the next annual management review — individual nonconformities do not require a dedicated response between audit cycles unless they are classified as major by the certification body",
+      "All nonconformities result in automatic suspension of the ISO 27001 certificate until the organisation demonstrates complete remediation and passes a full re-audit — partial remediation or compensating controls are not accepted by the certification body in any circumstances",
+      "Only major nonconformities require a formal response — minor nonconformities can be noted in the ISMS improvement log and addressed opportunistically when resources permit without any prescribed deadline or effectiveness verification requirement",
+      "The organisation must react to contain the NC, perform root cause analysis, implement corrective actions to prevent recurrence, verify their effectiveness"
+    ],
+    ans: 3,
+    exp: "<strong>Clause 10.1 — Nonconformity and Corrective Action:</strong> Steps: (1) <strong>React:</strong> contain and correct immediate problem. (2) <strong>Root cause analysis:</strong> 5-Whys, fishbone — why did NC occur? Isolated incident or systemic failure? (3) <strong>Corrective action:</strong> eliminate the ROOT CAUSE to prevent recurrence. (4) <strong>Verify effectiveness:</strong> did the same NC recur? Did KPI improve? (5) <strong>Update ISMS</strong> if NC reveals a gap. <strong>Key distinction:</strong> Correction = fix the symptom (immediate). Corrective action = eliminate the root cause (prevent recurrence). <strong>Evidence required:</strong> NC description, root cause, actions taken, effectiveness verification, closure date."
+  },
+  {
+    q: "How do ISO 27001 and ISO 27002 relate to each other, and can an organisation be certified against ISO 27002?",
+    opts: [
+      "ISO 27001 is the certifiable requirements standard using SHALL statements — ISO 27002 provides implementation guidance for the Annex A controls using SHOULD language — organisations certify against ISO 27001 only — ISO 27002 cannot be certified against",
+      "ISO 27002 is the certifiable standard for smaller organisations with fewer than 250 employees — larger organisations must use ISO 27001 instead — both are certifiable through accredited certification bodies using the same audit process and stage 1 and stage 2 audit structure",
+      "ISO 27001 and ISO 27002 are identical documents — the same standard is published under two different numbers to allow organisations to reference either version in their SoA and supplier contracts, with both numbers being accepted equally by certification bodies globally",
+      "ISO 27002 replaces ISO 27001 for organisations that have already achieved certification — after three years of certification, organisations graduate from ISO 27001 to ISO 27002 as the more advanced standard, with recertification conducted under the ISO 27002 framework"
+    ],
+    ans: 0,
+    exp: "<strong>ISO 27001 vs ISO 27002 Relationship:</strong> <strong>ISO 27001:</strong> SHALL requirements for establishing, implementing, maintaining, and improving an ISMS. Certification possible — certificate demonstrates conformance. Auditable. <strong>ISO 27002:</strong> Code of practice. Detailed implementation guidance for the 93 Annex A controls. SHOULD language (recommendations). Cannot be certified against. <strong>2022 Update:</strong> Both updated simultaneously. 27002 control entries expanded: title, attribute, control statement, purpose, guidance, other information. <strong>Practical use:</strong> Read 27001 to know what you MUST do. Read 27002 to understand HOW to do it."
+  },
+  {
+    q: "What ongoing obligations must an organisation fulfil to maintain an ISO 27001 certificate after initial certification?",
+    opts: [
+      "Annual surveillance audits must be passed, the ISMS must continue operating effectively with internal audits and management reviews conducted, significant changes must be notified to the certification body, and a full recertification audit must be completed in year 3",
+      "The certification body must be present at every management review meeting, internal audit, and risk assessment session during the three-year certificate lifecycle — remote attendance is acceptable but the CB must participate to validate the evidence being generated",
+      "No ongoing obligations exist — the certificate is valid for three years without any activity required from the organisation, after which a full re-audit is conducted — the three-year period was designed to allow stability without constant external scrutiny of the ISMS",
+      "Monthly reports summarising all security incidents, vulnerability scan results, and key metric trends must be submitted to the certification body — failure to submit within five working days of each month end constitutes a breach of certification conditions"
+    ],
+    ans: 0,
+    exp: "<strong>Maintaining ISO 27001 Certification:</strong> <strong>Year 1 & 2 Surveillance Audits:</strong> Auditor returns ~12 months after certification. Verifies ISMS still operating. Checks: management review conducted, internal audits completed, corrective actions closed, risk assessment updated, objectives measured. Typically 1 day. <strong>Year 3 Recertification:</strong> Full audit similar to original Stage 2. Certificate renewed for another 3 years if passed. <strong>Continuous obligations:</strong> ISMS operational — policies maintained, controls implemented, audits run, reviews held, NCs corrected. <strong>Notification obligations:</strong> Inform CB of significant changes (mergers, major scope changes, significant incidents). <strong>Certificate suspension:</strong> CB can suspend if surveillance audit reveals major NCs."
+  },
+  {
+    q: "What is the purpose of the Annex A attribute tagging system introduced in ISO 27001:2022 and what are the five categories?",
+    opts: [
+      "Attribute tagging allows controls to be filtered by: Control Type (preventive, detective, corrective), Information Security Properties (CIA), Cybersecurity Concepts (NIST CSF phases), Operational Capabilities, and Security Domains — enabling multiple views of Annex A controls for different purposes",
+      "Attribute tagging is a scoring system assigning numerical difficulty ratings from 1 to 5 to each control, helping organisations prioritise implementation based on complexity — controls with a difficulty rating of 5 may be deferred until controls rated 1 to 3 are fully implemented and verified",
+      "Attribute tagging assigns a single primary category to each control to clarify which ISO standard takes precedence when controls overlap — controls tagged as ISO 31000 defer to risk management guidance while controls tagged as ISO 27002 defer to information security implementation guidance",
+      "Attribute tagging is a deprecated feature that was proposed for the 2022 version but removed before final publication due to concerns about oversimplification — the current 2022 version does not include attribute tags and organisations should disregard any references to them in older guidance documents"
+    ],
+    ans: 0,
+    exp: "<strong>ISO 27001:2022 Annex A Attribute Tagging:</strong> NEW in 2022 — each of 93 controls has multiple attributes. (1) <strong>Control Type:</strong> Preventive, Detective, Corrective. (2) <strong>Information Security Properties:</strong> Confidentiality, Integrity, Availability. (3) <strong>Cybersecurity Concepts:</strong> Identify, Protect, Detect, Respond, Recover (NIST CSF aligned). (4) <strong>Operational Capabilities:</strong> Governance, Asset management, Information protection, Identity and access management, Threat and vulnerability management, Continuity, etc. (5) <strong>Security Domains:</strong> Governance and Ecosystem, Protection, Defence, Resilience. <strong>Value:</strong> Filter Annex A to view all Detective controls, all Availability controls, or all Resilience domain controls — targeted implementation and reporting."
+  }
+];
+
+let correct = 0, wrong = 0, answered = 0;
+const total = Q.length;
+
+function build() {
+  const wrap = document.getElementById('qwrap');
+  wrap.innerHTML = '';
+  wrongAnswers = [];
+  const KEYS = ['A','B','C','D'];
+  Q.forEach(function(q, i) {
+    var card = document.createElement('div'); card.className = 'qcard'; card.id = 'c'+i;
+    var header = document.createElement('div'); header.className = 'qcard-header';
+    var qnum = document.createElement('div'); qnum.className = 'qnum'; qnum.textContent = String(i+1).padStart(2,'0');
+    var qtext = document.createElement('div'); qtext.className = 'qtext'; qtext.textContent = q.q;
+    header.appendChild(qnum); header.appendChild(qtext);
+    var body = document.createElement('div'); body.className = 'qcard-body';
+    var optionsDiv = document.createElement('div'); optionsDiv.className = 'options'; optionsDiv.id = 'o'+i;
+    q.opts.forEach(function(optText, j) {
+      var btn = document.createElement('button'); btn.className = 'opt-btn'; btn.id = 'b'+i+'_'+j; btn.type = 'button';
+      (function(qi, sel) { btn.addEventListener('click', function() { pick(qi, sel); }); })(i, j);
+      var keyDiv = document.createElement('div'); keyDiv.className = 'opt-key'; keyDiv.textContent = KEYS[j];
+      var textDiv = document.createElement('div'); textDiv.className = 'opt-text'; textDiv.textContent = optText;
+      btn.appendChild(keyDiv); btn.appendChild(textDiv); optionsDiv.appendChild(btn);
+    });
+    body.appendChild(optionsDiv);
+    var expDiv = document.createElement('div'); expDiv.className = 'explanation'; expDiv.id = 'e'+i;
+    var expIcon = document.createElement('span'); expIcon.className = 'exp-icon'; expIcon.textContent = '💡';
+    var expText = document.createElement('span'); expText.className = 'exp-text'; expText.innerHTML = q.exp;
+    expDiv.appendChild(expIcon); expDiv.appendChild(expText);
+    card.appendChild(header); card.appendChild(body); card.appendChild(expDiv);
+    wrap.appendChild(card);
+  });
+}
+
+function pick(qi, sel) {
+  if (!studentName) {
+    const inp = document.getElementById('naam-input');
+    inp.style.borderColor = '#c0392b'; inp.focus();
+    setTimeout(() => inp.style.borderColor = 'rgba(200,151,58,0.25)', 2000);
+    return;
+  }
+  const q = Q[qi];
+  const card = document.getElementById('c'+qi);
+  const btns = document.querySelectorAll('#o'+qi+' .opt-btn');
+  const exp = document.getElementById('e'+qi);
+  const KEYS = ['A','B','C','D'];
+  btns.forEach((b, j) => {
+    b.disabled = true;
+    if (j === q.ans) b.classList.add('opt-correct');
+    else if (j === sel) b.classList.add('opt-wrong');
+    else b.classList.add('opt-dim');
+  });
+  exp.classList.add('show');
+  const tag = document.createElement('div');
+  if (sel === q.ans) {
+    correct++;
+    card.classList.add('state-correct');
+    tag.className = 'result-tag rt-correct';
+    tag.innerHTML = '🔥 &nbsp;Correct!';
+  } else {
+    wrong++;
+    card.classList.add('state-wrong');
+    tag.className = 'result-tag rt-wrong';
+    tag.innerHTML = '😢 &nbsp;Incorrect — Correct: ' + KEYS[q.ans];
+    wrongAnswers.push({ qnum: qi+1, question: q.q, opts: q.opts, chosen: sel, correct: q.ans, exp: q.exp });
+  }
+  exp.after(tag);
+  answered++;
+  updateUI();
+  if (answered === total) { clearInterval(timerInterval); setTimeout(showFinal, 700); }
+}
+
+function updateUI() {
+  document.getElementById('sc').textContent = correct;
+  document.getElementById('sw').textContent = wrong;
+  const pct = Math.round((correct / answered) * 100);
+  document.getElementById('sp').textContent = pct + '%';
+  document.getElementById('pf').style.width = ((answered / total) * 100) + '%';
+}
+
+function timeFmt() {
+  return String(Math.floor(elapsed/60)).padStart(2,'0') + ':' + String(elapsed%60).padStart(2,'0');
+}
+
+function showFinal() {
+  const pct = Math.round((correct / total) * 100);
+  document.getElementById('fscore').innerHTML = correct + '<span>/' + total + '</span>';
+  document.getElementById('fpct').textContent = pct + '% Score';
+  document.getElementById('fc').textContent = correct;
+  document.getElementById('fw').textContent = wrong;
+  document.getElementById('ft').textContent = total;
+  let msg = '';
+  if (pct >= 85) msg = 'Outstanding! Domain 1 pe command mazboot hai. CISSP exam ke liye taiyaar ho.';
+  else if (pct >= 70) msg = 'Passing score hai. Kuch concepts review karo — especially risk calculations aur legal frameworks.';
+  else if (pct >= 50) msg = 'Improvement ki zarurat hai. Risk formulas (ALE/SLE/ARO), access control models, aur laws dobara padhna.';
+  else msg = 'Domain 1 ke core concepts ko deeply padhna zaroori hai — especially governance, risk treatment, aur compliance frameworks.';
+  document.getElementById('fmsg').textContent = msg;
+  const f = document.getElementById('final');
+  f.style.display = 'block';
+  f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  uploadResultToGitHub(pct);
+}
+
+// ── BUILD RESULT HTML ──
+function buildResultHTML(pct) {
+  const KEYS = ['A','B','C','D'];
+  const now = new Date().toLocaleString('en-IN');
+  let wrongCards = '';
+  if (wrongAnswers.length === 0) {
+    wrongCards = '<div style="background:linear-gradient(135deg,#e8faf1,#d0f5e3);border:1px solid rgba(26,122,74,.2);border-radius:16px;padding:28px;text-align:center;font-size:1rem;font-weight:600;color:#0f5a36;margin-top:20px">🎯 Perfect Score! Saare jawab sahi the.</div>';
+  } else {
+    wrongAnswers.forEach(w => {
+      let optBtns = '';
+      w.opts.forEach((opt, j) => {
+        let cls = 'opt-btn';
+        if (j === w.correct) cls += ' opt-correct';
+        else if (j === w.chosen) cls += ' opt-wrong';
+        else cls += ' opt-dim';
+        optBtns += `<div class="${cls}"><div class="opt-key">${KEYS[j]}</div><div class="opt-text">${opt}</div></div>`;
+      });
+      wrongCards += `<div class="qcard state-wrong">
+        <div class="qcard-header"><div class="qnum">${String(w.qnum).padStart(2,'0')}</div><div class="qtext">${w.question}</div></div>
+        <div class="qcard-body"><div class="options">${optBtns}</div></div>
+        <div class="explanation show"><span class="exp-icon">💡</span><span class="exp-text">${w.exp}</span></div>
+        <div class="result-tag rt-wrong">😢 &nbsp;Incorrect — Correct: ${KEYS[w.correct]}</div>
+      </div>`;
+    });
+  }
+
+  // grab current page styles
+  const styleContent = Array.from(document.styleSheets)
+    .map(ss => { try { return Array.from(ss.cssRules).map(r => r.cssText).join('\n'); } catch(e){ return ''; } })
+    .join('\n');
+
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Result — ${studentName}</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>${styleContent}
+.rh{max-width:900px;margin:40px auto 0;padding:0 32px}
+.rt{background:linear-gradient(160deg,#fff,#f7f4ee);border-radius:20px;padding:36px 40px;margin-bottom:8px;box-shadow:0 1px 0 #d4cfc4,0 2px 0 #cac4b8,0 3px 0 #bfb9ac,0 8px 20px rgba(0,0,0,.12);text-align:center}
+.rey{font-family:'DM Mono',monospace;font-size:.6rem;color:#c8973a;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.rnm{font-family:'DM Serif Display',serif;font-size:2rem;color:#0d0d0d;margin-bottom:4px}
+.rmt{font-family:'DM Mono',monospace;font-size:.68rem;color:#888;margin-bottom:24px}
+.rps{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.rp{padding:12px 24px;border-radius:14px;font-family:'DM Mono',monospace;font-weight:700;font-size:1.1rem;border:1px solid rgba(255,255,255,.7);text-align:center}
+.rpc{background:linear-gradient(145deg,#e8faf1,#c8f2dc);color:#0f5a36;box-shadow:0 2px 0 #60ae86,0 4px 10px rgba(26,122,74,.2)}
+.rpw{background:linear-gradient(145deg,#fff0ee,#fdd8d4);color:#8b1a14;box-shadow:0 2px 0 #c47167,0 4px 10px rgba(192,57,43,.2)}
+.rpp{background:linear-gradient(145deg,#fffcf0,#fff3d0);color:#7a5010;box-shadow:0 2px 0 #c0a830,0 4px 10px rgba(200,151,58,.2)}
+.rpt{background:linear-gradient(145deg,#f0f4ff,#dce6ff);color:#1a3a8a;box-shadow:0 2px 0 #6080c8,0 4px 10px rgba(30,60,180,.15)}
+.rpx{font-size:.5rem;letter-spacing:1.5px;opacity:.7;display:block;margin-top:3px;font-weight:400}
+.wst{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#0d0d0d;margin:32px 0 0;display:flex;align-items:center;gap:12px}
+.wst::after{content:'';flex:1;height:1px;background:rgba(0,0,0,.08)}
+</style></head><body>
+<div class="rh">
+  <div class="rt">
+    <div class="rey">CISSP Exam Prep · Domain 1 · Result</div>
+    <div class="rnm">${studentName}</div>
+    <div class="rmt">📅 ${now} &nbsp;·&nbsp; ⏱ ${timeFmt()}</div>
+    <div class="rps">
+      <div class="rp rpc">${correct}<span class="rpx">Correct</span></div>
+      <div class="rp rpw">${wrong}<span class="rpx">Wrong</span></div>
+      <div class="rp rpp">${pct}%<span class="rpx">Score</span></div>
+      <div class="rp rpt">${timeFmt()}<span class="rpx">Time</span></div>
+    </div>
+  </div>
+  ${wrongAnswers.length > 0 ? '<div class="wst">Galat Jawab — Revision Karein</div>' : ''}
+</div>
+<div class="questions-wrap">${wrongCards}</div>
+</body></html>`;
+}
+
+// ── TOAST ──
+function showToast(msg, type) {
+  const old = document.getElementById('gh-toast');
+  if (old) old.remove();
+  const t = document.createElement('div');
+  t.id = 'gh-toast';
+  t.className = 'upload-toast toast-' + type;
+  t.innerHTML = (type === 'uploading' ? '⏳' : type === 'success' ? '✅' : '❌') + ' &nbsp;' + msg;
+  document.body.appendChild(t);
+  if (type !== 'uploading') setTimeout(() => t.remove(), 5000);
+}
+
+// ── GITHUB UPLOAD ──
+async function uploadResultToGitHub(pct) {
+  showToast('Result GitHub pe save ho raha hai...', 'uploading');
+
+  const safeName = studentName.replace(/[^a-zA-Z0-9]/g, '_');
+  const fileName = 'results/' + safeName + '_Result_CISSP_D1.html';
+  const content = buildResultHTML(pct);
+  const encoded = btoa(unescape(encodeURIComponent(content)));
+
+  const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${fileName}`;
+
+  try {
+    // Check if file already exists (to get SHA for update)
+    let sha = null;
+    const check = await fetch(apiUrl, {
+      headers: {
+        'Authorization': 'token ' + GH_TOKEN,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+    if (check.ok) {
+      const existing = await check.json();
+      sha = existing.sha;
+    }
+
+    // Auto-detect branch
+    const repoRes = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}`, {
+      headers: { 'Authorization': 'token ' + GH_TOKEN, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    const repoData = await repoRes.json();
+    const branch = repoData.default_branch || 'main';
+
+    // Create or update file
+    const body = {
+      message: 'Result: ' + studentName + ' — ' + new Date().toISOString().slice(0,10),
+      content: encoded,
+      branch: branch
+    };
+    if (sha) body.sha = sha;
+
+    const res = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + GH_TOKEN,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    const resData = await res.json();
+
+    if (res.ok) {
+      const resultUrl = `https://${GH_OWNER}.github.io/${GH_REPO}/${fileName}`;
+      document.getElementById('gh-toast').remove();
+      showToast('Saved! <a href="' + resultUrl + '" target="_blank" style="color:#fff;text-decoration:underline">Result dekho →</a>', 'success');
+    } else {
+      document.getElementById('gh-toast').remove();
+      showToast('Error: ' + (resData.message || res.status), 'error');
+      console.error('GitHub API error:', resData);
+    }
+  } catch(e) {
+    document.getElementById('gh-toast').remove();
+    showToast('Network error: ' + e.message, 'error');
+    console.error(e);
+  }
+}
+
+function restart() {
+  correct = 0; wrong = 0; answered = 0; elapsed = 0; wrongAnswers = []; studentName = '';
+  clearInterval(timerInterval); timerInterval = null;
+  ['sc','sw'].forEach(id => document.getElementById(id).textContent = 0);
+  document.getElementById('sp').textContent = '—';
+  document.getElementById('pf').style.width = '0%';
+  document.getElementById('final').style.display = 'none';
+  const inp = document.getElementById('naam-input');
+  inp.value = ''; inp.disabled = false;
+  const pill = document.getElementById('start-pill');
+  pill.classList.remove('timer-on');
+  pill.onclick = startExam;
+  pill.innerHTML = '<span class="start-pill-icon">🚀</span><span class="start-pill-text">Start Exam</span>';
+  build();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+build();
+</script>
+</body>
+</html>
